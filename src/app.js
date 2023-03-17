@@ -1,6 +1,7 @@
 import express, { json } from "express";
 const app = express();
 import medicoRoute from './routes/medicos.routes.js'; 
+import pacienteRoute from './routes/pacientes.routes.js'
 
 /** ---------------- 
  * Middlewares
@@ -13,6 +14,7 @@ app.use(express.json())
  * Monta el enrutador de medico en la aplicación Express en la ruta "/medico".
  */
 app.use('/medico', medicoRoute);
+app.use('/paciente', pacienteRoute);
 
 app.use((req, res, next)=> {
     res.status(404).json({
