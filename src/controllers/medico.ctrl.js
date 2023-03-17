@@ -1,5 +1,6 @@
 import { pool } from "../db/config.js";
 
+
 /**
  * Obtiene todos los registros de la tabla "medico" de la base de datos.
  * @async
@@ -9,10 +10,9 @@ import { pool } from "../db/config.js";
  * @throws {Error} Si ocurre un error durante la ejecución de la función.
  * @returns {Promise<void>} Un objeto JSON con los registros obtenidos de la tabla "medico".
  */
-
 export const getMedicos = async (req, res) => {
     try {
-    const [result] = await pool.query("Select * from medico");
+    const [result] = await pool.query("Select * from healthfiles.medico");
     return res.send(result);
     } catch (error) {
     console.log(error);
@@ -21,6 +21,7 @@ export const getMedicos = async (req, res) => {
         .json({ msg: 'Error al obtener los registros de la tabla "medico".' });
     }
 };
+
 
 export const getMedico = async (req, res) => {
     try {
@@ -52,30 +53,32 @@ export const getMedico = async (req, res) => {
 export const createMedico = async (req, res) => {
     try {
     const {
-        dni_Medico,
-        primer_Nombre,
-        segundo_Nombre,
-        primer_Apellido,
-        segundo_Apellido,
+        dni_medico,
+        primer_nombre,
+        segundo_nombre,
+        primer_apellido,
+        segundo_apellido,
         genero,
-        fecha_Nacimiento,
+        fecha_nacimiento,
         telefono,
-        correo_Electronico,
+        correo_electronico,
         contraseña,
+        foto_perfil
     } = req.body;
     const medico = await pool.query(
-        "INSERT INTO MEDICO (dni_Medico, primer_Nombre, segundo_Nombre, primer_Apellido, segundo_Apellido, genero, fecha_Nacimiento, telefono, correo_Electronico, contraseña) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO MEDICO (dni_medico, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, genero, fecha_nacimiento, telefono, correo_electronico, contraseña, foto_perfil) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
-        dni_Medico,
-        primer_Nombre,
-        segundo_Nombre,
-        primer_Apellido,
-        segundo_Apellido,
-        genero,
-        fecha_Nacimiento,
-        telefono,
-        correo_Electronico,
-        contraseña,
+            dni_medico,
+            primer_nombre,
+            segundo_nombre,
+            primer_apellido,
+            segundo_apellido,
+            genero,
+            fecha_nacimiento,
+            telefono,
+            correo_electronico,
+            contraseña,
+            foto_perfil
         ]
     );
     res.send(req.body);
@@ -93,32 +96,34 @@ export const updateMedico = async (req, res) => {
     try {
     const dni_Medico_Req  = req.params.dni_Medico;
     const {
-        dni_Medico,
-        primer_Nombre,
-        segundo_Nombre,
-        primer_Apellido,
-        segundo_Apellido,
-        genero,
-        fecha_Nacimiento,
-        telefono,
-        correo_Electronico,
-        contraseña,
+        dni_medico,
+            primer_nombre,
+            segundo_nombre,
+            primer_apellido,
+            segundo_apellido,
+            genero,
+            fecha_nacimiento,
+            telefono,
+            correo_electronico,
+            contraseña,
+            foto_perfil
     } = req.body;
 
 
     const medico = await pool.query(
-        "UPDATE medico set dni_Medico=IFNULL(?, dni_Medico), primer_Nombre=IFNULL(?, primer_Nombre),segundo_Nombre=IFNULL(?, segundo_Nombre),primer_Apellido=IFNULL(?, primer_Apellido), segundo_Apellido=IFNULL(?, segundo_Apellido), genero=IFNULL(?, genero), fecha_Nacimiento=IFNULL(?, fecha_Nacimiento), telefono=IFNULL(?, telefono), correo_Electronico=IFNULL(?, correo_Electronico), contraseña=IFNULL(?, contraseña) where dni_Medico = ?",
+        "UPDATE medico set dni_Medico=IFNULL(?, dni_Medico), primer_Nombre=IFNULL(?, primer_Nombre),segundo_Nombre=IFNULL(?, segundo_Nombre),primer_Apellido=IFNULL(?, primer_Apellido), segundo_Apellido=IFNULL(?, segundo_Apellido), genero=IFNULL(?, genero), fecha_Nacimiento=IFNULL(?, fecha_Nacimiento), telefono=IFNULL(?, telefono), correo_Electronico=IFNULL(?, correo_Electronico), contraseña=IFNULL(?, contraseña), foto_perfil=IFNULL(?, foto_perfil) where dni_Medico = ?",
         [
-        dni_Medico,
-        primer_Nombre,
-        segundo_Nombre,
-        primer_Apellido,
-        segundo_Apellido,
-        genero,
-        fecha_Nacimiento,
-        telefono,
-        correo_Electronico,
-        contraseña,
+            dni_medico,
+            primer_nombre,
+            segundo_nombre,
+            primer_apellido,
+            segundo_apellido,
+            genero,
+            fecha_nacimiento,
+            telefono,
+            correo_electronico,
+            contraseña,
+            foto_perfil,
         dni_Medico_Req,
         ]
     );

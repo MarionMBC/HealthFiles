@@ -5,10 +5,11 @@ const router = Router();
 
 
 router.get('/get', getMedicos);
-router.get('/get/:dni_Medico', getMedico);
+router.get('/get/:dni_medico', getMedico);
 router.post('/create', createMedico);
-router.patch('/update/:dni_Medico', updateMedico);
-router.delete('/delete/:dni_Medico', deleteMedico);
-
+router.patch('/update/:dni_medico', updateMedico);
+router.delete('/delete/:dni_medico', deleteMedico);
 
 export default router;
+
+
