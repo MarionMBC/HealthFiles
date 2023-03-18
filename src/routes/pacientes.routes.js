@@ -5,11 +5,15 @@
  */
 
 import {Router} from 'express';
-import { getPacientes } from '../controllers/paciente.ctrl.js';
+import { createPaciente, deletePaciente, getPaciente, getPacientes, updatePaciente } from '../controllers/paciente.ctrl.js';
 
 const router = Router();
 
 router.get('/get', getPacientes);
+router.get('/get/:dni_paciente', getPaciente);
+router.post('/create', createPaciente);
+router.patch('/update/:dni_paciente', updatePaciente);
+router.delete('/delete/:dni_paciente', deletePaciente);
 
 
 export default router;
