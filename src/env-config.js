@@ -10,5 +10,6 @@ export const DB_PASSWORD= process.env.DB_PASSWORD;
 export const DB_NAME= process.env.DB_NAME;
 export const SERVER_PORT= process.env.SERVER_PORT;
 
+export const DB_SSL = process.env.SSl;
 
 

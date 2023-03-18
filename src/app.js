@@ -16,8 +16,6 @@ app.use(express.json());
  */
 app.use('/medico', medicoRoute);
 app.use('/medicamento', medicamentoRoute);
-
-
 app.use('/paciente', pacienteRoute);
 
 app.use((req, res, next)=> {

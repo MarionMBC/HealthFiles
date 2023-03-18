@@ -6,9 +6,9 @@ const router = Router();
 
 router.get ('/get', getMedicamentos);
 router.get ('/get/:codigo_medicamento', getMedicamento);
-router.post ('/create', createMedicamento );
-router.patch ('/updateMedicamento', updateMedicamento);
-router.delete ('/deleteMedicamento', deleteMedicamento);
+router.post ('/post', createMedicamento );
+router.patch ('/updateMedicamento/:codigo_medicamento', updateMedicamento);
+router.delete ('/deleteMedicamento/:codigo_medicamento', deleteMedicamento);
 
 export default router;
 

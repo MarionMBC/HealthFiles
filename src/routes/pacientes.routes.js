@@ -7,6 +7,7 @@
 import {Router} from 'express';
 import { getPacientes } from '../controllers/paciente.ctrl.js';
 
+const router = Router();
 
 router.get('/get', getPacientes);
 
