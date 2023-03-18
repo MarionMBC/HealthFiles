@@ -1,5 +1,18 @@
 import { pool } from '../db/config.js';
 
+
+/**
+ * @author Marion Bustamante
+ * @version 1.1
+ * @date 18 de marzo de 2023
+ *
+ * Obtiene la información de un medicamento por código.
+ *
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ *
+ * @returns {Object} Información del medicamento o un mensaje de error si no se encuentra.
+ */
 export const getMedicamento = async (req, res) =>{
    try {
        const codigo_medicamento = req.params.codigo_medicamento;
@@ -12,7 +25,17 @@ export const getMedicamento = async (req, res) =>{
    }
 }
 
-
+/**
+ * @Author: Marion Bustamante
+ * @Date: 2023-03-18
+ * @Version: 1.0
+ *
+ * Obtiene todos los medicamentos de la tabla medicamento en la base de datos HealthFiles
+ *
+ * @param {object} req - El objeto de solicitud HTTP
+ * @param {object} res - El objeto de respuesta HTTP
+ * @returns {object} Retorna un objeto con el resultado de la consulta
+ */
 export const getMedicamentos = async (req, res) => {
     try {
         const [result] = await pool.query("Select * from healthfiles.medicamento");
@@ -24,6 +47,17 @@ export const getMedicamentos = async (req, res) => {
         })    
     }
 }
+
+/**
+ @autor Marion Bustamante
+ @date 2023-03-18
+ @version 1.1
+ @description Agrega un medicamento a la base de datos.
+ @param {Object} req - Objeto que contiene la petición HTTP.
+ @param {Object} res - Objeto que contiene la respuesta HTTP.
+ @returns {Object} - Objeto JSON que indica si se agregó correctamente el medicamento.
+ @throws {Object} - Objeto JSON que indica si ocurrió un error al agregar el medicamento.
+ */
 
 export const createMedicamento = async (req, res) => {
     console.log('He');
@@ -73,6 +107,16 @@ export const createMedicamento = async (req, res) => {
     }
 }
 
+/**
+
+ @Author: Marion Bustamante
+ @Date: 2023-03-18
+ @Version: 1.0
+ @param {object} req - Objeto de solicitud HTTP.
+ @param {object} res - Objeto de respuesta HTTP.
+ @returns {object} - Objeto de respuesta HTTP con los detalles del medicamento actualizado.
+ @description Actualiza un medicamento existente en la base de datos.
+ */
 export const updateMedicamento = async (req, res) => {
     try {
         const codigo_medicamento_req = req.params.codigo_medicamento;
@@ -113,15 +157,30 @@ export const updateMedicamento = async (req, res) => {
         )
         
     }
-} 
+}
 
+/**
+
+ @Author: Marion Bustamante
+ @Date: 2023-03-18
+ @Version: 1.0
+ @param {object} req - Objeto de solicitud HTTP.
+ @param {object} res - Objeto de respuesta HTTP.
+ @returns {object} - Objeto de respuesta HTTP con los detalles del medicamento eliminado.
+ @description Elimina un medicamento existente de la base de datos.
+ */
 export const deleteMedicamento = async (req, res) => {
     try {
         const codigo_medicamento = req.params.codigo_medicamento;
-        const [medicamento] =await pool.query( "Delete from medico where codigo_medicamento = ?", [codigo_medicamento]);
-        medicamento.length==0? res.status(400).send("El medicamento no existe.") : res.status(200).send(medicamento[0])
+        const [result] = await pool.query("Select * from healthfiles.medicamento where codigo_medicamento= ?", [ codigo_medicamento]);
+        const [medicamento] =await pool.query( "Delete from healthfiles.medicamento where codigo_medicamento = ?", [codigo_medicamento]);
+        if (medicamento.affectedRows == 0) {
+            res.status(200).send("El medicamento no existe");
+        } else {
+            res.status(400).send(result[0]);
+        }
     } catch (error) {
-        res.status.send(error)
+        res.status(200).send(error)
     }
 }
 
@@ -130,7 +189,7 @@ export const logMedicamento = async () => {
     try {
         return;
     } catch (error) {
-        
+
     }
 }
 
