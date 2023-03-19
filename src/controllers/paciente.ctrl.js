@@ -203,3 +203,8 @@ export const deletePaciente = async (req, res) => {
         })
     }
 };
+
+/**
+ * Hola este es un comentario
+ */
+
