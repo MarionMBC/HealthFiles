@@ -7,9 +7,9 @@
 import { pool } from "../db/config.js";
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 19/03/2023
- * Obtener todas las citas dado un dni_paciente
+ * @author Jennebier Esther Alvarado López
+ * @date 19/03/2023
+ * @description Obtener todas las citas dado un dni_paciente
  * @param {Object} req Objeto de petición
  * @param {Object} res Objeto de respuesta
  * @returns {JSON} Los registros completos 
@@ -27,9 +27,9 @@ export const getCitasPaciente = async (req, res) =>{
 };
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 19/03/2023
- * Obtener todas las citas dado un dni_paciente y una fecha
+ * @author Jennebier Esther Alvarado López
+ * @date 19/03/2023
+ * @description Obtener todas las citas dado un dni_paciente y una fecha
  * @param {Object} req Objeto de petición
  * @param {Object} res Objeto de respuesta
  * @returns {JSON} Los registros completos 
@@ -48,9 +48,9 @@ export const getCitasPacienteFecha = async (req, res) =>{
 };
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 19/03/2023
- * Obtener todas las citas de un día en específico dado un dni_medico
+ * @author Jennebier Esther Alvarado López
+ * @date 19/03/2023
+ * @description Obtener todas las citas de un día en específico dado un dni_medico
  * @param {Object} req Objeto de petición
  * @param {Object} res Objeto de respuesta
  * @returns {JSON} Los registros completos de la tabla paciente
@@ -70,9 +70,9 @@ export const getCitasMedicoFecha = async (req, res) =>{
 
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 19/03/2023
- * Obtener una cita dado su código 
+ * @author Jennebier Esther Alvarado López
+ * @date 19/03/2023
+ * @description Obtener una cita dado su código 
  * @param {Object} req Objeto de petición
  * @param {Object} res Objeto de respuesta
  * @returns {Json} El registro solicitado de la tabla cita dado su código
@@ -95,9 +95,9 @@ export const getCita = async (req, res) => {
 
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 19/03/2023
- * Crear una cita
+ * @author Jennebier Esther Alvarado López
+ * @date 19/03/2023
+ * @description Crear una cita
  * @param {Object} req Objeto de petición 
  * @param {Object} res Objeto de respuesta
  * @returns {Json} Si ocurre un error su respectivo mensaje de lo contrario se muestra un mensaje de que se ha agregado satisfactoriamente 
@@ -143,9 +143,9 @@ export const createCita = async (req, res) => {
 
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 19/03/2023
- * Actualizar una cita dado su codigo, podrán actualizarse todos sus atributos menos su codigo
+ * @author Jennebier Esther Alvarado López
+ * @date 19/03/2023
+ * @description Actualizar una cita dado su codigo, podrán actualizarse todos sus atributos menos su codigo
  * @param {Object} req Petición al servidor
  * @param {Object} res Respuesta del servidor
  * @returns {Json} Mensaje de proceso satisfactorio, caso contrario mensaje de error 
@@ -195,9 +195,9 @@ export const updateCita = async (req, res) => {
 
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 19/03/2023
- * Eliminar una cita dado su codigo
+ * @author Jennebier Esther Alvarado López
+ * @date 19/03/2023
+ * @description Eliminar una cita dado su codigo
  * @param {Object} req Petición al servidor
  * @param {Object} res Respuesta del servidor 
  * @returns {Json} mensaje de error caso contrario mensaje de proceso satisfactorio

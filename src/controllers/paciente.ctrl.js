@@ -7,9 +7,9 @@
 import { pool } from "../db/config.js";
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 16/03/2023
- * Obtener todos los pacientes con sus atributos
+ * @author Jennebier Esther Alvarado López
+ * @date 16/03/2023
+ * @description Obtener todos los pacientes con sus atributos
  * @param {Object} req Objeto de petición
  * @param {Object} res Objeto de respuesta
  * @returns {JSON} Los registros completos de la tabla paciente
@@ -28,9 +28,9 @@ export const getPacientes = async (req, res) =>{
 
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 17/03/2023
- * Obtener un paciente dado su dni 
+ * @author Jennebier Esther Alvarado López
+ * @date 17/03/2023
+ * @description Obtener un paciente dado su dni 
  * @param {Object} req Objeto de petición
  * @param {Object} res Objeto de respuesta
  * @returns {Json} El registro solicitado de la tabla paciente
@@ -53,9 +53,9 @@ export const getPaciente = async (req, res) => {
 
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 17/03/2023
- * Crear un paciente 
+ * @author Jennebier Esther Alvarado López
+ * @date 17/03/2023
+ * @description Crear un paciente 
  * @param {Object} req Objeto de petición 
  * @param {Object} res Objeto de respuesta
  * @returns {Json} Si ocurre un error su respectivo mensaje de lo contrario se muestra un mensaje de que se ha agregado satisfactoriamente 
@@ -115,9 +115,9 @@ export const createPaciente = async (req, res) => {
 
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 17/03/2023
- * Actualizar un paciente dado su dni, podrán actualizarse todos sus atributos menos su dni
+ * @author Jennebier Esther Alvarado López
+ * @date 17/03/2023
+ * @description Actualizar un paciente dado su dni, podrán actualizarse todos sus atributos menos su dni
  * @param {Object} req Petición al servidor
  * @param {Object} res Respuesta del servidor
  * @returns {Json} Mensaje de proceso satisfactorio, caso contrario mensaje de error 
@@ -181,9 +181,9 @@ export const updatePaciente = async (req, res) => {
 
 
 /**
- * Autor: Jennebier Esther Alvarado López
- * Fecha: 17/03/2023
- * Eliminar un paciente dado su dni
+ * @author Jennebier Esther Alvarado López
+ * @date 17/03/2023
+ * @description Eliminar un paciente dado su dni
  * @param {Object} req Petición al servidor
  * @param {Object} res Respuesta del servidor 
  * @returns {Json} mensaje de error caso contrario mensaje de proceso satisfactorio
