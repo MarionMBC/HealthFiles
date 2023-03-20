@@ -19,6 +19,8 @@ app.use('/medico', medicoRoute);
 app.use('/medicamento', medicamentoRoute);
 app.use('/paciente', pacienteRoute);
 app.use('/cita', citaRoute);
+app.use('/alergia', alergiaRoute);
+app.use('/hosptal', hospitalRoute);
 
 app.use((req, res, next)=> {
     res.status(404).json({
