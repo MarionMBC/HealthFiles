@@ -1,3 +1,10 @@
+
+/**
+ * Autor: Bryan Josué Fernández
+ * 20201000808
+ * Fecha: 20/03/2023
+ */
+
 import { Router } from 'express';
 import { createAlergia, deleteAlergia, getAlergia, getAlergias, updateAlergia } from '../controllers/alergia.ctrl.js';
 
