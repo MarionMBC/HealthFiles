@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createHospital, deleteHospital, getHospital, getHospitales, updateHospital } from '../controllers/medicamento.ctrl.js';
+import { createHospital, deleteHospital, getHospital, getHospitales, updateHospital } from '../controllers/hospital.ctrl.js';
 
 const router = Router();
 
