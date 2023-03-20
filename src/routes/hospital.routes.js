@@ -1,3 +1,11 @@
+
+/**
+ * Autor: Bryan Josué Fernández
+ * 20201000808
+ * Fecha: 20/03/2023
+ */
+
+
 import { Router } from 'express';
 import { createHospital, deleteHospital, getHospital, getHospitales, updateHospital } from '../controllers/hospital.ctrl.js';
 
