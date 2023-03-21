@@ -4,6 +4,8 @@ import medicoRoute from './routes/medicos.routes.js';
 import medicamentoRoute from './routes/medicamentos.routes.js';
 import pacienteRoute from './routes/pacientes.routes.js';
 import citaRoute from './routes/citas.routes.js';
+import medico_cirugiaRoute from './routes/medico_cirugia.routes.js';
+import examenRoute from './routes/examen.routes.js';
 
 /** ---------------- 
  * Middlewares
@@ -20,7 +22,9 @@ app.use('/medicamento', medicamentoRoute);
 app.use('/paciente', pacienteRoute);
 app.use('/cita', citaRoute);
 app.use('/alergia', alergiaRoute);
-app.use('/hosptal', hospitalRoute);
+app.use('/hospital', hospitalRoute);
+app.use('/medico_cirugia', medico_cirugiaRoute);
+app.use('/examen', examenRoute);
 
 app.use((req, res, next)=> {
     res.status(404).json({
