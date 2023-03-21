@@ -192,9 +192,7 @@ export const updateCita = async (req, res) => {
     }
 };
 
-
-
-/**
+/*
  * @author Jennebier Esther Alvarado López
  * @date 19/03/2023
  * @description Eliminar una cita dado su codigo
