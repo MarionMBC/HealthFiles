@@ -13,5 +13,4 @@ router.post('/create', createExamen);
 router.patch('/update/:codigo_examen', updateExamen);
 router.delete('/delete/:codigo_examen', deleteExamen);
 
-
 export default router;
