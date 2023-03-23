@@ -5,7 +5,9 @@
 import {Router} from 'express';
 import { createExamen, deleteExamen, getExamen, getExamenes, updateExamen } from '../controllers/medico_especialidad.ctrl.js';
 
+
 const router = Router();
+
 
 router.get('/get', getExamenes);
 router.get('/get/:codigo_examen', getExamen);

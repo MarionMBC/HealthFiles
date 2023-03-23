@@ -10,8 +10,7 @@ import { createAlergia, deleteAlergia, getAlergia, getAlergias, updateAlergia } 
 
 const router = Router();
 
-
-router.get ('/get', getAlergia);
+router.get ('/get', getAlergias);
 router.get ('/get/:codigo_alergia', getAlergia);
 router.post ('/post', createAlergia );
 router.patch ('/updateAlergia/:codigo_alergia', updateAlergia);
