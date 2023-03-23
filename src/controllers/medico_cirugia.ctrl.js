@@ -12,13 +12,13 @@ import { pool } from "../db/config.js";
  * @description Obtener todos los registros de la tabla Medico_cirugia 
  * @param {Object} req Objeto de petición
  * @param {Object} res Objeto de respuesta
- * @returns {JSON} Los registros completos de la tabla paciente
+ * @returns {JSON} Los registros completos de la tabla medico_cirugia
  */
 export const getMedicosCirugias = async (req, res) =>{
     try{
-       const codigo_cirugia =req.params.codigo_cirugia; 
-       const medico_cirugia = await pool.query("SELECT codigo_cirugia, a.dni_medico, primer_nombre ,primer_apellido, fecha from medico a inner join medico_cirugia b on a.dni_medico = b.dni_medico where codigo_cirugia=?", [codigo_cirugia]);
-       return res.send(citas); 
+       const codigo =req.params.codigo_cirugia; 
+       const cirugias = await pool.query("SELECT codigo_cirugia, a.dni_medico, primer_nombre ,primer_apellido, fecha from medico a inner join medico_cirugia b on a.dni_medico = b.dni_medico where codigo_cirugia=?", [codigo]);
+       return res.send(cirugias); 
     } 
     catch (error){
         res.status(500);
@@ -32,13 +32,13 @@ export const getMedicosCirugias = async (req, res) =>{
  * @description Eliminar un registro de la tabla "medico_cirugia" dado su codigo_cirugia
  * @param {Object} req Petición al servidor
  * @param {Object} res Respuesta del servidor 
- * @returns {Json} mensaje de error caso contrario mensaje de proceso satisfactorio
+ * @returns {Json} Mensaje de error caso contrario mensaje de proceso satisfactorio
  */
 export const deleteMedicoCirugia = async (req, res) => {
     try {
-        const codigo = req.params.codigo_cita;
-        const [cita] = await pool.query("DELETE FROM medico_cirugia WHERE codigo_cirugia=?", [codigo_cirugia]);
-        if(cita.affectedRows == 0 ){ 
+        const codigo = req.params.codigo_cirugia;
+        const [medico_cirugia] = await pool.query("DELETE FROM medico_cirugia WHERE codigo_cirugia=?", [codigo]);
+        if(medico_cirugia.affectedRows == 0 ){ 
             res.status(404).json({ msg: "No se encontró el registro a eliminar" })
         }else{
             res.status(200).json({ok: true,msg: "El registro se ha eliminado correctamente."});

@@ -3,7 +3,6 @@
  * 20171004489
  * fecha: 20/03/2023
  */
-
 import { Router } from "express";
 import { deleteMedicoCirugia, getMedicosCirugias, } from "../controllers/medico_cirugia.ctrl.js";
 
