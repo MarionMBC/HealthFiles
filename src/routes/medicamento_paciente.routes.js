@@ -5,11 +5,13 @@
  */
 
 import {Router} from 'express';
-import { deleteMedicamentoPaciente, getMedicamentoPaciente } from '../controllers/medicamento_paciente.ctrl';
+import { createMedicamentoPaciente, deleteMedicamentoPaciente, getMedicamentoPaciente, updateMedicamentoPaciente } from '../controllers/medicamento_paciente.ctrl';
 
 const router = Router();
 
 router.get('/get/:dni_paciente', getMedicamentoPaciente);
+router.post('/create', createMedicamentoPaciente);
+router.patch('/update/:dni_paciente/:codigo_medicamento', updateMedicamentoPaciente);
 router.delete('/delete/:dni_paciente/:codigo_medicamento', deleteMedicamentoPaciente);
 
 

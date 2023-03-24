@@ -30,6 +30,76 @@ export const getMedicamentoPaciente = async (req, res) => {
     }
 };
 
+/**
+ * @author Jennebier Esther Alvarado López
+ * @date 23/03/2023
+ * @description Crear un registro en medicamento_paciente 
+ * @param {Object} req Objeto de petición 
+ * @param {Object} res Objeto de respuesta
+ * @returns {Json} Si ocurre un error su respectivo mensaje de lo contrario se muestra un mensaje de que se ha agregado satisfactoriamente 
+ */
+export const createMedicamentoPaciente = async (req, res) => {
+    try {
+    const {
+        dni_paciente,
+        codigo_medicamento
+
+    } = req.body;
+    await pool.query(
+        "INSERT INTO medicamento_paciente (dni_paciente, codigo_medicamento) VALUES (?, ?)",
+        [
+            dni_paciente,
+            codigo_medicamento
+        ]
+    );
+    res.send(`Registro: ${req.body} agregado exitosamente`);
+    } catch (error) {
+        return res.status(500).json({
+            msg: `Algo ha salido mal al crear el registro. Error: ${error}`
+        })
+    }
+};
+
+
+
+/**
+ * @author Jennebier Esther Alvarado López
+ * @date 23/03/2023
+ * @description Actualizar un registro medicamento_paciente dado su dni_paciente y codigo_medicamento
+ * @param {Object} req Petición al servidor
+ * @param {Object} res Respuesta del servidor
+ * @returns {Json} Mensaje de proceso satisfactorio, caso contrario mensaje de error 
+ */
+export const updateMedicamentoPaciente = async (req, res) => {
+    try {
+    const dni  = req.params.dni_paciente;
+    const cod = req.params.codigo_medicamento;
+    const {
+        dni_paciente,
+        codigo_medicamento
+    } = req.body;
+
+//Con IFNULL() verificamos si el primer parametro es nulo, si lo es mantenemos el valor actual
+    await pool.query(
+        "UPDATE medicamento_paciente dni_paciente=IFNULL(?, dni_paciente), codigo_medicamento=IFNULL(?, codigo_medicamento) where dni_paciente = ? AND codigo_medicamento = ?",
+        [
+            dni,
+            cod,
+            dni_paciente,
+            codigo_medicamento
+        ]
+    );
+    const [respuesta] = await pool.query('SELECT * FROM medicamento_paciente WHERE dni_paciente= ? AND codigo_medicamento=?', [dni, cod]);
+    res.status(202).json({
+        msg: `Los datos han sido actualizados: ${respuesta}}`
+    });
+    } catch (error) {
+            return res.status(500).json({
+                msg: `Algo ha salido mal al actualizar el registro. Error: ${error}`
+        })
+    }
+};
+
 
 /**
  * @author Jennebier Esther Alvarado López
