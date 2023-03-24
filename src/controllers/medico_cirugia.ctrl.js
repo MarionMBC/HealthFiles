@@ -32,7 +32,7 @@ export const getMedicoCirugia = async (req, res) =>{
  * @description Crear un registro en la tabla "medico_cirugia"
  * @param {Object} req Objeto de petición
  * @param {Object} res Objeto de respuesta
- * @returns {JSON} Si ocurre un error su respectivo mensaje de lo contrario se muestra un mensaje de que se ha agregado satisfactoriamente
+ * @returns {JSON} Si ocurre un error se muestra respectivo mensaje de lo contrario se muestra un mensaje de que se ha agregado satisfactoriamente
  */
 
 export const createMedicoCirugia = async (req, res) => {
@@ -108,7 +108,7 @@ export const updateMedicoCirugia = async (req, res) => {
  * @description Eliminar un registro de la tabla "medico_cirugia" dado su codigo_cirugia
  * @param {Object} req Petición al servidor
  * @param {Object} res Respuesta del servidor 
- * @returns {Json} Mensaje de error caso contrario mensaje de proceso satisfactorio
+ * @returns {Json} Mensaje de error caso contrario se envia mensaje de proceso satisfactorio
  */
 export const deleteMedicoCirugia = async (req, res) => {
     try {

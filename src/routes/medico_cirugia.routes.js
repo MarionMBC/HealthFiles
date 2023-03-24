@@ -6,7 +6,6 @@
 import { Router } from "express";
 import { createMedicoCirugia, updateMedicoCirugia, deleteMedicoCirugia, getMedicoCirugia } from "../controllers/medico_cirugia.ctrl.js";
 
-
 const router = Router();
     router.get('/get/:codigo_examen', getMedicoCirugia);
     router.post('/create', createMedicoCirugia);
