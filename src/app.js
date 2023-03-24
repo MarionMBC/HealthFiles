@@ -29,6 +29,7 @@ app.use('/medico_cirugia', medico_cirugiaRoute);
 app.use('/medico_hospital', medico_hospitalRoute);
 
 
+
 // app.use('/medicamento_paciente', medicamento_pacienteRoute);
 // app.use('/alergia', alergiaRoute);
 // app.use('/hospital', hospitalRoute);
