@@ -4,6 +4,7 @@
  * fecha: 20/03/2023
  */
 
+
 import { Router } from "express";
 import { createMedicoCirugia, updateMedicoCirugia, deleteMedicoCirugia, getMedicoCirugia } from "../controllers/medico_cirugia.ctrl.js";
 
