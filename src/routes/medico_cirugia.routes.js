@@ -4,7 +4,8 @@
  * fecha: 20/03/2023
  */
 import { Router } from "express";
-import { deleteMedicoCirugia, getMedicosCirugias, } from "../controllers/medicoCirugia.ctrl";
+import { deleteMedicoCirugia, getMedicosCirugias, } from "../controllers/medico_cirugia.ctrl.js";
+
 
 const router = Router();
     router.get('/get', getMedicosCirugias);
