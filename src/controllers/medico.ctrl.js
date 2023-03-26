@@ -141,9 +141,8 @@ export const updateMedico = async (req, res) => {
     } = req.body;
 
     const medico = await pool.query(
-        "UPDATE medico set dni_Medico=IFNULL(?, dni_Medico), primer_Nombre=IFNULL(?, primer_Nombre),segundo_Nombre=IFNULL(?, segundo_Nombre),primer_Apellido=IFNULL(?, primer_Apellido), segundo_Apellido=IFNULL(?, segundo_Apellido), genero=IFNULL(?, genero), fecha_Nacimiento=IFNULL(?, fecha_Nacimiento), telefono=IFNULL(?, telefono), correo_Electronico=IFNULL(?, correo_Electronico), contraseña=IFNULL(?, contraseña), foto_perfil=IFNULL(?, foto_perfil) where dni_Medico = ?",
+        "UPDATE medico set primer_Nombre=IFNULL(?, primer_Nombre),segundo_Nombre=IFNULL(?, segundo_Nombre),primer_Apellido=IFNULL(?, primer_Apellido), segundo_Apellido=IFNULL(?, segundo_Apellido), genero=IFNULL(?, genero), fecha_Nacimiento=IFNULL(?, fecha_Nacimiento), telefono=IFNULL(?, telefono), correo_Electronico=IFNULL(?, correo_Electronico), contraseña=IFNULL(?, contraseña), foto_perfil=IFNULL(?, foto_perfil) where dni_Medico = ?",
         [
-            dni_medico,
             primer_nombre,
             segundo_nombre,
             primer_apellido,
