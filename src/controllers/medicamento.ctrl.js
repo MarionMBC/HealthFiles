@@ -144,7 +144,7 @@ export const updateMedicamento = async (req, res) => {
                 frecuencia,
                 codigo_medicamento_req
             ]);
-        if (medicamento.affectedRows == 0) {
+        if (medicamento.affectedRows === 0) {
             res.status(400).send(
                 "El medicamento no existe."
             )
