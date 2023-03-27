@@ -7,6 +7,10 @@ import citaRoute from './routes/citas.routes.js';
 import medico_cirugiaRoute from './routes/medico_cirugia.routes.js';
 import medico_hospitalRoute from './routes/medico_hospital.route.js';
 import horarioRoute from './routes/horario.routes.js';
+import cors from 'cors';
+
+app.use(cors);
+
 
 // import medicamento_pacienteRoute from './routes/medicamento_paciente.routes.js';
 // import examenRoute from './routes/examen.routes.js';
