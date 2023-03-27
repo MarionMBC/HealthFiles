@@ -7,6 +7,7 @@ import citaRoute from './routes/citas.routes.js';
 import medico_cirugiaRoute from './routes/medico_cirugia.routes.js';
 import medico_hospitalRoute from './routes/medico_hospital.route.js';
 import horarioRoute from './routes/horario.routes.js';
+import registro_citas_agendadasRoute from './routes/registro_citas_agendadas.routes.js';
 import cors from 'cors';
 
 app.use(cors);
@@ -33,6 +34,7 @@ app.use('/medico_cirugia', medico_cirugiaRoute);
 // app.use('/examen', examenRoute);
 app.use('/medico_hospital', medico_hospitalRoute);
 app.use('/horario', horarioRoute);
+app.use('/registro_citas_agendadas', registro_citas_agendadasRoute);
 
 
 
