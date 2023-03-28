@@ -26,6 +26,10 @@ app.use(cors);
 app.use(express.json());
 
 
+app.get('/', (req, res)=> {
+    res.send('<h1>Hola, mundo</h1>');
+})
+
 app.use('/medico', medicoRoute);
 app.use('/medicamento', medicamentoRoute);
 app.use('/paciente', pacienteRoute);
