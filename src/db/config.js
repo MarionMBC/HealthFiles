@@ -9,6 +9,6 @@ export const pool = createPool({
     password: 'Saoko1234!' |DB_PASSWORD,
     database: 'healthfiles' | DB_NAME,
     port: 3306 | DB_PORT,
-    ssl: '{ca: fs.readFileSync(\'./SSL/DigiCertGlobalRootCA.crt.pem\')}' | {DB_SSL}
+    ssl: 'ca: fs.readFileSync(\'./SSL/DigiCertGlobalRootCA.crt.pem\')' | {DB_SSL}
 });
 
