@@ -4,11 +4,12 @@ import fs from 'fs';
 
 
 export const pool = createPool({
-    host: DB_HOST,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    database: DB_NAME,
-    port: DB_PORT,
-    ssl: {DB_SSL}
+    host:'healthfiles.mysql.database.azure.com',
+    user:  'HealthFiles' ,
+    password: 'Saoko1234!',
+    database: 'healthfiles',
+    port: 3306,
+
 });
 
+// ssl: 'ca: fs.readFileSync(\'./SSL/DigiCertGlobalRootCA.crt.pem\')' ,
