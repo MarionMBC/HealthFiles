@@ -9,7 +9,7 @@ export default function App() {
   return (
     <NavigationContainer>
       
-      <Text>Hola!</Text>
+      
       <NavigationStack></NavigationStack>
       <StatusBar style="auto" />
     
