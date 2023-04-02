@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
     borderRadius:30,
     marginVertical:10,
   },
+
+  searchBar: {
+
+  }
 });
 
 export default styles;
