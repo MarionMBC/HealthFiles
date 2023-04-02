@@ -9,6 +9,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.15",
     "@react-native-community/datetimepicker": "6.7.3",
     "@react-native-picker/picker": "^2.4.9",
     "@react-navigation/native": "^6.1.6",

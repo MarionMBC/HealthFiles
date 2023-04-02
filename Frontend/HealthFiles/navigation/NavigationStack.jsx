@@ -11,7 +11,7 @@ export default function NavigationStack(){
 	return(
 
 		<Stack.Navigator initialRouteName='Home'>
-			<Stack.Screen name="Home" component={HomeScreen}/>
+			<Stack.Screen name="HealthFiles" component={HomeScreen}/>
 			<Stack.Screen name="RegistroCitas" component={RegistroCitaScreen}/>
 			<Stack.Screen name={"RegistroMedicamentos"} component={RegistroMedicamentoScreen} />
 		</Stack.Navigator>

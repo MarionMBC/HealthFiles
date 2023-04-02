@@ -37,9 +37,13 @@ const styles = StyleSheet.create({
     marginVertical:10,
   },
 
-  searchBar: {
+
+
+  entityInfo: {
+    backgroundColor: 'yellow'
 
   }
+
 });
 
 export default styles;

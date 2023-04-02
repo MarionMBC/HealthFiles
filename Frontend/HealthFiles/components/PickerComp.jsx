@@ -19,3 +19,4 @@ export default function PickerComp({ selectedValue, setSelectedValue}){
       </Picker>
       );
 }
+
