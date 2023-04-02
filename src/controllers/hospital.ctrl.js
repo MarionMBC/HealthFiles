@@ -6,18 +6,18 @@ import { pool } from '../db/config.js';
  * @version 1.1
  * @date 20 de marzo de 2023
  *
- * Obtiene la información de un hospital por código.
+ * Obtiene la información de una alergia por código.
  *
  * @param {Object} req - Objeto de solicitud HTTP.
  * @param {Object} res - Objeto de respuesta HTTP.
  *
- * @returns {Object} Información del hospital o un mensaje de error si no se encuentra.
+ * @returns {Object} Información de la alergia o un mensaje de error si no se encuentra.
  */
-export const getHospital = async (req, res) =>{
+export const getAlergia = async (req, res) =>{
    try {
-       const codigo_hospital = req.params.codigo_hospital;
-       const [hospital] = await pool.query("Select * from healthfiles.hospital where codigo_hospital=?", [codigo_hospital]);
-       hospital.length==0 ? res.status(400).send("El hospital no existe.") : res.status(400).send(hospital[0]);
+       const codigo_alergia = req.params.codigo_alergia;
+       const [alergia] = await pool.query("Select * from healthfiles.alergia where codigo_alergia=?", [codigo_alergia]);
+       alergia.length==0 ? res.status(400).send("El alergia no existe.") : res.status(400).send(alergia[0]);
    } catch (error) {
        res.status(400).send(
            error
@@ -30,15 +30,15 @@ export const getHospital = async (req, res) =>{
  * @Date: 2023-03-20
  * @Version: 1.0
  *
- * Obtiene todos los hospitales de la tabla hospital en la base de datos HealthFiles
+ * Obtiene todos las alergias de la tabla alergia en la base de datos HealthFiles
  *
  * @param {object} req - El objeto de solicitud HTTP
  * @param {object} res - El objeto de respuesta HTTP
  * @returns {object} Retorna un objeto con el resultado de la consulta
  */
-export const getHospitales = async (req, res) => {
+export const getAlergias = async (req, res) => {
     try {
-        const [result] = await pool.query("Select * from healthfiles.hospital");
+        const [result] = await pool.query("Select * from healthfiles.alergia");
         return res.send(result);
     } catch (error) {
         console.log(error);
@@ -52,30 +52,30 @@ export const getHospitales = async (req, res) => {
  @autor Bryan Fernandez
  @date 2023-03-20
  @version 1.1
- @description Agrega un hospital a la base de datos.
+ @description Agrega una alergia a la base de datos.
  @param {Object} req - Objeto que contiene la petición HTTP.
  @param {Object} res - Objeto que contiene la respuesta HTTP.
- @returns {Object} - Objeto JSON que indica si se agregó correctamente el hospital.
- @throws {Object} - Objeto JSON que indica si ocurrió un error al agregar el hospital.
+ @returns {Object} - Objeto JSON que indica si se agregó correctamente la alergia.
+ @throws {Object} - Objeto JSON que indica si ocurrió un error al agregar la alergia.
  */
 
-export const createHospital = async (req, res) => {
+export const createAlergia = async (req, res) => {
     console.log('He');
     try {
         const {
-            codigo_hospital,
-            nombre_hospital,
+            codigo_alergia,
+            nombre_alergia,
             } = req.body;
-            const hospital = await pool.query(
-                "INSERT INTO healthfiles.hospital (codigo_hospital, nombre_hospital) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+            const alergia = await pool.query(
+                "INSERT INTO healthfiles.alergia (codigo_alergia, nombre_alergia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
             [
-           codigo_hospital,
-           nombre_hospital
+           codigo_alergia,
+           nombre_alergia
             ]
             );
-            console.log(hospital);
+            console.log(alergia);
             return res.status(200).json({
-                msg: "Hospital agregado correctamente."
+                msg: "alergia agregado correctamente."
             });
             } 
     
@@ -99,24 +99,24 @@ export const createHospital = async (req, res) => {
  @Version: 1.0
  @param {object} req - Objeto de solicitud HTTP.
  @param {object} res - Objeto de respuesta HTTP.
- @returns {object} - Objeto de respuesta HTTP con los detalles del hospital actualizado.
- @description Actualiza un hospital existente en la base de datos.
+ @returns {object} - Objeto de respuesta HTTP con los detalles de la alergia actualizado.
+ @description Actualiza una alergia existente en la base de datos.
  */
-export const updateHospital = async (req, res) => {
+export const updateAlergia = async (req, res) => {
     try {
-        const codigo_hospital_req = req.params.codigo_hospital;
-        const {codigo_hospital,
-        nombre_hospital} = req.body;
-        const [hospital] =await pool.query ("Update hospital set codigo_hospital=IFNULL(?, codigo_hospital), nombre_hospital=IFNULL(?, nombre_hospital) where codigo_hospital = ?",
+        const codigo_alergia_req = req.params.codigo_alergia;
+        const {codigo_alergia,
+        nombre_alergia} = req.body;
+        const [alergia] =await pool.query ("Update alergia set codigo_alergia=IFNULL(?, codigo_alergia), nombre_alergia=IFNULL(?, nombre_alergia) where codigo_alergia = ?",
         [
-            codigo_hospital,
-            nombre_hospital
+            codigo_alergia,
+            nombre_alergia
         ]);
-        if(hospital.affectedRows == 0) { res.status(400).send(
-            "El hospital no existe."
+        if(alergia.affectedRows == 0) { res.status(400).send(
+            "El alergia no existe."
         ) }  else
         {
-            const [result]  = await pool.query("Select * from hospital where codigo_hospital= ?", [req.params.codigo_hospital]);
+            const [result]  = await pool.query("Select * from alergia where codigo_alergia= ?", [req.params.codigo_alergia]);
             res.status(200).send (result[0]);
         }
     } catch (error) {
@@ -134,16 +134,16 @@ export const updateHospital = async (req, res) => {
  @Version: 1.0
  @param {object} req - Objeto de solicitud HTTP.
  @param {object} res - Objeto de respuesta HTTP.
- @returns {object} - Objeto de respuesta HTTP con los detalles del hospital eliminado.
- @description Elimina un hospital existente de la base de datos.
+ @returns {object} - Objeto de respuesta HTTP con los detalles de la alergia eliminado.
+ @description Elimina una alergia existente de la base de datos.
  */
-export const deleteHospital = async (req, res) => {
+export const deleteAlergia = async (req, res) => {
     try {
-        const codigo_hospital = req.params.codigo_hospital;
-        const [result] = await pool.query("Select * from healthfiles.hospital where codigo_hospital= ?", [codigo_hospital]);
-        const [hospital] =await pool.query( "Delete from healthfiles.hospital where codigo_hospital = ?", [codigo_hospital]);
-        if (hospital.affectedRows == 0) {
-            res.status(200).send("El hospital no existe");
+        const codigo_alergia = req.params.codigo_alergia;
+        const [result] = await pool.query("Select * from healthfiles.alergia where codigo_alergia= ?", [codigo_alergia]);
+        const [alergia] =await pool.query( "Delete from healthfiles.alergia where codigo_alergia = ?", [codigo_alergia]);
+        if (alergia.affectedRows == 0) {
+            res.status(200).send("El alergia no existe");
         } else {
             res.status(400).send(result[0]);
         }
@@ -153,7 +153,7 @@ export const deleteHospital = async (req, res) => {
 }
 
 
-export const logHospital = async () => {
+export const logAlergia = async () => {
     try {
         return;
     } catch (error) {
