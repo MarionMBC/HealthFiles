@@ -1,21 +1,24 @@
 import { StyleSheet } from 'react-native';
 
+
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal:40,
     paddingVertical:30,
   },
   title: {
-    fontSize: 24,
-    marginBottom: 10,
+    fontSize: 20,
     fontWeight: 'bold',
-    backgroundColor:'#40E0D0',
+    backgroundColor:'#2B7CB8',
     color:'white',
+    paddingHorizontal:40,
+    paddingVertical:30,
+    textAlign:'center',
   },
   label:{
     fontSize: 18,
-    marginBottom: 10,
-    fontWeight: 'regular',
+    marginVertical: 10,
+    fontWeight: 'bold',
   },
   input: {
     height: 40,
@@ -32,11 +35,23 @@ const styles = StyleSheet.create({
     borderWidth:1,
     overflow:'viseble',
   },
-  buttonForm:{
-    borderRadius:30,
-    marginVertical:10,
+
+  buttonsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    marginVertical: 20,
   },
 
+  buttonsContainer2: {
+    flexDirection:'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginVertical: 10,
+  },
 
 
   entityInfo: {
