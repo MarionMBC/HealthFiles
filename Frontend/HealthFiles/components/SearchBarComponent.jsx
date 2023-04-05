@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {SearchBar} from "@rneui/base";
 import {backgroundColor} from "react-native-calendars/src/style";
+import {StyleSheet} from "react-native";
 
 const SearchBarComp = () => {
     const [state, updateSearch ] = useState('');
@@ -13,10 +14,11 @@ const SearchBarComp = () => {
             <SearchBar
                 containerStyle={{
                     backgroundColor: '#0464B4',
+                    borderColor: 'red'
 
                 }}
                 inputContainerStyle={{
-                    backgroundColor: '#7BC4ED'
+                    backgroundColor: '#7BC4ED',
                 }}
                 placeholderTextColor={'black'}
                 searchIcon={{color:'black'}}
@@ -32,4 +34,12 @@ const SearchBarComp = () => {
         );
 
 }
+
+const styles = StyleSheet.create({
+
+})
+
+
 export default SearchBarComp;
+
+

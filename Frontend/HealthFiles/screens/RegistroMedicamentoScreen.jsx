@@ -1,8 +1,9 @@
 import {ScrollView, Text, View} from "react-native";
 import styles from "../styles/styles";
-import SearchBarComp from "../components/SearchBar";
+import SearchBarComp from "../components/SearchBarComponent";
 import {Button, Divider} from "@rneui/base";
 import TableComponent from "../components/TableComponent";
+import MedicamentoCardComponent from "../components/MedicamentoCardComponent";
 
 const RegistroMedicamentoScreen = ({navigation})  => {
     return (
@@ -20,6 +21,10 @@ const RegistroMedicamentoScreen = ({navigation})  => {
                 </View>
                 
                 <TableComponent></TableComponent>
+
+                <View>
+                    <MedicamentoCardComponent></MedicamentoCardComponent>
+                </View>
 
 
             </View>
