@@ -1,10 +1,15 @@
 import { StyleSheet } from 'react-native';
 
-
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal:40,
     paddingVertical:30,
+  },
+  container1: {
+    flex: 1,
+    backgroundColor: '#f1f1f1',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 20,
@@ -52,17 +57,120 @@ const styles = StyleSheet.create({
     width: '100%',
     marginVertical: 10,
   },
-
-
   entityInfo: {
     backgroundColor: 'yellow'
+  },
 
+  // Disenos para pantallas de Inicio de Sesion y Registro
+  subtitulos1: {
+    fontSize: 30,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    backgroundColor: '#0477BE',
+    marginTop: 10,
+    width: 400,
+    alignSelf: 'center',
+  },
+  subtitulos2: {
+    fontSize: 20,
+    color: '#000',
+    marginTop: 28,
+    fontWeight: 'bold',
+    textAlign: 'left',
+    alignSelf: 'flex-start',
+    marginHorizontal: 40
+  },
+  textInput: {
+    borderWidth: 0.5,
+    borderColor: 'gray',
+    paddingStart: 10,
+    width: '80%',
+    height: 60,
+    padding: 10,
+    borderRadius: 12,
+    backgroundColor: 'white',
+    paddingVertical: 22,
+    marginHorizontal: 30
+  },
+  subtitulos_2: {
+    fontSize: 19,
+    color: '#000',
+    marginTop: 18,
+    fontWeight: 'bold',
+    textAlign: 'left',
+    alignSelf: 'flex-start',
+    marginHorizontal: 40
+  },
+  textInputSU: {
+    borderWidth: 0.5,
+    borderColor: 'gray',
+    paddingStart: 10,
+    width: '80%',
+    height: 59,
+    padding: 10,
+    borderRadius: 12,
+    backgroundColor: 'white',
+    paddingVertical: 20,
+    marginHorizontal: 40
+  },
+  datePicker:{
+    height: 120,
+    marginTop: -10,
+  },
+  pickerButton:{
+    paddingHorizontal: 15,
+    marginLeft: 30,
+    marginRight: 30,
+    paddingVertical: 10,
+    borderRadius: 10,
+  },
+  buttonText:{
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#fff"
+  },
+  subtitulos_1: {
+    fontSize: 25,
+    color: '#000',
+    marginTop: 30,
+    alignSelf: 'flex-start',
+    marginHorizontal: 40,
+  },
+  subtitulo_2: {
+    fontSize: 25,
+    color: '#000',
+    marginTop: 20,
+    alignSelf: 'flex-start',
+    marginHorizontal: 40
+  },
+  imagen: {
+    width: '50%',
+    maxHeight: 200,
+    marginTop: -15,
+    opacity: 50,
+    alignItems: 'center',
+    padding: 20,
+    maxWidth: 300,
+  },
+  textInputSI: {
+    borderWidth: 0.5,
+    borderColor: 'gray',
+    paddingStart: 10,
+    width: '80%',
+    height: 55,
+    padding: 15,
+    marginTop: 15,
+    borderRadius: 10,
+    backgroundColor: 'white',
+    paddingVertical: 20,
   },
   containerCheckBox:{
     flexDirection:'column',
     alignItems:'center',
     marginBottom:30,
   },
+
 
 });
 
