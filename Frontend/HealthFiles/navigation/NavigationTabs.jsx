@@ -2,8 +2,7 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import CirugiasScreen from '../screens/CirugiasScreen';
-import ExamenesScreen from '../screens/ExamenesScreen';
-import MedicinasScreen from '../screens/MedicinasScreen';
+import NavigationStackExamenes from './NavigationStackExamenes';
 import ReportesScreen from '../screens/ReportesScreen';
 import NavigationStackCitas from './NavigationStackCitas';
 import NavigationStackMedicamentos from './NavigationStackMedicamentos';
@@ -28,7 +27,7 @@ export default function NavigationTabs(){
               <MaterialCommunityIcons name="doctor" color={color} size={26} />
             ),
           }}></Tab.Screen>
-        <Tab.Screen name="Examenes" component={ExamenesScreen}
+        <Tab.Screen name="Examenes" component={NavigationStackExamenes}
         options={{
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="test-tube" color={color} size={26} />

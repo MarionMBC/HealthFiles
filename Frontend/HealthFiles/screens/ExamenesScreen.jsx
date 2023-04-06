@@ -7,6 +7,11 @@ export default function ExamenesScreen({ navigation }) {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{marginBottom: 10, fontSize: 25, fontWeight: '700'}}>Examenes</Text>
           <View>
+          <Button
+                title={"Registrar Examen"}
+                onPress={()=>{ navigation.navigate('RegistroExamen') }}
+            >
+            </Button>
         </View>
     </View>
   );

@@ -57,7 +57,12 @@ const styles = StyleSheet.create({
   entityInfo: {
     backgroundColor: 'yellow'
 
-  }
+  },
+  containerCheckBox:{
+    flexDirection:'column',
+    alignItems:'center',
+    marginBottom:30,
+  },
 
 });
 
