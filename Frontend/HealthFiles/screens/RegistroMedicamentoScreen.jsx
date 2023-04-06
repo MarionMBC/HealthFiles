@@ -1,36 +1,36 @@
-import {ScrollView, Text, View} from "react-native";
-import styles from "../styles/styles";
-import SearchBarComp from "../components/SearchBarComponent";
-import {Button, Divider} from "@rneui/base";
-import TableComponent from "../components/TableComponent";
-import MedicamentoCardComponent from "../components/MedicamentoCardComponent";
+import {ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-native";
+import SearchBarComp from "../components/SearchBar.component";
+import TableComponent from "../components/Table.component";
+import MedicamentoCardComponent from "../components/MedicamentoCard.component";
+import React from "react";
+import PacienteInfoComponent from "../components/PacienteInfo.component";
+import TittleComponent from "../components/Tittle.component";
+import AgregarMedicamentoComponent from "../components/AgregarMedicamento.component";
+import {obtenerMedicamentos}  from "../helpers/RegistroMedicamentos.helper";
 
 const RegistroMedicamentoScreen = ({navigation})  => {
+
+    const data = obtenerMedicamentos().then(data=>{
+        return data
+    })
+
+
+
     return (
-        <ScrollView>
-            <SearchBarComp>
-
-            </SearchBarComp>
-
-
-
-            <View style={{marginTop: 10}}>
-                <View style={{backgroundColor: '#7BC4ED',  paddingHorizontal:10, paddingVertical:10}}>
-                    <Text style={{fontWeight: 'bold', fontSize: 20 }}>Marion Melchisedec Bustamante Castro</Text>
-                    <Text style={{fontWeight: '400'}}>DNI: 0806-2001-00506</Text>
-                </View>
-                
-                <TableComponent></TableComponent>
-
-                <View>
-                    <MedicamentoCardComponent></MedicamentoCardComponent>
-                </View>
-
-
+        <ScrollView style={{ flex:1}}>
+            <TittleComponent title={'Registro de Medicamentos'}></TittleComponent>
+            <SearchBarComp/>
+            <PacienteInfoComponent />
+            <TableComponent />
+            <View style={{marginBottom: 15}}>
+                <Text>l</Text>
             </View>
-
+            <AgregarMedicamentoComponent />
         </ScrollView>
+
     )
 }
+
+
 
 export default RegistroMedicamentoScreen;

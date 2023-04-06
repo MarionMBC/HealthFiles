@@ -16,8 +16,8 @@ import { pool } from "../db/config.js";
  */
 export const getMedicamentoPaciente = async (req, res) => {
     try {
-    const dni = req.params.dni_paciente; //el valor enviado através de la solicitud HTTP 
-    const listado = await pool.query("SELECT med.name FROM medicamento_paciente med_pac INNER JOIN medicamento med ON med_pac.codigo_medicamento = med.codigo_medicamento WHERE dni_paciente = ?", [dni]);
+    const dni = req.params.dni_paciente; //el valor enviado através de la solicitud HTTP
+    const [listado] = await pool.query("SELECT med.codigo_medicamento, med.nombre, med.cantidad_principio_act, med.cantidad_tomar, med.estado, med.fecha_inicial, med.fecha_final, med.frecuencia, med.nivel_importancia FROM medicamento_paciente med_pac INNER JOIN medicamento med ON med_pac.codigo_medicamento = med.codigo_medicamento WHERE med_pac.dni_paciente = ?", [dni]);
     if (listado.length<=0){ //Verificación de que el objeto no venga vacío
         res.status(404).json({msg: "Medicamentos no encontrados"})
     }else{ //Si no viene vacío

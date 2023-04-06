@@ -16,7 +16,7 @@ import { pool } from "../db/config.js";
  */
 export const getPacientes = async (req, res) =>{
     try{
-        const result = await pool.query("SELECT * FROM paciente");
+        const [result] = await pool.query("SELECT * FROM paciente");
         return res.send(result);
     } 
     catch (error){

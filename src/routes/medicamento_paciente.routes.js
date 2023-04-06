@@ -5,7 +5,7 @@
  */
 
 import {Router} from 'express';
-import { createMedicamentoPaciente, deleteMedicamentoPaciente, getMedicamentoPaciente, updateMedicamentoPaciente } from '../controllers/medicamento_paciente.ctrl';
+import { createMedicamentoPaciente, deleteMedicamentoPaciente, getMedicamentoPaciente, updateMedicamentoPaciente } from '../controllers/medicamento_paciente.ctrl.js';
 
 const router = Router();
 

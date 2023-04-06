@@ -8,12 +8,8 @@ import medico_cirugiaRoute from './routes/medico_cirugia.routes.js';
 import medico_hospitalRoute from './routes/medico_hospital.route.js';
 import horarioRoute from './routes/horario.routes.js';
 import registro_citas_agendadasRoute from './routes/registro_citas_agendadas.routes.js';
-import cors from 'cors';
+import medicamento_pacienteRoute from "./routes/medicamento_paciente.routes.js";
 
-app.use(cors);
-
-
-// import medicamento_pacienteRoute from './routes/medicamento_paciente.routes.js';
 // import examenRoute from './routes/examen.routes.js';
 // import alergiaRoute from "./routes/alergia.routes.js";
 
@@ -35,6 +31,7 @@ app.use('/medicamento', medicamentoRoute);
 app.use('/paciente', pacienteRoute);
 app.use('/cita', citaRoute);
 app.use('/medico_cirugia', medico_cirugiaRoute);
+app.use('/medicamento_paciente', medicamento_pacienteRoute)
 // app.use('/examen', examenRoute);
 app.use('/medico_hospital', medico_hospitalRoute);
 app.use('/horario', horarioRoute);

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#2B7CB8',
     color:'white',
     paddingHorizontal:40,
-    paddingVertical:30,
+    paddingVertical:15,
     textAlign:'center',
   },
   label:{

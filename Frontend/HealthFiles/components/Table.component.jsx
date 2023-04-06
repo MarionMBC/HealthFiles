@@ -26,11 +26,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingVertical: 10,
-        backgroundColor: '#f2f2f2',
-        borderBottomWidth: 1,
-        borderBottomColor: '#7BC4ED',
-        borderTopColor: '#7BC4ED',
-        borderTopWidth: 1
+        backgroundColor: '',
+        borderBottomWidth: 0.2,
+        borderBottomColor: '#000',
+        borderTopColor: '#000',
+        borderTopWidth: 0.2
     },
     tableColumn: {
         flex: 1,

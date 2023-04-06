@@ -13,21 +13,24 @@ const SearchBarComp = () => {
         return (
             <SearchBar
                 containerStyle={{
-                    backgroundColor: '#0464B4',
-                    borderColor: 'red'
-
+                    backgroundColor: 'rgba(0,0,0,0.24)',
+                    marginHorizontal: 10,
+                    marginTop: 10,
+                    borderRadius: 10,
+                    padding: 3,
                 }}
-                inputContainerStyle={{
-                    backgroundColor: '#7BC4ED',
-                }}
+                 inputContainerStyle={{
+                     backgroundColor: '#fff',
+                 }}
                 placeholderTextColor={'black'}
                 searchIcon={{color:'black'}}
                 inputStyle={{color: 'black'}}
                 style={{color: 'black'}}
                 placeholder="Buscar..."
                 onChangeText={handleChange}
-                clearIcon={'false'}
+                clearIcon={false}
                 value={state}
+                lightTheme={true}
 
 
             />
