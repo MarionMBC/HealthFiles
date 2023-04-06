@@ -4,8 +4,9 @@ import HomeScreen from '../screens/HomeScreen';
 import CirugiasScreen from '../screens/CirugiasScreen';
 import ExamenesScreen from '../screens/ExamenesScreen';
 import MedicinasScreen from '../screens/MedicinasScreen';
-import CitasScreen from '../screens/CitasScreen';
-import ReportesScreen from '../screens/ReportesScreen'
+import ReportesScreen from '../screens/ReportesScreen';
+import NavigationStackCitas from './NavigationStackCitas';
+import NavigationStackMedicamentos from './NavigationStackMedicamentos';
 
 const Tab = createMaterialBottomTabNavigator();
 export default function NavigationTabs(){
@@ -17,8 +18,8 @@ export default function NavigationTabs(){
         <Tab.Screen name="HealthFiles" component={HomeScreen}></Tab.Screen>
         <Tab.Screen name="Cirugias" component={CirugiasScreen}></Tab.Screen>
         <Tab.Screen name="Examenes" component={ExamenesScreen}></Tab.Screen>
-        <Tab.Screen name="Medicinas" component={MedicinasScreen}></Tab.Screen>
-        <Tab.Screen name="Citas" component={CitasScreen}></Tab.Screen>
+        <Tab.Screen name="Medicinas" component={NavigationStackMedicamentos}></Tab.Screen>
+        <Tab.Screen name="Citas" component={NavigationStackCitas}></Tab.Screen>
         <Tab.Screen name="Reportes" component={ReportesScreen}></Tab.Screen>
     </Tab.Navigator>)
 }

@@ -8,6 +8,13 @@ export default function MedicinasScreen({ navigation }) {
           <Text style={{marginBottom: 10, fontSize: 25, fontWeight: '700'}}>Medicinas</Text>
           <View>
         </View>
+        <View style={{marginTop: 10}}>
+            <Button
+                title={"Registro de Medicamentos"}
+                onPress={()=>{ navigation.navigate('RegistroMedicamentos') }}
+            >
+            </Button>
+        </View>
     </View>
   );
 }
