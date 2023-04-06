@@ -9,7 +9,7 @@ export default function HomeScreen({ navigation }) {
           <View>
           <Button
             title="Registro de citas"
-            onPress={() => navigation.navigate('RegistroCitas')}
+            onPress={() => navigation.navigate('RegistroCita')}
           />
         </View>
         <View style={{marginTop: 10}}>
