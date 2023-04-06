@@ -17,10 +17,10 @@ const ButtonsSignIn = ({ onPress, text , type = 'Primary' }) => {
     
     const styles = StyleSheet.create({
         container: {
-            width: '40%',
+            width: '80%',
             padding: 15,
             alignItems: 'center',
-            borderRadius: 30,
+            borderRadius: 10,
             marginTop: 15
         },
         container_Primary: {
@@ -83,7 +83,7 @@ const ButtonsSignIn = ({ onPress, text , type = 'Primary' }) => {
         },
     
         text_TERTIARY: {
-            width: '190%',
+            width: '99%',
             color: 'gray',
             fontSize: 15,
             marginTop: -20,
