@@ -1,14 +1,14 @@
 import express, { json } from "express";
 const app = express();
-import medicoRoute from './routes/medicos.routes.js';
-import medicamentoRoute from './routes/medicamentos.routes.js';
-import pacienteRoute from './routes/pacientes.routes.js';
-import citaRoute from './routes/citas.routes.js';
-import medico_cirugiaRoute from './routes/medico_cirugia.routes.js';
-import medico_hospitalRoute from './routes/medico_hospital.route.js';
-import horarioRoute from './routes/horario.routes.js';
-import registro_citas_agendadasRoute from './routes/registro_citas_agendadas.routes.js';
-import medicamento_pacienteRoute from "./routes/medicamento_paciente.routes.js";
+import medicoRoute from './src/routes/medicos.routes.js';
+import medicamentoRoute from './src/routes/medicamentos.routes.js';
+import pacienteRoute from './src/routes/pacientes.routes.js';
+import citaRoute from './src/routes/citas.routes.js';
+import medico_cirugiaRoute from './src/routes/medico_cirugia.routes.js';
+import medico_hospitalRoute from './src/routes/medico_hospital.route.js';
+import horarioRoute from './src/routes/horario.routes.js';
+import registro_citas_agendadasRoute from './src/routes/registro_citas_agendadas.routes.js';
+import medicamento_pacienteRoute from "./src/routes/medicamento_paciente.routes.js";
 
 // import examenRoute from './routes/examen.routes.js';
 // import alergiaRoute from "./routes/alergia.routes.js";

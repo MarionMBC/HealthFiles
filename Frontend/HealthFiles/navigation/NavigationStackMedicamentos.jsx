@@ -11,7 +11,7 @@ export default function NavigationStackMedicamentos(){
 		
 		<StackMedicamentos.Navigator initialRouteName='Medicamentos'> 
 			<StackMedicamentos.Screen name="Medicinas" component={MedicinasScreen}></StackMedicamentos.Screen>
-			<StackMedicamentos.Screen name="RegistroMedicamentos" component={RegistroMedicamentoScreen}/>
+			<StackMedicamentos.Screen name="Registro de Medicamentos" component={RegistroMedicamentoScreen}/>
 		</StackMedicamentos.Navigator>
 	)
 	

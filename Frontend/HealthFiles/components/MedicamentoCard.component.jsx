@@ -24,7 +24,7 @@ const MedicamentoCardComponent = ({medicamento}) => {
     }
 
     return (
-        <Card onPress={()=>{handleMouseEnter()}} containerStyle={{borderColor:'#2b7bb7', borderRadius: 10}}>
+        <Card key={codigo_medicamento} onPress={()=>{handleMouseEnter()}} containerStyle={{borderColor:'#2b7bb7', borderRadius: 10}}>
             <View style={styles.cardContainer}>
                 <View>
                     <Icon style={{marginLeft: 10}} name={'pills'} size={30} color={'#2b7bb7'} />

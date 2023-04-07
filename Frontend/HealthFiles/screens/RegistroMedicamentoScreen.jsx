@@ -15,8 +15,9 @@ const RegistroMedicamentoScreen = ({navigation})  => {
     useEffect(() => {
         obtenerMedicamentos().then(res=> {
             setMedicamentos(res);
+
         })
-    }, [medicamentos]);
+    }, []);
 
 
     return (
@@ -27,7 +28,7 @@ const RegistroMedicamentoScreen = ({navigation})  => {
             <TableComponent />
             <View style={{marginBottom: 15}}>
                 {
-                    medicamentos.map( med=> <MedicamentoCardComponent key={med.codigo_medicamento} medicamento={med} /> )
+                    medicamentos.map( med=> <MedicamentoCardComponent medicamento={med} /> )
                 }
             </View>
             <AgregarMedicamentoComponent />

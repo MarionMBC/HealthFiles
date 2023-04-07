@@ -11,7 +11,7 @@ export default function MedicinasScreen({ navigation }) {
         <View style={{marginTop: 10}}>
             <Button
                 title={"Registro de Medicamentos"}
-                onPress={()=>{ navigation.navigate('RegistroMedicamentos') }}
+                onPress={()=>{ navigation.navigate('Registro de Medicamentos') }}
             >
             </Button>
         </View>
