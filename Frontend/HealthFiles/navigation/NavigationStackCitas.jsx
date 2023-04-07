@@ -8,8 +8,8 @@ const StackCitas = createNativeStackNavigator();
 export default function NavigationStackCitas(){
 	return(
 		
-		<StackCitas.Navigator initialRouteName='Citas'> 
-			<StackCitas.Screen name="Citas" component={CitasScreen}></StackCitas.Screen>
+		<StackCitas.Navigator initialRouteName='Cita'> 
+			<StackCitas.Screen name="Cita" component={CitasScreen}></StackCitas.Screen>
 			<StackCitas.Screen name="RegistroCita" component={RegistroCitaScreen}/>
 		</StackCitas.Navigator>
 	)
