@@ -171,7 +171,51 @@ const styles = StyleSheet.create({
     marginBottom:30,
   },
 
-
+  //DISENOS PARA INICIO DE SESION CON GOOGLE
+  containerG: {
+    flex: 1,
+    backgroundColor: '#f1f1f1',
+  },
+  container1G: {
+      backgroundColor: '#DCDCDC',
+      alignContent: 'center',
+      alignItems: 'center',
+      marginHorizontal: 35,
+    },
+  subtitulos2G: {
+    fontSize: 23,
+    color: 'gray',
+    marginTop: -60,
+    alignContent: 'center',
+    marginHorizontal: 40,
+    marginVertical: 30,
+  },
+  imagenG: {
+    width: '40%',
+    maxHeight: 200,
+    marginTop: 10,
+    alignSelf: 'center',
+    maxWidth: 300,
+  },
+  imagen2G: {
+      width: '29%',
+      maxHeight: 200,
+      opacity: 50,
+      alignItems: 'center',
+      maxWidth: 300,
+    },
+  textInputG: {
+    borderWidth: 0.5,
+    borderColor: 'gray',
+    paddingStart: 10,
+    width: '85%',
+    height: 55,
+    padding: 15,
+    backgroundColor: 'white',
+    paddingVertical: 20,
+    fontSize: 15,
+    marginTop: -15
+  }
 });
 
 export default styles;
