@@ -1,5 +1,5 @@
 import app from "./app.js";
-import { SERVER_PORT } from "./src/env-config.js";
+import { SERVER_PORT } from "./env-config.js";
 
 
 /** 
