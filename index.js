@@ -6,7 +6,7 @@ import { SERVER_PORT } from "./src/env-config.js";
  ** Inicializa el servidor
 */
 
-app.get('/a', (req, res)=> {
+app.get('/', (req, res)=> {
     res.send('<h1>Hola, mundo!</h1>');
 })
 
