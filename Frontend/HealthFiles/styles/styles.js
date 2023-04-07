@@ -215,7 +215,11 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     fontSize: 15,
     marginTop: -15
-  }
+  },
+  calendario:{
+    borderRadius: 10,
+    shadowColor: '#000',
+  },
 });
 
 export default styles;

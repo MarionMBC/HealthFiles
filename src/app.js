@@ -5,7 +5,7 @@ import medicamentoRoute from './routes/medicamentos.routes.js';
 import pacienteRoute from './routes/pacientes.routes.js';
 import citaRoute from './routes/citas.routes.js';
 import medico_cirugiaRoute from './routes/medico_cirugia.routes.js';
-import medico_hospitalRoute from './routes/medico_hospital.route.js';
+import medico_hospitalRoute from './routes/medico_hospital.routes.js';
 import horarioRoute from './routes/horario.routes.js';
 import registro_citas_agendadasRoute from './routes/registro_citas_agendadas.routes.js';
 import medicamento_pacienteRoute from "./routes/medicamento_paciente.routes.js";

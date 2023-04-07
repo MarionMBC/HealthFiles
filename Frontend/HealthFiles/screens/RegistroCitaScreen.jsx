@@ -7,9 +7,11 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, ScrollView } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Calendar } from 'react-native-calendars';
-import PickerComp from '../components/PickerComp.jsx';
+import PickerComp from '../components/Picker.component.jsx';
 import { Button } from '@rneui/themed';
 import styles from '../styles/styles.js';
+import CodigoAleatorio from '../helpers/CodigoAleatorio.js';
+import { GuardarCita } from '../helpers/RegistroCitas.helper.jsx';
 
 
 export default function RegistroCitaScreen({navigation}) {
@@ -22,8 +24,7 @@ export default function RegistroCitaScreen({navigation}) {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTimeRemainder, setSelectedTimeRemainder] = useState('');
 
-
-  //Handles
+    //Handles
   const handleHospitalSelect = (hospital) => {
     setSelectedHospital(hospital);
   };
@@ -31,8 +32,9 @@ export default function RegistroCitaScreen({navigation}) {
   const handleDateSelect = (date) => {
     setSelectedDate(date.dateString);
   };
-  var fechaActual= new Date();
-  fechaActual = fechaActual.dateString;
+  var fechaActual = new Date();
+  var fechaMax = new Date();
+  fechaMax.setDate(fechaActual.getDate() + 90);
 
 
   const handleHoraSelect = (hora) => {
@@ -46,12 +48,6 @@ export default function RegistroCitaScreen({navigation}) {
   const handleRemainder = (hora) =>{
     setSelectedTimeRemainder(hora);
   };
-
-  const handleSubmit = () => {
-    console.log(`Submitted: Hospital: ${selectedHospital}, Fecha: ${selectedDate}, Hora: ${selectedHora}, Motivo: ${motivo}, Recordatorio: ${selectedTimeRemainder}`);
-  };
-
-
   const showDatePicker = () => {
     setDatePickerVisible(true);
   };
@@ -61,7 +57,28 @@ export default function RegistroCitaScreen({navigation}) {
   };
   const handleConfirm = (hora) => {
     hideDatePicker();
-    handleRemainder(hora);
+    const selectedHour = hora.toLocaleTimeString('es-MX', {hour: '2-digit', minute:'2-digit'});
+    handleRemainder(selectedHour);
+  };
+  const handleSubmit = () => {
+    console.log(`Submitted: Hospital: ${selectedHospital}, Fecha: ${selectedDate}, Hora: ${selectedHora}, Motivo: ${motivo}, Recordatorio: ${selectedTimeRemainder}`);
+    const data ={
+        codigo_cita: CodigoAleatorio(),
+        dni_paciente: "1234",
+        dni_medico: "12345",
+        codigo_hospital:"1",
+        fecha: selectedDate,
+        hora: selectedHora,
+        razon: motivo,
+        estado: "Reservada",
+        diagnostico:" ",
+        tratamiento:" ",
+        valoracion:0
+
+    };
+    GuardarCita(data);
+    console.log(fechaActual);
+
   };
   
 
@@ -76,8 +93,10 @@ export default function RegistroCitaScreen({navigation}) {
       
       <Text style={styles.label}>Fecha de la cita</Text>
       <Calendar
+        style={styles.calendario}
         onDayPress={handleDateSelect}
-        minDate={fechaActual}
+        minDate={fechaActual.toISOString().slice(0, 10)}
+        maxDate={fechaMax.toISOString().slice(0, 10)}
         markedDates={selectedDate ? { [selectedDate]: { selected: true } } : {}}
       />
     

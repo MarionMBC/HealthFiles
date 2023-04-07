@@ -20,6 +20,31 @@ export const getMedicoHospital = async (req, res) => {
     }
 }
 
+/**
+ * @author Jennebier Esther Alvarado López
+ * @date 7 de abril del 2023
+ * @description Obtniene los hospitales donde atiende un médico en especifico
+ * @param {} req 
+ * @param {} res 
+ */
+export const getHospitalesMedico = async (req, res) => {
+    try {
+        const dni = req.params.dni_medico;
+        const hospitales = await pool.query("SELECT h.nombre_hospital FROM medico_hospital mh INNER JOIN hospital h ON h.codigo_hospital=mh.codigo_hospital where mh.dni_medico = ?", [dni])
+        if (hospitales.length === 0) {
+            res.status(404).json({
+                msg: "Hospitales no encontrados."
+            });
+        }
+        {
+            res.send(hospitales);
+        }
+    } catch (e) {
+        res.send(500).json({
+            msg: `Algo ha salido mal al obtener los hospitales donde atiende el médico ${dni}.`
+        })
+    }
+};
 
 export const getMedicos = async (req, res) => {
     try {

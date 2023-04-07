@@ -12,11 +12,11 @@ import MedicinasScreen from "../screens/MedicinasScreen";
 const Tab = createMaterialBottomTabNavigator();
 export default function NavigationTabs(){
     return (<Tab.Navigator
-    initialRouteName='HealthFiles'
+    initialRouteName='Home'
     activeColor='#125ba5'
     inactiveColor='#848385'
     barStyle={{backgroundColor:'#F9F7E9'}}>
-        <Tab.Screen name="HealthFiles" component={HomeScreen}
+        <Tab.Screen name="Home" component={HomeScreen}
         options={{
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="account" color={color} size={26} />

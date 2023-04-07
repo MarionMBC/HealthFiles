@@ -11,8 +11,8 @@ const StackExamenes = createNativeStackNavigator();
 
 export default function NavigationStackExamenes(){
 	return(
-        <StackExamenes.Navigator initialRouteName='Examenes'> 
-            <StackExamenes.Screen name="Examenes" component={ExamenesScreen}></StackExamenes.Screen>
+        <StackExamenes.Navigator initialRouteName='Examen'> 
+            <StackExamenes.Screen name="Examen" component={ExamenesScreen}></StackExamenes.Screen>
             <StackExamenes.Screen name="RegistroExamen" component={RegistroExamenScreen}></StackExamenes.Screen>
         </StackExamenes.Navigator>
 	)
