@@ -2,7 +2,7 @@ import {ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-nati
 import SearchBarComp from "../components/SearchBar.component";
 import TableComponent from "../components/Table.component";
 import MedicamentoCardComponent from "../components/MedicamentoCard.component";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import PacienteInfoComponent from "../components/PacienteInfo.component";
 import TittleComponent from "../components/Tittle.component";
 import AgregarMedicamentoComponent from "../components/AgregarMedicamento.component";
@@ -10,10 +10,13 @@ import {obtenerMedicamentos}  from "../helpers/RegistroMedicamentos.helper";
 
 const RegistroMedicamentoScreen = ({navigation})  => {
 
-    const data = obtenerMedicamentos().then(data=>{
-        return data
-    })
+    const [medicamentos, setMedicamentos] = useState([]);
 
+    useEffect(() => {
+        obtenerMedicamentos().then(res=> {
+            setMedicamentos(res);
+        })
+    }, [medicamentos]);
 
 
     return (
@@ -23,7 +26,9 @@ const RegistroMedicamentoScreen = ({navigation})  => {
             <PacienteInfoComponent />
             <TableComponent />
             <View style={{marginBottom: 15}}>
-                <Text>l</Text>
+                {
+                    medicamentos.map( med=> <MedicamentoCardComponent key={med.codigo_medicamento} medicamento={med} /> )
+                }
             </View>
             <AgregarMedicamentoComponent />
         </ScrollView>
