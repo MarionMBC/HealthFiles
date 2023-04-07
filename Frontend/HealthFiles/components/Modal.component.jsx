@@ -5,8 +5,11 @@
 import React, {useState} from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import styles from '../styles/styles';
+import Ratings from './Rating.Componente';
+import { Rating } from 'react-native-elements';
 
-const MyModal = ({tittleButton, tittleModal, content})=> {
+
+const MyModal = ({tittleButton, tittleModal, comp})=> {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View>
@@ -21,7 +24,8 @@ const MyModal = ({tittleButton, tittleModal, content})=> {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>{tittleModal}</Text>
-            <Text style={styles.modalText}>{content}</Text>
+            <Text style={styles.modalText}></Text>
+            <Rating></Rating>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>

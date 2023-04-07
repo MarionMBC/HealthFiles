@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, View, Text, Pressable } from 'react-native';
 import MyModal from '../components/Modal.component';
-import styles from '../styles/styles';
+
 
 export default function CitasScreen({ navigation }) {
   return (
@@ -14,7 +14,8 @@ export default function CitasScreen({ navigation }) {
         />
         <MyModal
         tittleButton={"Valorar atención"}
-        tittleModal={"Valorar atención médica"}></MyModal>
+        tittleModal={"Valorar atención médica"}
+       ></MyModal>
         
       </View>
      

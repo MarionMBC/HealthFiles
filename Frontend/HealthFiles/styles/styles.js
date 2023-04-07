@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   buttonOpenModal: {
-    backgroundColor: '#F194FF',
+    backgroundColor: '#DCDCDC',
   },
   buttonClose: {
     backgroundColor: '#2196F3',
@@ -258,10 +258,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 18,
+    fontWeight: 'bold',
     textAlign: 'center',
   },
- 
+ rating:{
+    padding:5,
+    marginBottom:20,
+ },
 });
 
 export default styles;
