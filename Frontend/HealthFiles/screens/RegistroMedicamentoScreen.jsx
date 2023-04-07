@@ -31,7 +31,7 @@ const RegistroMedicamentoScreen = ({navigation})  => {
                     medicamentos.map( med=> <MedicamentoCardComponent medicamento={med} /> )
                 }
             </View>
-            <AgregarMedicamentoComponent />
+            <AgregarMedicamentoComponent navigation = {navigation} />
         </ScrollView>
 
     )

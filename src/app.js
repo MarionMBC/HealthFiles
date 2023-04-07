@@ -22,9 +22,6 @@ import medicamento_pacienteRoute from "./routes/medicamento_paciente.routes.js";
 app.use(express.json());
 
 
-app.get('/', (req, res)=> {
-    res.send('<h1>Hola, mundo</h1>');
-})
 
 
 app.use('/medico', medicoRoute);

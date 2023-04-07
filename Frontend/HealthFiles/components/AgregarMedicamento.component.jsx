@@ -2,14 +2,14 @@ import React from 'react';
 import {StyleSheet, TouchableHighlight, View} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-const AgregarMedicamentoComponent = () => {
+const AgregarMedicamentoComponent = ({navigation}) => {
     const addIcon = <Icon name="plus-circle" size={50} color="#2b7bb7" />;
 
     return (
             <TouchableHighlight
                 style={styles.style}
                 underlayColor="transparent"
-                onPress={()=>console.log('Botón')}>
+                onPress={()=>navigation.navigate('Agregar Medicamento')}>
                 {addIcon}
             </TouchableHighlight>
     )

@@ -7,6 +7,7 @@ import ReportesScreen from '../screens/ReportesScreen';
 import NavigationStackCitas from './NavigationStackCitas';
 import NavigationStackMedicamentos from './NavigationStackMedicamentos';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MedicinasScreen from "../screens/MedicinasScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 export default function NavigationTabs(){
