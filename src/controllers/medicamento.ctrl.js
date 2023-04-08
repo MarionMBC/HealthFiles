@@ -166,11 +166,10 @@ export const updateMedicamento = async (req, res) => {
  @Date: 2023-03-18
  @Version: 1.0
  @param {object} req - Objeto de solicitud HTTP.
- @param {object} res - Objeto de respuesta HTTP.
  @returns {object} - Objeto de respuesta HTTP con los detalles del medicamento eliminado.
  @description Elimina un medicamento existente de la base de datos.
  */
-export const deleteMedicamento = async (req, res) => {
+export const deleteMedicamento = async req => {
     try {
         const codigo_medicamento = req.params.codigo_medicamento;
         const [result] = await pool.query("Select * from healthfiles.medicamento where codigo_medicamento= ?", [codigo_medicamento]);

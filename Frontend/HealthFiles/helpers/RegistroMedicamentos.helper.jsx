@@ -23,3 +23,15 @@ export const dateFormatter = (date) => {
 
         return `${dia}/${mes}/${año}`
 }
+
+
+export const eliminarMedicamento = async (codigo_medicamento, dni='12345678901') => {
+        try {
+                const response = await fetch(`http://10.0.2.2:4000/medicamento_paciente/delete/${dni}/${codigo_medicamento}`, {method: 'DELETE'})
+                const data = await response.json()
+
+                return data
+        } catch (e) {
+                return e
+        }
+}

@@ -17,7 +17,7 @@ const RegistroMedicamentoScreen = ({navigation})  => {
             setMedicamentos(res);
 
         })
-    }, []);
+    }, [medicamentos]);
 
 
     return (
