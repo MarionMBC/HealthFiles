@@ -28,7 +28,7 @@ const RegistroMedicamentoScreen = ({navigation})  => {
             <TableComponent />
             <View style={{marginBottom: 15}}>
                 {
-                    medicamentos.map( med=> <MedicamentoCardComponent medicamento={med} /> )
+                    medicamentos.map( med=> <MedicamentoCardComponent key={med.codigo_medicamento} navigation={navigation} medicamento={med} /> )
                 }
             </View>
             <AgregarMedicamentoComponent navigation = {navigation} />

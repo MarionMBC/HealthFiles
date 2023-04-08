@@ -2,14 +2,24 @@ import React, {useState} from 'react';
 import {Card, Image} from "react-native-elements";
 import {StyleSheet, Text, TouchableHighlight, View} from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {handleViewMed} from "../helpers/RegistroMedicamentos.helper";
 
 
 
-const MedicamentoCardComponent = ({medicamento}) => {
+const MedicamentoCardComponent = ({medicamento, navigation}) => {
     const [isHovered, setIsHovered] = useState(false);
-
-    const { nombre, codigo_medicamento, frecuencia, estado, fecha_final, fecha_inicial, novel_importancia, cantidad_principio_act, cantidad_tomar  } = medicamento
-    const fecha = new Date(fecha_inicial);
+    const {
+        codigo_medicamento,
+        nombre_comercial,
+        nombre_generico,
+        concentracion,
+        descripcion,
+        fecha_inicio,
+        fecha_fin,
+        importancia,
+        frecuencia
+    } = medicamento
+    const fecha = new Date(fecha_inicio);
     const dia = fecha.getUTCDate();
     const mes = fecha.getUTCMonth() +1 ;
     const año = fecha.getUTCFullYear();
@@ -23,6 +33,8 @@ const MedicamentoCardComponent = ({medicamento}) => {
         setIsHovered(false)
     }
 
+
+
     return (
         <Card key={codigo_medicamento} onPress={()=>{handleMouseEnter()}} containerStyle={{borderColor:'#2b7bb7', borderRadius: 10}}>
             <View style={styles.cardContainer}>
@@ -30,18 +42,21 @@ const MedicamentoCardComponent = ({medicamento}) => {
                     <Icon style={{marginLeft: 10}} name={'pills'} size={30} color={'#2b7bb7'} />
                 </View>
                 <View style={styles.CardDescriptionView}>
-                    <Text style={styles.cardTittle}>{nombre}</Text>
-                    <Text style={styles.cardContentText}>{cantidad_principio_act}</Text>
+                    <Text style={styles.cardTittle}>{nombre_comercial}</Text>
+                    <Text style={styles.cardContentText}>{concentracion}</Text>
                     <Text style={styles.cardContentText}>Fecha inicio: {fecha_inicial_f}</Text>
-                    <Text style={styles.cardContentText}>{cantidad_tomar}</Text>
+                    <Text style={styles.cardContentText}>{frecuencia}</Text>
                 </View>
                 <View style={styles.crudButton}>
+                    <TouchableHighlight underlayColor="transparent" onPress={()=>{handleViewMed(navigation, medicamento)}}>
+                        <Icon name={'eye'} size={25} color={'#2b7bb7'} />
+                    </TouchableHighlight>
                     <TouchableHighlight underlayColor="transparent" onPress={()=>{
                         console.log('Funciona')}}>
-                        <Icon name={'trash'} size={30} color={'#2b7bb7'} />
+                        <Icon name={'trash'} size={25} color={'#2b7bb7'} />
                     </TouchableHighlight>
-                    <TouchableHighlight underlayColor="transparent" onPress={()=>{console.log('A')}}>
-                        <Icon name={'edit'} size={30} color={'#2b7bb7'} />
+                    <TouchableHighlight underlayColor="transparent" onPress={()=>{console.log('Hola')}}>
+                        <Icon name={'edit'} size={25} color={'#2b7bb7'} />
                     </TouchableHighlight>
                 </View>
             </View>
