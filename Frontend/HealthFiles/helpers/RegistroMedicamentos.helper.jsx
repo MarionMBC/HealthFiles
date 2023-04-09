@@ -2,7 +2,7 @@ import React from 'react';
 
 export const obtenerMedicamentos = async (dni = '12345678901') => {
         try {
-                const response = await fetch(`http://10.0.2.2:4000/medicamento_paciente/get/${dni}`)
+                const response = await fetch(`https://healthfiles-production.up.railway.app/medicamento_paciente/get/${dni}`)
                 const data = await response.json()
                 return data
         } catch (e) {
@@ -27,7 +27,7 @@ export const dateFormatter = (date) => {
 
 export const eliminarMedicamento = async (codigo_medicamento, dni='12345678901') => {
         try {
-                const response = await fetch(`http://10.0.2.2:4000/medicamento_paciente/delete/${dni}/${codigo_medicamento}`, {method: 'DELETE'})
+                const response = await fetch(`https://healthfiles-production.up.railway.app/medicamento_paciente/delete/${dni}/${codigo_medicamento}`, {method: 'DELETE'})
                 const data = await response.json()
 
                 return data

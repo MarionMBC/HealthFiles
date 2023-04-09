@@ -4,26 +4,38 @@ import {Calendar} from "react-native-calendars";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import PickerComp from "../components/Picker.component";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import {Checkbox, Searchbar} from "react-native-paper";
+import {Input} from "@rneui/base";
+
 
 const AgregarMedicamentoScreen = ({navigation}) => {
     const [datePickerVisible, setDatePickerVisible] = useState(false);
-    const [selectedTimeRemainder, setSelectedTimeRemainder] = useState('');
+    const [selectedTimeReminder, setSelectedTimeReminder] = useState('12:00');
 
     
     const handleConfirm = (hora) => {
         hideDatePicker();
         const selectedHour = hora.toLocaleTimeString('es-MX', {hour: '2-digit', minute:'2-digit'});
-        setSelectedTimeRemainder(selectedHour);
+        setSelectedTimeReminder(selectedHour);
     };
 
     const hideDatePicker = () => {
         setDatePickerVisible(false);
     };
-
+    const showDatePicker = () => {
+        setDatePickerVisible(true);
+    };
     return (
         <View>
+            <View style={{marginTop:10}}>
+                <Searchbar
+                placeholder={'Buscar medicamento'}
+                style={{backgroundColor: '#fff', margin:10, borderColor: '#cfcfcf', borderWidth: 0.2}}
+
+                ></Searchbar>
+            </View>
             <View>
-                <Text style={{fontSize: 20, marginTop:10, marginHorizontal:10, fontWeight: '500', color:'#5a5a5a'}}>Fecha</Text>
+                <Text style={{fontSize: 18, marginHorizontal:10, fontWeight: '500', color:'#5a5a5a'}}>Fecha</Text>
             </View>
             <View style={{margin: 10}}>
                 <Calendar  style={{borderRadius: 10 , shadowColor: '#000',
@@ -37,24 +49,43 @@ const AgregarMedicamentoScreen = ({navigation}) => {
                 <Icon name={'clock'} color={'black'} size={30} ></Icon>
                 <View style={{marginHorizontal: 10, padding:5, backgroundColor: '#cfcfcf', width: 90,
                 borderRadius: 10}}>
-                    <Text style={{margin: 0, padding: 0, textAlign: 'center'}}>18:00</Text>
+                    <Text onPress={showDatePicker} style={{margin: 0, padding: 0, textAlign: 'center'}}>{selectedTimeReminder}</Text>
                 </View >
                 <Icon name={'bell'} color={'black'} size={30}></Icon>
                 <View style={{marginHorizontal: 10, padding:5, backgroundColor: '#cfcfcf',
                     borderRadius: 10}}>
-                    <Text onPress={()=>{}}>Establecer Recordatorio</Text>
-                    <DateTimePickerModal
-                        isVisible={datePickerVisible}
-                        mode="time"
-                        onConfirm={handleConfirm}
-                        onCancel={hideDatePicker}
-                    />
+                    <Text style={{margin: 0, padding: 0, textAlign: 'center'}} onPress={()=>{
+                        console.log('Confirmar')}}>Establecer Recordatorio</Text>
                 </View>
+            </View>
+            <View style={{marginVertical: 10}}>
+                <Input
+                label={'Frecuencia: '}
+                labelStyle={{fontSize:18, fontWeight: '400', color:'#484848'}}
+                ></Input>
+            </View>
+            <View style={{marginHorizontal: 10}}>
+                <Text style={{fontSize:18, fontWeight: '400', color:'#484848'}}>Nivel de Importancia:</Text>
+            </View>
 
+            <View style={{margin: 10, display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                <Checkbox.Item label={'Baja'} status="checked" color={'#429adc'} />
+                <Checkbox.Item label={'Media'} status="unchecked" color={'#2b7bb7'}/>
+                <Checkbox.Item label={'Alta'} status="unchecked" color={'#125182'} />
             </View>
-            <View>
-                <Text style={{fontSize: 20, marginTop:10, marginHorizontal:10, fontWeight: '500', color:'#5a5a5a'}}>Especificaciones</Text>
-            </View>
+
+
+
+
+
+            <DateTimePickerModal
+                isVisible={datePickerVisible}
+                mode="time"
+                onConfirm={handleConfirm}
+                onCancel={hideDatePicker}
+            />
+
+
 
 
 
