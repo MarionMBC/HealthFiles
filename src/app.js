@@ -19,6 +19,7 @@ import medicamento_pacienteRoute from "./routes/medicamento_paciente.routes.js";
 /**
  * Permite leer el body de las solicitudes
  */
+app.use(express.urlencoded());
 app.use(express.json());
 
 

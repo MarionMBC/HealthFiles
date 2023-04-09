@@ -7,10 +7,10 @@ import express from "express";
 */
 
 app.use(express.json());
-
+app.use(express.urlencoded());
 
 app.get('/', (req, res)=> {
-    res.setHeader('content-type', 'text/plain');
+
     res.send('hola');
 })
 
