@@ -54,6 +54,33 @@ export const getPaciente = async (req, res) => {
 
 /**
  * @author Jennebier Esther Alvarado López
+ * @date 9/04/2023
+ * @description Obtener un usuario paciente existente
+ * @param {Object} req Objeto de petición
+ * @param {Object} res Objeto de respuesta
+ * @returns {Json} El registro solicitado de la tabla paciente
+ */
+export const getUsuarioPaciente = async (req, res) => {
+    try {
+    const email = req.params.correo; //el valor enviado através de la solicitud HTTP 
+    const password = req.params.contrasena;
+    const [paciente] = await pool.query("SELECT * FROM paciente WHERE correo= ? AND contrasena=?", [email, password]);
+    if (paciente.length<=0){ //Verificación de que el objeto no venga vacío
+        res.status(404).json({msg: "Paciente no encontrado"})
+    }else{ //Si no viene vacío
+        res.send(paciente[0]);
+    }
+    } catch (error) {
+        return res.status(500).json({
+            msg: `Algo ha salido mal al obtener el paciente. Error: ${error}`
+        })
+    }
+};
+
+
+
+/**
+ * @author Jennebier Esther Alvarado López
  * @date 17/03/2023
  * @description Crear un paciente 
  * @param {Object} req Objeto de petición 
