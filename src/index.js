@@ -10,6 +10,7 @@ app.use(express.json());
 
 
 app.get('/', (req, res)=> {
+    res.setHeader('content-type', 'text/plain');
     res.send('hola');
 })
 
