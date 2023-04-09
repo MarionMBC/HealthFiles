@@ -7,10 +7,13 @@ import { SERVER_PORT } from "./env-config.js";
 */
 
 app.get('/', (req, res)=> {
-    res.send('<h1>Hola, mundo!</h1>');
+    res.send('hola');
 })
 
 app.listen( 4000, ()=>{
     console.log("Servidor inicializado en el puerto", 4000);
 });
+
+
+
 
