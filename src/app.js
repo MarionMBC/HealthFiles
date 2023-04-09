@@ -9,6 +9,7 @@ import medico_hospitalRoute from './routes/medico_hospital.routes.js';
 import horarioRoute from './routes/horario.routes.js';
 import registro_citas_agendadasRoute from './routes/registro_citas_agendadas.routes.js';
 import medicamento_pacienteRoute from "./routes/medicamento_paciente.routes.js";
+import bodyParse from "body-parser";
 
 // import examenRoute from './routes/examen.routes.js';
 // import alergiaRoute from "./routes/alergia.routes.js";
@@ -19,8 +20,9 @@ import medicamento_pacienteRoute from "./routes/medicamento_paciente.routes.js";
 /**
  * Permite leer el body de las solicitudes
  */
-app.use(express.urlencoded());
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use(bodyParse.json());
 
 
 app.use('/medico', medicoRoute);
