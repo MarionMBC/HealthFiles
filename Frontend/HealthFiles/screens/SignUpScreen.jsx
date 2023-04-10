@@ -112,16 +112,36 @@ export default function SignUpScreen() {
           
           <Text style ={styles.subtitulos1}>Registro de Paciente</Text>
 
-          <Text //NOMBRES
+          <Text //DNI
             style = {styles.subtitulos_2}
-            > Nombres </Text>
+            > DNI </Text>
           <CustomInput 
-              name="Nombres"
+              name="DNI"
               control={control}
-              placeholder='Mario David'
+              placeholder='0801200500035'
               marginTop = {6}
               rules={{
-              required: 'El campo Nombres esta vacio',
+              required: 'El campo DNI esta vacio',
+              minLength: {
+                value: 13,
+                message: 'Minimo de caracteres es de 13',
+              },  
+              maxLength: {
+                value: 13,
+                message: 'Maximo de caracteres es de 13',
+              },
+            }}
+          />
+          <Text //PRIMER NOMBRE
+            style = {styles.subtitulos_2}
+            > Primer Nombre </Text>
+          <CustomInput 
+              name="Primer Nombre"
+              control={control}
+              placeholder='Mario'
+              marginTop = {6}
+              rules={{
+              required: 'El campo Primer Nombre esta vacio',
               minLength: {
                 value: 3,
                 message: 'Minimo de caracteres es de 3',
@@ -132,17 +152,59 @@ export default function SignUpScreen() {
               },
             }}
           />
-    
-          <Text //APELLIDOS
+
+          <Text //SEGUNDO NOMBRE
             style = {styles.subtitulos_2}
-            > Apellidos </Text>
+            > Segundo Nombre </Text>
           <CustomInput 
-              name="Apellidos"
+              name="Segundo Nombre"
+              control={control}
+              placeholder='David'
+              marginTop = {6}
+              rules={{
+                required: 'El campo Segundo Nombre esta vacio',
+                minLength: {
+                value: 3,
+                message: 'Minimo de caracteres es de 3',
+              },  
+              maxLength: {
+                value: 25,
+                message: 'Maximo de caracteres es de 25',
+              },
+            }}
+          />
+    
+          <Text //PRIMER APELLIDO
+            style = {styles.subtitulos_2}
+            > Primer Apellido </Text>
+          <CustomInput 
+              name="Primer Apellido"
               control={control}
               placeholder="Alvarez Hernandez"
               marginTop = {6}  
               rules={{
-                required: 'El campo Apellidos esta vacio', 
+                required: 'El campo Primer Apellido esta vacio', 
+                minLength: {
+                  value: 4,
+                  message: 'Minimo de caracteres es de 3',
+                },  
+                maxLength: {
+                  value: 25,
+                  message: 'Maximo de caracteres es de 25',
+                },
+              }}   
+          />
+
+          <Text //SEGUNDO APELLIDO
+            style = {styles.subtitulos_2}
+            > Segundo Apellido </Text>
+          <CustomInput 
+              name="Segundo Apellido"
+              control={control}
+              placeholder="Alvarez Hernandez"
+              marginTop = {6}  
+              rules={{
+                required: 'El campo Segundo Apellido esta vacio',
                 minLength: {
                   value: 4,
                   message: 'Minimo de caracteres es de 3',
