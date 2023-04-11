@@ -184,7 +184,7 @@ export const deleteMedicamento = async req => {
     }
 }
 
-export const getNombreMedicamentos = async () => {
+export const getNombreMedicamentos = async (req, res) => {
     try {
         const [result] = await pool.query("Select nombre_comercial from healthfiles.medicamento");
         if (result.length === 0) {
