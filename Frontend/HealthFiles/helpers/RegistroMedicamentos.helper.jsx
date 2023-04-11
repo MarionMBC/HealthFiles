@@ -49,6 +49,17 @@ export const fetchMedicamentos = async () => {
         }
 }
 
+export const fetchNombreMedicamentos = async () => {
+        try{
+                const respuesta = await fetch(`${URL}medicamento/get/nombre`);
+                const medicamentos = await respuesta.json()
+                return medicamentos;
+        }
+        catch (e) {
+                return e
+        }
+}
+
 
 
 

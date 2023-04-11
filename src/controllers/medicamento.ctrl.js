@@ -190,7 +190,7 @@ export const getNombreMedicamentos = async () => {
         if (result.length === 0) {
             res.status(200).send("No se encontraron medicamentos")
         } else {
-            res.status(400).send(result[0])
+            res.status(400).send(result)
         }
     } catch (e) {
         res.status(200).send(e)
