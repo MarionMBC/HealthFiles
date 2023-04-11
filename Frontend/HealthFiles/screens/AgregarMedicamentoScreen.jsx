@@ -7,14 +7,19 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import {Checkbox, Searchbar} from "react-native-paper";
 import {Input} from "@rneui/base";
 import AutoCompleteComponent from "../components/AutoCompleteComponent";
-import {listaMedicamentos} from "../helpers/RegistroMedicamentos.helper";
+import {fetchMedicamentos} from "../helpers/RegistroMedicamentos.helper";
 
 
 const AgregarMedicamentoScreen = ({navigation}) => {
     const [datePickerVisible, setDatePickerVisible] = useState(false);
     const [selectedTimeReminder, setSelectedTimeReminder] = useState('12:00');
+    const [medicamentos, setMedicamentos] = useState([]);
 
-
+    useEffect(() => {
+        fetchMedicamentos().then(lista =>{
+            setMedicamentos(lista)
+        });
+    }, []);
 
 
     const handleConfirm = (hora) => {
@@ -43,12 +48,12 @@ const AgregarMedicamentoScreen = ({navigation}) => {
                 <View>
                     <Text style={{fontSize: 18, marginHorizontal:10, fontWeight: '500', color:'#5a5a5a'}}>Fecha</Text>
                 </View>
-                <View style={{margin: 10}}>
+                <View style={{margin: 10, position: 'relative'}}>
                     <Calendar  style={{borderRadius: 10 , shadowColor: '#000',
                         shadowOffset: { width: 0, height: 2 },
                         shadowOpacity: 0.25,
                         shadowRadius: 3.84,
-                        elevation: 5}}></Calendar>
+                        elevation: 5, position: 'relative'}}></Calendar>
 
                 </View>
                 <View style={{display: 'flex', alignItems: 'center', margin: 10, flexDirection: 'row'}}>

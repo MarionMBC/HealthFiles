@@ -184,15 +184,18 @@ export const deleteMedicamento = async req => {
     }
 }
 
-
-export const logMedicamento = async () => {
+export const getNombreMedicamentos = async () => {
     try {
-        return;
-    } catch (error) {
-
+        const [result] = await pool.query("Select nombre from healthfiles.medicamento");
+        if (result.length === 0) {
+            res.status(200).send("No se encontraron medicamentos")
+        } else {
+            res.status(400).send(result[0])
+        }
+    } catch (e) {
+        res.status(200).send(e)
     }
 }
-
 
 
 

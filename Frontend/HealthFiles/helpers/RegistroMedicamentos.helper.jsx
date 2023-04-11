@@ -1,5 +1,7 @@
 import React from 'react';
 
+const URL = "https://healthfiles-production.up.railway.app/";
+
 export const obtenerMedicamentos = async (dni = '12345678901') => {
         try {
                 const response = await fetch(`https://healthfiles-production.up.railway.app/medicamento_paciente/get/${dni}`)
@@ -36,7 +38,7 @@ export const eliminarMedicamento = async (codigo_medicamento, dni='12345678901')
 }
 
 
-const fetchMedicamentos = async () => {
+export const fetchMedicamentos = async () => {
         try{
                 const respuesta = await fetch(`${URL}medicamento/get`);
                 const medicamentos = await respuesta.json()
@@ -47,11 +49,7 @@ const fetchMedicamentos = async () => {
         }
 }
 
-export const listaMedicamento = () => {
-        fetchMedicamentos().then(respuesta=>{
-                return respuesta;
-        })
-}
+
 
 
 
