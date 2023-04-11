@@ -8,6 +8,12 @@ import NavigationStackCitas from './NavigationStackCitas';
 import NavigationStackMedicamentos from './NavigationStackMedicamentos';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MedicinasScreen from "../screens/MedicinasScreen";
+import RegistroCitaScreen from '../screens/RegistroCitaScreen';
+import RegistroRecordatorioScreen from '../screens/RegistroRecordatorioScreen';
+import NavigationStackRecordatorio from './NavigationStackRecordatorio';
+import ListaPacientes from '../screens/ListaPacientes.jsx';
+import NavigationStackHome from './NavigationHome';
+import NavigationStackCirugia from './NavigationStackCirugia';
 
 const Tab = createMaterialBottomTabNavigator();
 export default function NavigationTabs(){
@@ -16,13 +22,13 @@ export default function NavigationTabs(){
     activeColor='#125ba5'
     inactiveColor='#848385'
     barStyle={{backgroundColor:'#F9F7E9'}}>
-        <Tab.Screen name="Home" component={HomeScreen}
+        <Tab.Screen name="Home" component={NavigationStackHome}
         options={{
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="account" color={color} size={26} />
             ),
           }}></Tab.Screen>
-        <Tab.Screen name="Cirugias" component={CirugiasScreen}
+        <Tab.Screen name="Cirugias" component={NavigationStackCirugia}
         options={{
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="doctor" color={color} size={26} />
@@ -52,5 +58,12 @@ export default function NavigationTabs(){
               <MaterialCommunityIcons name="file-chart" color={color} size={26} />
             ),
           }}></Tab.Screen>
+            <Tab.Screen name="Recordatorios" component={NavigationStackRecordatorio}
+        options={{
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="account" color={color} size={26} />
+            ),
+          }}></Tab.Screen>
     </Tab.Navigator>)
+    
 }
