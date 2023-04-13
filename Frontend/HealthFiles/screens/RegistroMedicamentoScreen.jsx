@@ -24,7 +24,9 @@ const RegistroMedicamentoScreen = ({navigation})  => {
         <ScrollView style={{ flex:1}}>
             <TittleComponent title={'Registro de Medicamentos'}></TittleComponent>
             <SearchBarComp/>
-            <PacienteInfoComponent />
+            <PacienteInfoComponent 
+            nombrePaciente={"Marion Melchisedec Bustamante Castro"} 
+            dniPaciente={"0806-2001-00506"}/>
             <TableComponent />
             <View style={{marginBottom: 15}}>
                 {

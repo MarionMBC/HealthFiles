@@ -1,11 +1,23 @@
 import React from 'react';
 
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, ScrollView } from 'react-native';
+import TittleComponent from '../components/Tittle.component';
+import SearchBarComp from '../components/SearchBar.component';
+import PacienteInfoComponent from '../components/PacienteInfo.component';
+import TableComponent from "../components/Table.component";
 
 export default function ExamenesScreen({ navigation }) {
   return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{marginBottom: 10, fontSize: 25, fontWeight: '700'}}>Examenes</Text>
+      <ScrollView>
+      
+      <TittleComponent title={"Exámenes"}></TittleComponent>
+      
+      <SearchBarComp></SearchBarComp>
+      
+      <PacienteInfoComponent 
+      nombrePaciente={"Marion Melchisedec Bustamante Castro"} 
+      dniPaciente={"0806-2001-00506"}></PacienteInfoComponent>
+      <TableComponent></TableComponent>
           <View>
           <Button
                 title={"Registrar Examen"}
@@ -13,7 +25,9 @@ export default function ExamenesScreen({ navigation }) {
             >
             </Button>
         </View>
-    </View>
+
+
+    </ScrollView>
   );
 }
 
