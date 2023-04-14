@@ -22,7 +22,7 @@ export default function SignUpScreen() {
     //Expresiones Regulares Validaciones
     const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;  
     const PASSWORD_REGEX =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-    const PHONE_REGEX = /(\(?(\+504|504)\)?)?(2|3|8|9)(\d{7})/;
+    const PHONE_REGEX = /(\(?(\+54)\)?)?(11)(\d{8})/;
 
     //Handles
     const {control, handleSubmit, watch} = useForm();
@@ -118,16 +118,16 @@ export default function SignUpScreen() {
           <CustomInput 
               name="DNI"
               control={control}
-              placeholder='0801200500035'
+              placeholder='08012005000'
               marginTop = {6}
               rules={{
               required: 'El campo DNI esta vacio',
               minLength: {
-                value: 13,
+                value: 11,
                 message: 'Minimo de caracteres es de 13',
               },  
               maxLength: {
-                value: 13,
+                value: 11,
                 message: 'Maximo de caracteres es de 13',
               },
             }}
@@ -308,18 +308,18 @@ export default function SignUpScreen() {
           <CustomInput 
               name="Telefono"
               control={control}
-              placeholder='99999999'
+              placeholder='+541185221699'
               marginTop = {6} 
               //keyboardType='
               rules= {{
                 required: 'El campo Telefono esta vacio', 
                 minLength: {
-                  value: 8,
+                  value: 13,
                   message: 'Ingrese un numero de telefono valido',
                 },  
                 pattern: {
                   value: PHONE_REGEX, 
-                  message: 'Ingrese un formato de telefono valido: (504)99099099, (+504)33253025, 88908090, 22240000, +50498080908, 33302525'
+                  message: 'Ingrese un formato de telefono valido: +541185221699'
                 }
               }}
             
@@ -423,17 +423,17 @@ export default function SignUpScreen() {
           <CustomInput 
               name="ALTURA"
               control={control}
-              placeholder='cm'
+              placeholder='mts'
               marginTop = {6}  
-              keyboardType='number-pad' 
+              keyboardType='decimal-pad'  
               rules = {{
                 required: 'El campo Altura esta vacio',
                 min: {
-                  value: 80,
+                  value: 0.5,
                   message: 'Ingrese un valor de Altura Valido'
                 },  
                 max: {
-                  value: 350,
+                  value: 3.5,
                   message: 'Ingrese un valor de Altura Valido'
                 },
               }}   
@@ -483,17 +483,17 @@ export default function SignUpScreen() {
           <CustomInput
               name="CELULAR CONTACTO DE EMERGENCIA"
               control={control}
-              placeholder='99999999'
+              placeholder='+541185221699'
               marginTop = {6}  
               rules = {{
                 required: 'El campo Celular Contacto Emergencia esta vacio',
                 minLength: {
-                  value: 8,
+                  value: 13,
                   message: 'Ingresar un numero de telefono valido',
                 }, 
                 pattern: {
                   value: PHONE_REGEX, 
-                  message: 'Ingrese un formato de telefono valido: (504)99099099, (+504)33253025, 88908090, 22240000, +50498080908, 33302525'
+                  message: 'Ingrese un formato de telefono valido: +541185221699'
                 }
               }}  
           />
