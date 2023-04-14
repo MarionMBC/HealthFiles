@@ -11,7 +11,7 @@ const router = Router();
 
 router.get('/get', getPacientes);
 router.get('/get/:dni_paciente', getPaciente);
-router.get('/get/:correo/:contrasena', getUsuarioPaciente);
+router.get('/get/:correo_electronico/:contrasena', getUsuarioPaciente);
 router.post('/create', createPaciente);
 router.patch('/update/:dni_paciente', updatePaciente);
 router.delete('/delete/:dni_paciente', deletePaciente);
