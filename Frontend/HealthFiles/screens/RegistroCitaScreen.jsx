@@ -7,7 +7,8 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, ScrollView } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Calendar } from 'react-native-calendars';
-import PickerComp from '../components/Picker.component.jsx';
+import PickerComp from '../components/PickerHospital.component.jsx';
+import PickerHorario from '../components/PickerHorario.component.jsx';
 import { Button } from '@rneui/themed';
 import styles from '../styles/styles.js';
 import CodigoAleatorio from '../helpers/CodigoAleatorio.js';
@@ -17,7 +18,7 @@ import { GuardarCita } from '../helpers/RegistroCitas.helper.jsx';
 export default function RegistroCitaScreen({navigation}) {
   
   //Declaración de variables de estado
-  const [motivo, setMotivo] = useState('');
+  const [motivo, setMotivo] = useState(null);
   const [datePickerVisible, setDatePickerVisible] = useState(false);
   const [selectedHospital, setSelectedHospital] = useState('');
   const [selectedHora, setSelectedHora] = useState('');//Para mantener este como valor seleccionado
@@ -76,7 +77,7 @@ export default function RegistroCitaScreen({navigation}) {
         valoracion:0
 
     };
-    GuardarCita(data);
+    
     console.log(fechaActual);
 
   };
@@ -89,7 +90,7 @@ export default function RegistroCitaScreen({navigation}) {
       
       
       <Text style={styles.label}>Hospital</Text>
-      <PickerComp style={styles.selector} selectedValue={selectedHospital} setSelectedValue={handleHospitalSelect} />
+      <PickerComp></PickerComp>
       
       <Text style={styles.label}>Fecha de la cita</Text>
       <Calendar
@@ -101,8 +102,7 @@ export default function RegistroCitaScreen({navigation}) {
       />
     
       <Text style={styles.label}>Hora de la consulta</Text>
-      <PickerComp selectedValue={selectedHora} setSelectedValue={handleHoraSelect} />
-
+      
     <Text style={styles.label}>Motivo</Text>
       <TextInput
         multiline={true}
