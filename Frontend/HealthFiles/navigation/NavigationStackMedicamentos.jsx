@@ -12,8 +12,8 @@ const StackMedicamentos = createNativeStackNavigator();
 
 export default function NavigationStackMedicamentos(){
 	return(
-		
-		<StackMedicamentos.Navigator headerStyle={{backgroundColor:'red'}} cardStyle={{backgroundColor: 'red'}} initialRouteName='Medicamentos'>
+
+		<StackMedicamentos.Navigator>
 			<StackMedicamentos.Screen  name="Registro de Medicamentos" component={RegistroMedicamentoScreen}/>
 			<StackMedicamentos.Screen name="Agregar Medicamento" component={AgregarMedicamentoScreen}/>
 			<StackMedicamentos.Screen name={"Detalles de Medicamento"} component={DetalleMedicamentoScreen}/>

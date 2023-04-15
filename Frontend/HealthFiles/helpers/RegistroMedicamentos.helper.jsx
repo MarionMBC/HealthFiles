@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+
 
 const URL = "https://healthfiles-production.up.railway.app/";
 
-export const obtenerMedicamentos = async (dni = '12345678901') => {
+export const obtenerMedicamentos = async (dni = '78901234567') => {
         try {
                 const response = await fetch(`https://healthfiles-production.up.railway.app/medicamento_paciente/get/${dni}`)
                 const data = await response.json()
@@ -11,6 +12,8 @@ export const obtenerMedicamentos = async (dni = '12345678901') => {
                 return e
         }
 }
+
+
 
 export const handleViewMed =  (navigation, medicamento) => {
         navigation.navigate('Detalles de Medicamento',  medicamento )
@@ -38,6 +41,7 @@ export const eliminarMedicamento = async (codigo_medicamento, dni='12345678901')
 }
 
 
+/*
 export const fetchMedicamentos = async () => {
         try{
                 const respuesta = await fetch(`${URL}medicamento/get`);
@@ -48,17 +52,51 @@ export const fetchMedicamentos = async () => {
                 return e
         }
 }
+*/
 
-export const fetchNombreMedicamentos = async () => {
-        try{
-                const respuesta = await fetch(`${URL}medicamento/get/nombre`);
-                const medicamentos = await respuesta.json()
-                return medicamentos;
-        }
-        catch (e) {
-                return e
+
+
+
+export const fetchData = async(url, setState) => {
+        try {
+                const response = await fetch(`${URL+url}`);
+                const json = await response.json();
+                setState(json);
+        } catch (e) {
+                return e;
         }
 }
+
+
+export const fetchMedicamentos = async  (setSearch, setMedicamentos) => {
+        try {
+                const response = await fetch(`${URL}medicamento_paciente/get/78901234567`)
+                const json = await response.json();
+                setSearch(json);
+                setMedicamentos(json);
+        }
+        catch (e) {
+                return e;
+        }
+}
+
+
+export const searchFilter = (text, setSearch, data, searchName) => {
+        if (text) {
+                const newData = data.filter(item => {
+                        const itemName = `${item}.${searchName}` ? `${item}.${searchName}`.toUpperCase() : ''.toUpperCase();
+                        const textData = text.toUpperCase();
+                        return itemName.indexOf(textData) > -1
+                })
+                setSearch(newData)
+        } else {
+                setSearch(data)
+        }
+}
+
+
+
+
 
 
 

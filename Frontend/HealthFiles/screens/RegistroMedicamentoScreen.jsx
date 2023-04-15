@@ -1,34 +1,70 @@
-import {ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-native";
+import {ScrollView, Text, TouchableHighlight, View} from "react-native";
 import SearchBarComp from "../components/SearchBar.component";
 import TableComponent from "../components/Table.component";
 import MedicamentoCardComponent from "../components/MedicamentoCard.component";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useLayoutEffect, useState} from "react";
 import PacienteInfoComponent from "../components/PacienteInfo.component";
 import TittleComponent from "../components/Tittle.component";
 import AgregarMedicamentoComponent from "../components/AgregarMedicamento.component";
-import {obtenerMedicamentos}  from "../helpers/RegistroMedicamentos.helper";
+import {fetchData, fetchMedicamentos, obtenerMedicamentos} from "../helpers/RegistroMedicamentos.helper";
+import * as events from "events";
 
 const RegistroMedicamentoScreen = ({navigation})  => {
-
+    const [search, setSearch] = useState([]);
     const [medicamentos, setMedicamentos] = useState([]);
 
     useEffect(() => {
-        obtenerMedicamentos().then(res=> {
-            setMedicamentos(res);
+        fetchMedicamentos(setSearch, setMedicamentos);
+    }, [setSearch]);
 
-        })
-    }, [medicamentos]);
+
+    console.log(search);
+
+
+    useLayoutEffect(() => {
+        navigation.setOptions(
+            {
+                headerSearchBarOptions: {
+                    onChangeText: (event) => {
+                        searchFilterFunction(event.nativeEvent.text);
+
+                    },
+                    placeholder: "Buscar medicamento",
+
+                },
+                headerStyle: {
+                    backgroundColor: "#429adc",
+                },
+                headerTintColor: 'white',
+                headerTitleStyle: {
+                    fontWeight: 400,
+                    fontSize: 20
+                }
+
+            }
+        )
+        }, [navigation]);
+
+    const searchFilterFunction = (text) => {
+        if (text) {
+            const newData = medicamentos.filter(item => {
+                const itemName = item.nombre_comercial ? item.nombre_comercial.toUpperCase() : ''.toUpperCase();
+                const textData = text.toUpperCase();
+                return itemName.indexOf(textData) > -1
+            })
+            setSearch(newData)
+        } else {
+            setSearch(medicamentos)
+        }
+    }
 
 
     return (
-        <ScrollView style={{ flex:1}}>
-            <TittleComponent title={'Registro de Medicamentos'}></TittleComponent>
-            <SearchBarComp/>
-            <PacienteInfoComponent />
-            <TableComponent />
+        <ScrollView>
+            <PacienteInfoComponent/>
             <View style={{marginBottom: 15}}>
                 {
-                    medicamentos.map( med=> <MedicamentoCardComponent key={med.codigo_medicamento} navigation={navigation} medicamento={med} /> )
+                    search.map( med=> <MedicamentoCardComponent key={med.codigo_medicamento} navigation={navigation} medicamento={med} /> )
                 }
             </View>
             <AgregarMedicamentoComponent navigation = {navigation} />
