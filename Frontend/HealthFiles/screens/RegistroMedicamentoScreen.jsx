@@ -5,7 +5,7 @@ import MedicamentoCardComponent from "../components/MedicamentoCard.component";
 import React, {useEffect, useLayoutEffect, useState} from "react";
 import PacienteInfoComponent from "../components/PacienteInfo.component";
 import TittleComponent from "../components/Tittle.component";
-import AgregarMedicamentoComponent from "../components/AgregarMedicamento.component";
+import AgregarComponente from "../components/AgregarComponent.component";
 import {fetchData, fetchMedicamentos, obtenerMedicamentos} from "../helpers/RegistroMedicamentos.helper";
 
 
@@ -70,7 +70,7 @@ const RegistroMedicamentoScreen = ({navigation})  => {
                     search.map( med=> <MedicamentoCardComponent key={med.codigo_medicamento} navigation={navigation} medicamento={med} /> )
                 }
             </View>
-            <AgregarMedicamentoComponent navigation = {navigation} />
+            <AgregarComponente nombre={"Medicamento"} navigation = {navigation} />
         </ScrollView>
 
     )
