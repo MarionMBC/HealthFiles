@@ -60,8 +60,18 @@ const RegistroMedicamentoScreen = ({navigation})  => {
 
 
     return (
+<<<<<<< HEAD
         <ScrollView>
             <PacienteInfoComponent/>
+=======
+        <ScrollView style={{ flex:1}}>
+            <TittleComponent title={'Registro de Medicamentos'}></TittleComponent>
+            <SearchBarComp/>
+            <PacienteInfoComponent 
+            nombrePaciente={"Marion Melchisedec Bustamante Castro"} 
+            dniPaciente={"0806-2001-00506"}/>
+            <TableComponent />
+>>>>>>> e58fb8135e58b5a15ed3a74e8c7628c0a56e97d7
             <View style={{marginBottom: 15}}>
                 {
                     search.map( med=> <MedicamentoCardComponent key={med.codigo_medicamento} navigation={navigation} medicamento={med} /> )

@@ -62,9 +62,9 @@ export const getPaciente = async (req, res) => {
  */
 export const getUsuarioPaciente = async (req, res) => {
     try {
-    const email = req.params.correo; //el valor enviado através de la solicitud HTTP 
+    const email = req.params.correo_electronico; //el valor enviado através de la solicitud HTTP 
     const password = req.params.contrasena;
-    const [paciente] = await pool.query("SELECT * FROM paciente WHERE correo= ? AND contrasena=?", [email, password]);
+    const [paciente] = await pool.query("SELECT * FROM paciente WHERE correo_electronico = ? AND contrasena = ?", [email, password]);
     if (paciente.length<=0){ //Verificación de que el objeto no venga vacío
         res.status(404).json({msg: "Paciente no encontrado"})
     }else{ //Si no viene vacío
