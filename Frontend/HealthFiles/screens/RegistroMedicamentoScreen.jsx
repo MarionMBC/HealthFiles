@@ -7,15 +7,14 @@ import PacienteInfoComponent from "../components/PacienteInfo.component";
 import TittleComponent from "../components/Tittle.component";
 import AgregarMedicamentoComponent from "../components/AgregarMedicamento.component";
 import {fetchData, fetchMedicamentos, obtenerMedicamentos} from "../helpers/RegistroMedicamentos.helper";
-import * as events from "events";
+
 
 const RegistroMedicamentoScreen = ({navigation})  => {
     const [search, setSearch] = useState([]);
     const [medicamentos, setMedicamentos] = useState([]);
-
     useEffect(() => {
         fetchMedicamentos(setSearch, setMedicamentos);
-    }, [setSearch]);
+    }, [medicamentos]);
 
 
     console.log(search);
@@ -62,7 +61,6 @@ const RegistroMedicamentoScreen = ({navigation})  => {
     return (
 
     <ScrollView>
-        <PacienteInfoComponent />
             <PacienteInfoComponent
             nombrePaciente={"Marion Melchisedec Bustamante Castro"} 
             dniPaciente={"0806-2001-00506"}/>
