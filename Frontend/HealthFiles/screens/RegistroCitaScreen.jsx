@@ -3,25 +3,28 @@
  * Date: 29/03/2023
  * Description: Pantalla para el registro de una cita para el usuario doctor
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, ScrollView } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Calendar } from 'react-native-calendars';
-import PickerComp from '../components/Picker.component.jsx';
+import PickerComp from '../components/PickerHospital.component.jsx';
+import PickerHorario from '../components/PickerHorario.component.jsx';
 import { Button } from '@rneui/themed';
 import styles from '../styles/styles.js';
 import CodigoAleatorio from '../helpers/CodigoAleatorio.js';
 import { GuardarCita } from '../helpers/RegistroCitas.helper.jsx';
+import TittleComponent from '../components/Tittle.component.jsx';
 
 
 export default function RegistroCitaScreen({navigation}) {
   
+
   //Declaración de variables de estado
-  const [motivo, setMotivo] = useState('');
+  const [motivo, setMotivo] = useState(null);
   const [datePickerVisible, setDatePickerVisible] = useState(false);
-  const [selectedHospital, setSelectedHospital] = useState('');
+  const [selectedHospital, setSelectedHospital] = useState('HN-HOSP-002');
   const [selectedHora, setSelectedHora] = useState('');//Para mantener este como valor seleccionado
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(fechaActual);
   const [selectedTimeRemainder, setSelectedTimeRemainder] = useState('');
 
     //Handles
@@ -62,11 +65,12 @@ export default function RegistroCitaScreen({navigation}) {
   };
   const handleSubmit = () => {
     console.log(`Submitted: Hospital: ${selectedHospital}, Fecha: ${selectedDate}, Hora: ${selectedHora}, Motivo: ${motivo}, Recordatorio: ${selectedTimeRemainder}`);
+    console.log(CodigoAleatorio())
     const data ={
         codigo_cita: CodigoAleatorio(),
-        dni_paciente: "1234",
-        dni_medico: "12345",
-        codigo_hospital:"1",
+        dni_paciente: "34567890123",
+        dni_medico: "56789012345",
+        codigo_hospital:selectedHospital,
         fecha: selectedDate,
         hora: selectedHora,
         razon: motivo,
@@ -74,22 +78,28 @@ export default function RegistroCitaScreen({navigation}) {
         diagnostico:" ",
         tratamiento:" ",
         valoracion:0
-
     };
     GuardarCita(data);
-    console.log(fechaActual);
-
   };
+
+  
   
 
   return (
     <ScrollView>
-    <View><Text style={styles.title}>Agendar una cita</Text></View>
+      
+    <TittleComponent title={"Agendar una cita"}></TittleComponent>
     <View style={styles.container}>
       
-      
       <Text style={styles.label}>Hospital</Text>
-      <PickerComp style={styles.selector} selectedValue={selectedHospital} setSelectedValue={handleHospitalSelect} />
+      <PickerComp
+      selectedValue={selectedHospital}
+      onValueChange={handleHospitalSelect}
+      dni={"56789012345"}
+      style={{ height: 50, width: 150 }}
+      
+    > 
+    </PickerComp>
       
       <Text style={styles.label}>Fecha de la cita</Text>
       <Calendar
@@ -101,8 +111,12 @@ export default function RegistroCitaScreen({navigation}) {
       />
     
       <Text style={styles.label}>Hora de la consulta</Text>
-      <PickerComp selectedValue={selectedHora} setSelectedValue={handleHoraSelect} />
-
+      <PickerHorario 
+      selectedValue={selectedHora}
+      setSelectedValue={handleHoraSelect}
+      dni={"56789012345"}
+      codigo_h={selectedHospital}
+      fecha={selectedDate}></PickerHorario>
     <Text style={styles.label}>Motivo</Text>
       <TextInput
         multiline={true}

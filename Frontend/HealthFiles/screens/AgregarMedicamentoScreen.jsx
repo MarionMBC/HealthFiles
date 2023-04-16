@@ -7,6 +7,7 @@ import {Checkbox, Searchbar} from "react-native-paper";
 import {Input} from "@rneui/base";
 import AutoCompleteComponent from "../components/AutoCompleteComponent";
 import {fetchMedicamentos, obtenerMedicamentos} from "../helpers/RegistroMedicamentos.helper";
+import { SelectList } from "react-native-dropdown-select-list"
 
 const AgregarMedicamentoScreen = ({navigation}) => {
     const [datePickerVisible, setDatePickerVisible] = useState(false);
@@ -37,11 +38,11 @@ const AgregarMedicamentoScreen = ({navigation}) => {
         >
             <View>
                 <View style={{marginTop:10}}>
-                    <Searchbar
-                placeholder={'Buscar medicamento'}
-                style={{backgroundColor: '#fff', margin:10, borderColor: '#cfcfcf', borderWidth: 0.2}}
+            
+                <SelectList>
+                    
+                </SelectList>
 
-                ></Searchbar>
                     {/*<AutoCompleteComponent></AutoCompleteComponent>*/}
                 </View>
                 <View>

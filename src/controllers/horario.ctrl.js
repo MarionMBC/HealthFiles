@@ -19,7 +19,7 @@ export const getHorariosDisponibles = async (req, res) =>{
        const dni = req.params.dni_medico; //Guardo el dni_medico enviado através de la URL
        const cod = req.params.codigo_hospital; //Guardo el código del hospital 
        const fecha = req.params.fecha;
-       const horarios = await pool.query(
+       const [horarios] = await pool.query(
         "SELECT hor.hora_inicio, hor.hora_final FROM horario hor INNER JOIN registro_citas_agendadas reg ON reg.codigo_horario = hor.codigo_horario WHERE hor.dni_medico =? AND hor.codigo_hospital = ? AND reg.fecha_disponibilidad = ? AND hor.dia_de_semana = DAYNAME(?) AND reg.codigo_cita IS NULL", [dni, cod, fecha, fecha]
         );
        return res.send(horarios); //Envío todas las citas del paciente especificado 
