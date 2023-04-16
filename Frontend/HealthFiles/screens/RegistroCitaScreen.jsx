@@ -13,25 +13,10 @@ import { Button } from '@rneui/themed';
 import styles from '../styles/styles.js';
 import CodigoAleatorio from '../helpers/CodigoAleatorio.js';
 import { GuardarCita } from '../helpers/RegistroCitas.helper.jsx';
-import { obtenerHospitales } from '../helpers/RegistroCitas.helper.jsx';
-import { Picker } from '@react-native-picker/picker';
+import TittleComponent from '../components/Tittle.component.jsx';
+
 
 export default function RegistroCitaScreen({navigation}) {
-  
-  const [hospitales, setHospitales] = useState([]);
-  useEffect(() => {
-    const obtenerDatos = async () => {
-      const datos = await obtenerHospitales();
-      setHospitales(datos);
-    }
-    obtenerDatos();
-  }, [])
-
-  const opcionesPicker = hospitales.map((hospital) => ({
-    label: hospital.nombre_hospital,
-    value: hospital.codigo_hospital,
-  }));
-
   
 
   //Declaración de variables de estado
@@ -99,46 +84,24 @@ export default function RegistroCitaScreen({navigation}) {
 
   };
 
-  const [selectedValue, setSelectedValue] = useState('');
-
-  const handleValueChange = (value) => {
-    setSelectedValue(value);
-    console.log(`Selected value: ${value}`);
-    console.log(hospitales);
-    console.log("-----------------------------------------------")
-    console.log(opcionesPicker);
-  };
   
   
 
   return (
     <ScrollView>
-      <View>
-      <Text>Select a value:</Text>
-      <Picker
-        selectedValue={selectedValue}
-        onValueChange={handleValueChange}
-      >
-        <Picker.Item label="Value 1" value="value1" />
-        <Picker.Item label="Value 2" value="value2" />
-        <Picker.Item label="Value 3" value="value3" />
-      </Picker>
-    </View>
-    <View><Text style={styles.title}>Agendar una cita</Text></View>
+      
+    <TittleComponent title={"Agendar una cita"}></TittleComponent>
     <View style={styles.container}>
       
-      
       <Text style={styles.label}>Hospital</Text>
-      <Picker
+      <PickerComp
       selectedValue={selectedHospital}
       onValueChange={handleHospitalSelect}
+      dni={"56789012345"}
       style={{ height: 50, width: 150 }}
       
-    >
-      {opcionesPicker.map((opcion) => (
-        <Picker.Item key={opcion.value} label={opcion.label} value={opcion.value} />
-      ))}
-    </Picker>
+    > 
+    </PickerComp>
       
       <Text style={styles.label}>Fecha de la cita</Text>
       <Calendar
@@ -152,7 +115,10 @@ export default function RegistroCitaScreen({navigation}) {
       <Text style={styles.label}>Hora de la consulta</Text>
       <PickerHorario 
       selectedValue={selectedHora}
-      setSelectedValue={handleHoraSelect}></PickerHorario>
+      setSelectedValue={handleHoraSelect}
+      dni={"56789012345"}
+      codigo_h={selectedHospital}
+      fecha={selectedDate}></PickerHorario>
     <Text style={styles.label}>Motivo</Text>
       <TextInput
         multiline={true}

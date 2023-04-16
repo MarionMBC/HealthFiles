@@ -8,16 +8,16 @@ import { Picker } from '@react-native-picker/picker';
 import { useEffect, useState } from "react";
 import { obtenerHorarios } from "../helpers/Horarios.helper";
 
-export default function PickerHorario({ selectedValue, setSelectedValue}) {
+export default function PickerHorario({ selectedValue, setSelectedValue, dni, codigo_h, fecha}) {
   const [horarios, setHorario] = useState([]);
 
   useEffect(() => {
     const obtenerDatos = async () => {
-      const datos = await obtenerHorarios();
+      const datos = await obtenerHorarios(dni, codigo_h, fecha);
       setHorario(datos);
     };
     obtenerDatos();
-  }, []);
+  }, [dni, codigo_h, fecha]);
 
   const opcionesPicker = horarios.map((horario) => ({
     label: horario.hora_inicio + ' - ' + horario.hora_final,

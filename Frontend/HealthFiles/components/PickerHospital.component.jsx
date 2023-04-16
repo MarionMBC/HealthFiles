@@ -9,17 +9,17 @@ import { useEffect, useState } from "react";
 import { obtenerHospitales } from "../helpers/RegistroCitas.helper";
 
 
-export default function PickerComp({ selectedValue, setSelectedValue}) {
+export default function PickerComp({ selectedValue, onValueChange, dni}) {
   
   const [hospitales, setHospitales] = useState([]);
 
   useEffect(() => {
     const obtenerDatos = async () => {
-      const datos = await obtenerHospitales();
+      const datos = await obtenerHospitales(dni);
       setHospitales(datos);
     };
     obtenerDatos();
-  }, []);
+  }, [dni]);
 
   const opcionesPicker = hospitales.map((hospital) => ({
     label: hospital.nombre_hospital,
@@ -30,7 +30,7 @@ export default function PickerComp({ selectedValue, setSelectedValue}) {
     <Picker
       selectedValue={selectedValue}
       style={{ height: 50, width: 150 }}
-      onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+      onValueChange={onValueChange}
     >
       {opcionesPicker.map((opcion) => (
         <Picker.Item key={opcion.value} label={opcion.label} value={opcion.value} />
