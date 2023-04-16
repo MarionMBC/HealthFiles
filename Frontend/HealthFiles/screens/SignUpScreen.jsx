@@ -20,7 +20,7 @@ import ImageUpload from '../components/ImagenUpload.component';
 export default function SignUpScreen() {
     const navigation = useNavigation();
 
-    //Expresiones Regulares Validaciones
+    //Expresiones Regulares Validaciones Formulario
     const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;  
     const PASSWORD_REGEX =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     const PHONE_REGEX = /(\(?(\+54)\)?)?(11)(\d{8})/;
