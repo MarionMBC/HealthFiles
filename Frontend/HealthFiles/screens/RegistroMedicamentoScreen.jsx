@@ -2,9 +2,6 @@ import { ScrollView, Text, TouchableHighlight, View } from "react-native";
 import MedicamentoCardComponent from "../components/MedicamentoCard.component";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import PacienteInfoComponent from "../components/PacienteInfo.component";
-
-
-
 import TittleComponent from "../components/Tittle.component";
 import AgregarComponente from "../components/AgregarComponent.component";
 import {fetchData, fetchMedicamentos, obtenerMedicamentos} from "../helpers/RegistroMedicamentos.helper";
@@ -21,8 +18,10 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
         )
         data.then((res) => res.json())
             .then((res) => {
-                setMedicamentos(res)
-                setSearch(res)
+                 /*    setSearch(res)  */ 
+               
+                    setMedicamentos(res)
+                
             })
             .catch((e) => console.log(e));
     }, [temp]);
@@ -39,8 +38,20 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
             });
             setSearch(newData);
         } else {
-            setSearch(medicamentos);
-        }        
+            setSearchStatus(false)
+            setMedicamentos(fetch(
+                "https://healthfiles-production.up.railway.app/medicamento_paciente/get/78901234567"
+            )
+                .then((res) => res.json())
+                .then((res) => {
+                     /*    setSearch(res)  */ 
+                   
+                        setMedicamentos(res)
+                    
+                })
+                .catch((e) => console.log(e)));
+        }
+        
     };
 
     useLayoutEffect(() => {
@@ -76,8 +87,8 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
             />
 
             <View style={{ marginBottom: 15 }}>
-            {medicamentos.length > 0 ? (
-                    search.map((med) => (
+                {medicamentos.length > 0 ? (
+                    medicamentos.map((med) => (
                         <MedicamentoCardComponent
                             key={med.codigo_medicamento}
                             navigation={navigation}
@@ -103,10 +114,15 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
             </View>
 
 
+            <AgregarComponente navigation={navigation} />
+
             <AgregarComponente nombre={"Medicamento"} navigation = {navigation} />
 
         </ScrollView>
-    );
-};
+
+    )
+}
+
+
 
 export default RegistroMedicamentoScreen;

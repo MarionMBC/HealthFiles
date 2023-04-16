@@ -19,10 +19,11 @@ import styles from '../../HealthFiles/styles/styles';
 export default function SignUpScreen() {
     const navigation = useNavigation();
 
-    //Expresiones Regulares Validaciones
+    //Expresiones Regulares Validaciones Formulario
     const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;  
     const PASSWORD_REGEX =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     const PHONE_REGEX = /(\(?(\+54)\)?)?(11)(\d{8})/;
+    const IMAGEN_REGEX = /([a-zA-Z0-9])+(.[j|p]+[n|p]+[g])/;
 
     //Handles
     const {control, handleSubmit, watch} = useForm();
@@ -393,6 +394,21 @@ export default function SignUpScreen() {
                   message: 'El Pin debe contener 4 caracteres',
                 },
               }}  
+          />
+
+          <Text //IMAGEN DE PERFIL
+            style = {styles.subtitulos_2}
+          > Imagén de Perfil </Text>
+          <CustomInput 
+              name="Imagen de Perfil"
+              control={control}
+              placeholder='imagen.jpg'
+              marginTop = {6}  
+              rules = {{
+                required: 'El campo Imagen de Perfil esta vacio',
+                pattern: {value: IMAGEN_REGEX, message: 'Ingresar una imagen valida'}
+              }}
+              keyboardType='email-address'   
           />
 
           <Text //PESO

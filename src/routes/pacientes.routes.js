@@ -5,7 +5,7 @@
  */
 
 import {Router} from 'express';
-import { createPaciente, deletePaciente, getPaciente, getPacientes, getUsuarioPaciente, updatePaciente } from '../controllers/paciente.ctrl.js';
+import { createPaciente, deletePaciente, getPaciente,getPacientesPorMedico, getPacientes, getUsuarioPaciente, updatePaciente } from '../controllers/paciente.ctrl.js';
 
 const router = Router();
 
@@ -15,6 +15,7 @@ router.get('/get/:correo_electronico/:contrasena', getUsuarioPaciente);
 router.post('/create', createPaciente);
 router.patch('/update/:dni_paciente', updatePaciente);
 router.delete('/delete/:dni_paciente', deletePaciente);
+router.get('/getPorMedico/:dni_medico', getPacientesPorMedico);
 
 
 export default router;
