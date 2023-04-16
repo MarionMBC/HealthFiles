@@ -13,38 +13,34 @@ import {fetchData, fetchMedicamentos, obtenerMedicamentos} from "../helpers/Regi
 const RegistroMedicamentoScreen = ({ navigation }) => {
     const [search, setSearch] = useState([]);
     const [medicamentos, setMedicamentos] = useState([]);
-    const [searchStatus, setSearchStatus ] = useState(false);
-    
+    const [searchStatus, setSearchStatus ] = useState(true); 
+    const temp = true;
     useEffect(() => {
-        fetch(
+        const data = fetch(
             "https://healthfiles-production.up.railway.app/medicamento_paciente/get/78901234567"
         )
-            .then((res) => res.json())
+        data.then((res) => res.json())
             .then((res) => {
-                 /*    setSearch(res)  */ 
-               
-                    setMedicamentos(res)
-                    setSearch(res)
-                
+                setMedicamentos(res)
+                setSearch(res)
             })
             .catch((e) => console.log(e));
-    }, []);
+    }, [temp]);
+
     
 
+
     const searchFilterFunction = (text) => {
-        setSearchStatus(true)
         if (text) {
             const newData = medicamentos.filter((item) => {
                 const itemName = item.nombre_comercial ? item.nombre_comercial.toUpperCase() : "".toUpperCase();
                 const textData = text.toUpperCase();
                 return itemName.indexOf(textData) > -1;
             });
-            setMedicamentos(newData);
+            setSearch(newData);
         } else {
-            setSearchStatus(false)
-            setMedicamentos(medicamentos);
-        }
-        
+            setSearch(medicamentos);
+        }        
     };
 
     useLayoutEffect(() => {
@@ -80,13 +76,13 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
             />
 
             <View style={{ marginBottom: 15 }}>
-                {medicamentos.length > 0 ? (
+            {medicamentos.length > 0 ? (
                     search.map((med) => (
                         <MedicamentoCardComponent
                             key={med.codigo_medicamento}
                             navigation={navigation}
                             medicamento={med}
-                        
+                            
                            
                         />
 
@@ -106,8 +102,6 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
                 )}
             </View>
 
-
-            <AgregarMedicamentoComponent navigation={navigation} />
 
             <AgregarComponente nombre={"Medicamento"} navigation = {navigation} />
 
