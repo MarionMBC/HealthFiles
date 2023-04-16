@@ -121,7 +121,10 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
             <AgregarComponente nombre={"Medicamento"} navigation = {navigation} />
 
         </ScrollView>
-    );
-};
+
+    )
+}
+
+
 
 export default RegistroMedicamentoScreen;
