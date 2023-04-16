@@ -1,7 +1,6 @@
 import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
-import CirugiasScreen from '../screens/CirugiasScreen';
 import NavigationStackExamenes from './NavigationStackExamenes';
 import ReportesScreen from '../screens/ReportesScreen';
 import NavigationStackCitas from './NavigationStackCitas';

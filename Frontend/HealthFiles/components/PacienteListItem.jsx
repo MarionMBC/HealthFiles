@@ -23,14 +23,14 @@ const styles = StyleSheet.create({
         marginBottom: 1,
       },
     pacienteName: {
-        color: '#c5e0f0',
+        color: '#ffffff',
         marginLeft: 5,
         fontSize: 18,
         fontWeight: "bold",
         marginBottom: 5,
     },
     pacienteDni: {
-        color: '#c5e0f0',
+        color: '#ffffff',
         marginLeft: 5,
         fontSize: 14,
         marginBottom: 5,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
       pacienteEnfermedades: {
         marginLeft: 5,
         fontSize: 14,
-        color: '#c5e0f0',
+        color: '#ffffff',
       },
 });
 

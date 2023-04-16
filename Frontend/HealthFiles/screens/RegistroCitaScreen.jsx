@@ -3,21 +3,39 @@
  * Date: 29/03/2023
  * Description: Pantalla para el registro de una cita para el usuario doctor
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, ScrollView } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Calendar } from 'react-native-calendars';
-import PickerComp from '../components/Picker.component.jsx';
+import PickerComp from '../components/PickerHospital.component.jsx';
+import PickerHorario from '../components/PickerHorario.component.jsx';
 import { Button } from '@rneui/themed';
 import styles from '../styles/styles.js';
 import CodigoAleatorio from '../helpers/CodigoAleatorio.js';
 import { GuardarCita } from '../helpers/RegistroCitas.helper.jsx';
-
+import { obtenerHospitales } from '../helpers/RegistroCitas.helper.jsx';
+import { Picker } from '@react-native-picker/picker';
 
 export default function RegistroCitaScreen({navigation}) {
   
+  const [hospitales, setHospitales] = useState([]);
+  useEffect(() => {
+    const obtenerDatos = async () => {
+      const datos = await obtenerHospitales();
+      setHospitales(datos);
+    }
+    obtenerDatos();
+  }, [])
+
+  const opcionesPicker = hospitales.map((hospital) => ({
+    label: hospital.nombre_hospital,
+    value: hospital.codigo_hospital,
+  }));
+
+  
+
   //Declaración de variables de estado
-  const [motivo, setMotivo] = useState('');
+  const [motivo, setMotivo] = useState(null);
   const [datePickerVisible, setDatePickerVisible] = useState(false);
   const [selectedHospital, setSelectedHospital] = useState('');
   const [selectedHora, setSelectedHora] = useState('');//Para mantener este como valor seleccionado
@@ -76,20 +94,51 @@ export default function RegistroCitaScreen({navigation}) {
         valoracion:0
 
     };
-    GuardarCita(data);
+    
     console.log(fechaActual);
 
   };
+
+  const [selectedValue, setSelectedValue] = useState('');
+
+  const handleValueChange = (value) => {
+    setSelectedValue(value);
+    console.log(`Selected value: ${value}`);
+    console.log(hospitales);
+    console.log("-----------------------------------------------")
+    console.log(opcionesPicker);
+  };
+  
   
 
   return (
     <ScrollView>
+      <View>
+      <Text>Select a value:</Text>
+      <Picker
+        selectedValue={selectedValue}
+        onValueChange={handleValueChange}
+      >
+        <Picker.Item label="Value 1" value="value1" />
+        <Picker.Item label="Value 2" value="value2" />
+        <Picker.Item label="Value 3" value="value3" />
+      </Picker>
+    </View>
     <View><Text style={styles.title}>Agendar una cita</Text></View>
     <View style={styles.container}>
       
       
       <Text style={styles.label}>Hospital</Text>
-      <PickerComp style={styles.selector} selectedValue={selectedHospital} setSelectedValue={handleHospitalSelect} />
+      <Picker
+      selectedValue={selectedHospital}
+      onValueChange={handleHospitalSelect}
+      style={{ height: 50, width: 150 }}
+      
+    >
+      {opcionesPicker.map((opcion) => (
+        <Picker.Item key={opcion.value} label={opcion.label} value={opcion.value} />
+      ))}
+    </Picker>
       
       <Text style={styles.label}>Fecha de la cita</Text>
       <Calendar
@@ -101,8 +150,9 @@ export default function RegistroCitaScreen({navigation}) {
       />
     
       <Text style={styles.label}>Hora de la consulta</Text>
-      <PickerComp selectedValue={selectedHora} setSelectedValue={handleHoraSelect} />
-
+      <PickerHorario 
+      selectedValue={selectedHora}
+      setSelectedValue={handleHoraSelect}></PickerHorario>
     <Text style={styles.label}>Motivo</Text>
       <TextInput
         multiline={true}

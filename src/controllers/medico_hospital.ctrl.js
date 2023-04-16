@@ -1,25 +1,5 @@
 import {pool} from '../db/config.js';
 
-export const getMedicoHospital = async (req, res) => {
-    try {
-        const {dni_medico} = req.params;
-        const [medico] = await pool.query("SELECT h.nombre_hospital, CONCAT_WS(' ', m.primer_nombre, m.segundo_nombre, m.primer_apellido, m.segundo_apellido) AS nombre_completo\n" +
-            "FROM medico_hospital\n" +
-            "INNER JOIN medico m ON medico_hospital.dni_medico = m.dni_medico\n" +
-            "inner join hospital h on medico_hospital.codigo_hospital = h.codigo_hospital\n" +
-            "where m.dni_medico = ?", [dni_medico]);
-        if (medico.length === 0) {
-            return res.status(404).json({msg: "Médico no encontrado."});
-        } else {
-            return res.send(medico);
-        }
-    } catch (e) {
-        res.status(500).json({
-            msg: `Algo ha salido mal al intentar obtener el médico. ${e}`
-        })
-    }
-}
-
 /**
  * @author Jennebier Esther Alvarado López
  * @date 7 de abril del 2023
@@ -30,7 +10,7 @@ export const getMedicoHospital = async (req, res) => {
 export const getHospitalesMedico = async (req, res) => {
     try {
         const dni = req.params.dni_medico;
-        const hospitales = await pool.query("SELECT h.nombre_hospital FROM medico_hospital mh INNER JOIN hospital h ON h.codigo_hospital=mh.codigo_hospital where mh.dni_medico = ?", [dni])
+        const hospitales = await pool.query("SELECT * FROM medico_hospital mh INNER JOIN hospital h ON h.codigo_hospital=mh.codigo_hospital where mh.dni_medico = ?", [dni])
         if (hospitales.length === 0) {
             res.status(404).json({
                 msg: "Hospitales no encontrados."

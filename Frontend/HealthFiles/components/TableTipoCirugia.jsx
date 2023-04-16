@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     tableHeaderText: {
-        textDecorationLine: 'underline line',
+        textDecorationLine: 'underline',
         fontWeight: 'bold',
         fontSize: 18,
     },
