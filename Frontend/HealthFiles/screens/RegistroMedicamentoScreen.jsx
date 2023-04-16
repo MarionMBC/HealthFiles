@@ -2,14 +2,13 @@ import { ScrollView, Text, TouchableHighlight, View } from "react-native";
 import MedicamentoCardComponent from "../components/MedicamentoCard.component";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import PacienteInfoComponent from "../components/PacienteInfo.component";
-<<<<<<< HEAD
-import AgregarMedicamentoComponent from "../components/AgregarMedicamento.component";
-import { obtenerMedicamentos } from "../helpers/RegistroMedicamentos.helper";
-=======
+
+
+
 import TittleComponent from "../components/Tittle.component";
 import AgregarComponente from "../components/AgregarComponent.component";
 import {fetchData, fetchMedicamentos, obtenerMedicamentos} from "../helpers/RegistroMedicamentos.helper";
->>>>>>> ebaa8c89b23d87ab9608294d15a87bc3bb15c9f7
+
 
 const RegistroMedicamentoScreen = ({ navigation }) => {
     const [search, setSearch] = useState([]);
@@ -106,12 +105,12 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
                     </Text>
                 )}
             </View>
-<<<<<<< HEAD
+
 
             <AgregarMedicamentoComponent navigation={navigation} />
-=======
+
             <AgregarComponente nombre={"Medicamento"} navigation = {navigation} />
->>>>>>> ebaa8c89b23d87ab9608294d15a87bc3bb15c9f7
+
         </ScrollView>
     );
 };
