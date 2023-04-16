@@ -15,6 +15,7 @@ import CustomInput from '../../../Frontend/HealthFiles/components/CustomInput.co
 import { useForm } from 'react-hook-form';
 import { SelectList } from 'react-native-dropdown-select-list';
 import styles from '../../HealthFiles/styles/styles';
+import ImageUpload from '../components/ImagenUpload.component';
 
 export default function SignUpScreen() {
     const navigation = useNavigation();
@@ -394,6 +395,11 @@ export default function SignUpScreen() {
                 },
               }}  
           />
+
+          <Text //IMAGEN DE PERFIL
+            style = {styles.subtitulos_2}
+          > Imagén de Perfil </Text>
+          <ImageUpload/>
 
           <Text //PESO
             style = {styles.subtitulos_2}
