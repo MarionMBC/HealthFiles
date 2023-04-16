@@ -10,6 +10,7 @@ import { obtenerHospitales } from "../helpers/RegistroCitas.helper";
 
 
 export default function PickerComp({ selectedValue, setSelectedValue}) {
+  
   const [hospitales, setHospitales] = useState([]);
 
   useEffect(() => {

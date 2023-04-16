@@ -1,25 +1,29 @@
+/**
+ * Author: Jennebier Esther Alvarado López
+ * Date: 29/03/2023
+ * Description: Componente Picker que se renderiza con los valores enviados
+ */
 import React from "react";
 import { Picker } from '@react-native-picker/picker';
 import { useEffect, useState } from "react";
-import { obtenerHospitales } from "../helpers/RegistroCitas.helper";
-
+import { obtenerHorarios } from "../helpers/Horarios.helper";
 
 export default function PickerHorario({ selectedValue, setSelectedValue}) {
-  const [hospitales, setHospitales] = useState([]);
+  const [horarios, setHorario] = useState([]);
 
   useEffect(() => {
     const obtenerDatos = async () => {
-      const datos = await obtenerHospitales();
-      setHospitales(datos);
+      const datos = await obtenerHorarios();
+      setHorario(datos);
     };
     obtenerDatos();
   }, []);
 
-  const opcionesPicker = hospitales.map((hospital) => ({
-    label: hospital.nombre,
-    value: hospital.id,
+  const opcionesPicker = horarios.map((horario) => ({
+    label: horario.hora_inicio + ' - ' + horario.hora_final,
+    value: horario.hora_inicio,
   }));
-
+  console.log(horarios);
   return (
     <Picker
       selectedValue={selectedValue}
@@ -27,8 +31,11 @@ export default function PickerHorario({ selectedValue, setSelectedValue}) {
       onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
     >
       {opcionesPicker.map((opcion) => (
-        <Picker.Item key={opcion.value} label={opcion.label} value={opcion.value} />
+         <Picker.Item key={opcion.value} label={opcion.label} value={opcion.value} />
       ))}
     </Picker>
   );
 }
+
+
+
