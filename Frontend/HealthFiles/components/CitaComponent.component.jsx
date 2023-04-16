@@ -21,7 +21,7 @@ const CitaCardComponent = ({dni_paciente}) => {
     useEffect(() => {
       const obtenerDatos = async () => {
         const datos = await obtenerCitas(dni_paciente);
-        setCitas(datos[0]);
+        setCitas(datos);
       };
       obtenerDatos();
     }, [dni_paciente]);
