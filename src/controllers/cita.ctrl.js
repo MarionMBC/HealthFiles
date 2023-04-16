@@ -17,7 +17,7 @@ import { pool } from "../db/config.js";
 export const getCitasPaciente = async (req, res) =>{
     try{
        const dni =req.params.dni_paciente; //Guardo el dni_paciente enviado através de la URL
-       const citas = await pool.query("SELECT * FROM cita WHERE dni_paciente =?", [dni]);
+       const [citas] = await pool.query("SELECT * FROM cita WHERE dni_paciente =?", [dni]);
        return res.send(citas); //Envío todas las citas del paciente especificado 
     } 
     catch (error){
@@ -38,7 +38,7 @@ export const getCitasPacienteFecha = async (req, res) =>{
     try{
        const dni =req.params.dni_paciente; //Guardo el dni_paciente enviado através de la URL
        const fecha = req.params.fecha; //Guardar la fecha enviada en la URL
-       const citas = await pool.query("SELECT * FROM cita WHERE dni_paciente =? AND fecha = ?", [dni, fecha]);
+       const [citas] = await pool.query("SELECT * FROM cita WHERE dni_paciente =? AND fecha = ?", [dni, fecha]);
        return res.send(citas); //Envío todas las citas del paciente especificado 
     } 
     catch (error){
@@ -59,7 +59,7 @@ export const getCitasMedicoFecha = async (req, res) =>{
     try{
        const dni = req.params.dni_medico; //Guardar el dni_paciente enviado através de la URL
        const fecha = req.params.fecha; //Guardar la fecha enviada a través de la URL  
-       const citas = await pool.query("SELECT * FROM cita WHERE dni_medico =? AND fecha = ?", [dni, fecha]);
+       const [citas] = await pool.query("SELECT * FROM cita WHERE dni_medico =? AND fecha = ?", [dni, fecha]);
        return res.send(citas); //Envío todas las citas del médico especificado en la fecha especificada(preferencia: fecha actual)
     } 
     catch (error){
