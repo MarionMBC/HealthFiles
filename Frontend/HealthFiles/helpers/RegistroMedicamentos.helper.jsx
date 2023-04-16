@@ -30,7 +30,7 @@ export const dateFormatter = (date) => {
 }
 
 
-export const eliminarMedicamento = async (codigo_medicamento, dni='12345678901') => {
+export const eliminarMedicamento = async (codigo_medicamento, dni='78901234567') => {
         try {
                 const response = await fetch(`https://healthfiles-production.up.railway.app/medicamento_paciente/delete/${dni}/${codigo_medicamento}`, {method: 'DELETE'})
                 const data = await response.json()
@@ -42,18 +42,6 @@ export const eliminarMedicamento = async (codigo_medicamento, dni='12345678901')
 
 
 /*
-export const fetchMedicamentos = async () => {
-        try{
-                const respuesta = await fetch(`${URL}medicamento/get`);
-                const medicamentos = await respuesta.json()
-                return medicamentos;
-        }
-        catch (e) {
-                return e
-        }
-}
-*/
-
 
 
 
@@ -68,17 +56,18 @@ export const fetchData = async(url, setState) => {
 }
 
 
-export const fetchMedicamentos = async  (setSearch, setMedicamentos) => {
+/*export const fetchMedicamentos = async (setMedicamentos) => {
         try {
                 const response = await fetch(`${URL}medicamento_paciente/get/78901234567`)
                 const json = await response.json();
-                setSearch(json);
                 setMedicamentos(json);
         }
         catch (e) {
                 return e;
         }
-}
+}*/
+
+
 
 
 export const searchFilter = (text, setSearch, data, searchName) => {

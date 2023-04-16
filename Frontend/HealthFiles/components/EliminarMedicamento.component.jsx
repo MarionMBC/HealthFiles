@@ -1,23 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {Modal, Pressable, Text, StyleSheet, View, Alert} from "react-native";
 import {eliminarMedicamento, obtenerMedicamentos} from "../helpers/RegistroMedicamentos.helper";
-const EliminarMedicamentoComponent = ({modalVisible, setModalVisible, codigo_medicamento, dni_paciente}) => {
+const EliminarMedicamentoComponent = ({modalVisible, setModalVisible, codigo_medicamento}) => {
 
     const [respuesta, setRespuesta] = useState();
-
-
-
-
     const handleDelete = () => {
         setModalVisible(!modalVisible);
-
             eliminarMedicamento(codigo_medicamento).then(r => {
-                console.log(r)
                 setRespuesta(r)
-
+             
             })
 
     }
+
 
     return (
         <View style={styles.centeredView }>
