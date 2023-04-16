@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { getHospitalesMedico, getMedicoHospital } from '../controllers/medico_hospital.ctrl.js';
+import { getHospitalesMedico } from '../controllers/medico_hospital.ctrl.js';
 const router = Router();
 
 //router.get('/getMedico/:dni_medico', getMedicoHospital);
