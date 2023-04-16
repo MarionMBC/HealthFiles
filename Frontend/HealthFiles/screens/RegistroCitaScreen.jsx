@@ -22,9 +22,9 @@ export default function RegistroCitaScreen({navigation}) {
   //Declaración de variables de estado
   const [motivo, setMotivo] = useState(null);
   const [datePickerVisible, setDatePickerVisible] = useState(false);
-  const [selectedHospital, setSelectedHospital] = useState('');
+  const [selectedHospital, setSelectedHospital] = useState('HN-HOSP-002');
   const [selectedHora, setSelectedHora] = useState('');//Para mantener este como valor seleccionado
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(fechaActual);
   const [selectedTimeRemainder, setSelectedTimeRemainder] = useState('');
 
     //Handles
@@ -67,9 +67,9 @@ export default function RegistroCitaScreen({navigation}) {
     console.log(`Submitted: Hospital: ${selectedHospital}, Fecha: ${selectedDate}, Hora: ${selectedHora}, Motivo: ${motivo}, Recordatorio: ${selectedTimeRemainder}`);
     const data ={
         codigo_cita: CodigoAleatorio(),
-        dni_paciente: "1234",
-        dni_medico: "12345",
-        codigo_hospital:"1",
+        dni_paciente: "34567890123",
+        dni_medico: "56789012345",
+        codigo_hospital:selectedHospital,
         fecha: selectedDate,
         hora: selectedHora,
         razon: motivo,
@@ -77,11 +77,8 @@ export default function RegistroCitaScreen({navigation}) {
         diagnostico:" ",
         tratamiento:" ",
         valoracion:0
-
     };
-    
-    console.log(fechaActual);
-
+    GuardarCita(data);
   };
 
   

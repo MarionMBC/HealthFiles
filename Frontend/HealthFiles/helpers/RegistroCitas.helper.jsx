@@ -2,7 +2,7 @@
 const URL = "https://healthfiles-production.up.railway.app/";
 
 export const GuardarCita = async (data) =>{
-     const urlCita = `http://10.0.2.2:4000/cita/create`
+     const urlCita = `${URL}cita/create`
      await fetch(urlCita, {
       method: 'POST',
       headers: {
