@@ -10,7 +10,7 @@ import {pool} from '../db/config.js';
 export const getHospitalesMedico = async (req, res) => {
     try {
         const dni = req.params.dni_medico;
-        const hospitales = await pool.query("SELECT * FROM medico_hospital mh INNER JOIN hospital h ON h.codigo_hospital=mh.codigo_hospital where mh.dni_medico = ?", [dni])
+        const [hospitales] = await pool.query("SELECT * FROM medico_hospital mh INNER JOIN hospital h ON h.codigo_hospital=mh.codigo_hospital where mh.dni_medico = ?", [dni])
         if (hospitales.length === 0) {
             res.status(404).json({
                 msg: "Hospitales no encontrados."
