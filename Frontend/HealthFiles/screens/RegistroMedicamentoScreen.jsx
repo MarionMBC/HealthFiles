@@ -76,6 +76,4 @@ const RegistroMedicamentoScreen = ({navigation})  => {
     )
 }
 
-
-
 export default RegistroMedicamentoScreen;
