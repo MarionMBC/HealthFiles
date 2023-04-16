@@ -4,18 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import PacienteListItem from "../components/PacienteListItem";
 
-const pacientes = [
-  {
-    name: "Mario Fernandez",
-    id: 1231,
-    enfermedades: ["diabetes", "hipertension"],
-  },
-  {
-    name: "Fernando Alcaraz",
-    id: 567,
-    enfermedades: ["hipertension"],
-  },
-];
+
 
 export default function PantallaPacientes({navigation}) {
   const [searchText, setSearchText] = useState('');
@@ -36,7 +25,6 @@ export default function PantallaPacientes({navigation}) {
 
       <View style={styles.list}>
       <FlatList
-        data={pacientes}
         renderItem={({ item }) => <PacienteListItem paciente={item} />}
         keyExtractor={(item) => item.id}
       />

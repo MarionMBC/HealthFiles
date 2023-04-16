@@ -2,9 +2,6 @@ import { ScrollView, Text, TouchableHighlight, View } from "react-native";
 import MedicamentoCardComponent from "../components/MedicamentoCard.component";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import PacienteInfoComponent from "../components/PacienteInfo.component";
-
-
-
 import TittleComponent from "../components/Tittle.component";
 import AgregarComponente from "../components/AgregarComponent.component";
 import {fetchData, fetchMedicamentos, obtenerMedicamentos} from "../helpers/RegistroMedicamentos.helper";

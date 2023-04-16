@@ -6,7 +6,6 @@ const PacienteListItem = ({paciente}) => {
         <View style= {styles.item}>
         <Text style={styles.pacienteName}>{paciente.name}</Text>
         <Text style={styles.pacienteDni}>{paciente.id}</Text>
-        <Text style={styles.pacienteEnfermedades}>{paciente.enfermedades.join(", ")}</Text>
     </View>
     );
 };

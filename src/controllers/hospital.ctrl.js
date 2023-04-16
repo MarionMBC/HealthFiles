@@ -130,7 +130,6 @@ export const updateHospital = async (req, res) => {
 }
 
 /**
-
  @Author: Bryan Fernandez
  @Date: 2023-03-18
  @Version: 1.0
