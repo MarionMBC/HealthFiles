@@ -24,7 +24,6 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
                  /*    setSearch(res)  */ 
                
                     setMedicamentos(res)
-                    setSearch(res)
                 
             })
             .catch((e) => console.log(e));
@@ -42,7 +41,17 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
             setMedicamentos(newData);
         } else {
             setSearchStatus(false)
-            setMedicamentos(medicamentos);
+            setMedicamentos(fetch(
+                "https://healthfiles-production.up.railway.app/medicamento_paciente/get/78901234567"
+            )
+                .then((res) => res.json())
+                .then((res) => {
+                     /*    setSearch(res)  */ 
+                   
+                        setMedicamentos(res)
+                    
+                })
+                .catch((e) => console.log(e)));
         }
         
     };
@@ -81,7 +90,7 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
 
             <View style={{ marginBottom: 15 }}>
                 {medicamentos.length > 0 ? (
-                    search.map((med) => (
+                    medicamentos.map((med) => (
                         <MedicamentoCardComponent
                             key={med.codigo_medicamento}
                             navigation={navigation}
@@ -107,7 +116,7 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
             </View>
 
 
-            <AgregarMedicamentoComponent navigation={navigation} />
+            <AgregarComponente navigation={navigation} />
 
             <AgregarComponente nombre={"Medicamento"} navigation = {navigation} />
 
