@@ -65,6 +65,7 @@ export default function RegistroCitaScreen({navigation}) {
   };
   const handleSubmit = () => {
     console.log(`Submitted: Hospital: ${selectedHospital}, Fecha: ${selectedDate}, Hora: ${selectedHora}, Motivo: ${motivo}, Recordatorio: ${selectedTimeRemainder}`);
+    console.log(CodigoAleatorio())
     const data ={
         codigo_cita: CodigoAleatorio(),
         dni_paciente: "34567890123",

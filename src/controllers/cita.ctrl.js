@@ -119,7 +119,7 @@ export const createCita = async (req, res) => {
 
     } = req.body;
     await pool.query(
-        "INSERT INTO cita (codigo_cita, dni_paciente, dni_medico, codigo_hospital, fecha, hora, razon, estado, diagnostico, tratamiento, valoracion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO cita (codigo_cita, dni_paciente, dni_medico, codigo_hospital, fecha, hora, razon, estado, diagnostico, tratamiento, valoracion) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
         [
             codigo_cita,
             dni_paciente,
