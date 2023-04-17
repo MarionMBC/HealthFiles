@@ -16,7 +16,7 @@ const URL = "https://healthfiles-production.up.railway.app/";
 
 export const GuardarPaciente = async (data) =>{
      const urlCita = `${URL}paciente/create`
-     await fetch(urlCita, {
+     await fetch(urlPaciente, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
