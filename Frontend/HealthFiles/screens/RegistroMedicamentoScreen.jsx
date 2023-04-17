@@ -2,9 +2,6 @@ import { ScrollView, Text, TouchableHighlight, View } from "react-native";
 import MedicamentoCardComponent from "../components/MedicamentoCard.component";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import PacienteInfoComponent from "../components/PacienteInfo.component";
-
-
-
 import TittleComponent from "../components/Tittle.component";
 import AgregarComponente from "../components/AgregarComponent.component";
 import {fetchData, fetchMedicamentos, obtenerMedicamentos} from "../helpers/RegistroMedicamentos.helper";
@@ -13,13 +10,13 @@ import {fetchData, fetchMedicamentos, obtenerMedicamentos} from "../helpers/Regi
 const RegistroMedicamentoScreen = ({ navigation }) => {
     const [search, setSearch] = useState([]);
     const [medicamentos, setMedicamentos] = useState([]);
-    const [searchStatus, setSearchStatus ] = useState(false);
-    
+    const [searchStatus, setSearchStatus ] = useState(true); 
+    const temp = true;
     useEffect(() => {
-        fetch(
+        const data = fetch(
             "https://healthfiles-production.up.railway.app/medicamento_paciente/get/78901234567"
         )
-            .then((res) => res.json())
+        data.then((res) => res.json())
             .then((res) => {
                  /*    setSearch(res)  */ 
                
@@ -27,18 +24,19 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
                 
             })
             .catch((e) => console.log(e));
-    }, []);
+    }, [temp]);
+
     
 
+
     const searchFilterFunction = (text) => {
-        setSearchStatus(true)
         if (text) {
             const newData = medicamentos.filter((item) => {
                 const itemName = item.nombre_comercial ? item.nombre_comercial.toUpperCase() : "".toUpperCase();
                 const textData = text.toUpperCase();
                 return itemName.indexOf(textData) > -1;
             });
-            setMedicamentos(newData);
+            setSearch(newData);
         } else {
             setSearchStatus(false)
             setMedicamentos(fetch(
@@ -95,7 +93,7 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
                             key={med.codigo_medicamento}
                             navigation={navigation}
                             medicamento={med}
-                        
+                            
                            
                         />
 

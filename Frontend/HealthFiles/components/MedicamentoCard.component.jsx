@@ -7,7 +7,7 @@ import EliminarMedicamentoComponent from "./EliminarMedicamento.component";
 
 
 
-const MedicamentoCardComponent = ({medicamento, navigation}) => {
+const MedicamentoCardComponent = ({medicamento, navigation, setSearchStatus}) => {
     const [isHovered, setIsHovered] = useState(false);
     const {
         codigo_medicamento,
@@ -64,7 +64,7 @@ const MedicamentoCardComponent = ({medicamento, navigation}) => {
                     </TouchableHighlight>
                 </View>
             </View>
-            <EliminarMedicamentoComponent modalVisible={modalVisible} setModalVisible={setModalVisible} codigo_medicamento={codigo_medicamento} />
+            <EliminarMedicamentoComponent modalVisible={modalVisible} setModalVisible={setModalVisible} codigo_medicamento={codigo_medicamento} setSearchStatus={setSearchStatus} />
         </Card>
 
     );

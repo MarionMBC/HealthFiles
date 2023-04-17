@@ -230,3 +230,22 @@ export const deletePaciente = async (req, res) => {
         })
     }
 };
+
+export const getPacientesPorMedico = async (req, res) => {
+    const { dni_medico } = req.params;
+  
+    try {
+      const pacientes = await pool.query(`
+        SELECT DISTINCT p.*
+        FROM paciente p
+        INNER JOIN cita c ON p.dni_paciente = c.dni_paciente AND c.dni_medico = ?
+        INNER JOIN cirugia ci ON p.dni_paciente = ci.dni_paciente
+        INNER JOIN medico_cirugia mc ON ci.id_cirugia = mc.id_cirugia AND mc.dni_medico = ?
+      `, [dni_medico, dni_medico]);
+  
+      res.json(pacientes[0]);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Hubo un error al obtener los pacientes por médico' });
+    }
+  };
