@@ -236,11 +236,11 @@ export const getPacientesPorMedico = async (req, res) => {
   
     try {
       const pacientes = await pool.query(`
-        SELECT DISTINCT p.*
-        FROM paciente p
-        INNER JOIN cita c ON p.dni_paciente = c.dni_paciente AND c.dni_medico = ?
-        INNER JOIN cirugia ci ON p.dni_paciente = ci.dni_paciente
-        INNER JOIN medico_cirugia mc ON ci.id_cirugia = mc.id_cirugia AND mc.dni_medico = ?
+       SELECT p.*
+      FROM Paciente p
+      INNER JOIN Cita c ON p.dni_paciente = c.dni_paciente AND c.dni_medico = 12345678901
+      INNER JOIN Cirugia cr ON p.dni_paciente = cr.dni_paciente
+      INNER JOIN medico_cirugia mc ON cr.codigo_cirugia = mc.codigo_cirugia AND mc.dni_medico = 12345678901
       `, [dni_medico, dni_medico]);
   
       res.json(pacientes[0]);

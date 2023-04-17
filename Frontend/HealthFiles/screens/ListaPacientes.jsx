@@ -11,14 +11,13 @@ export default function PantallaPacientes({navigation}) {
   useEffect(() => {
     async function fetchPacientes() {
       try {
-        const response = await axios.get("https://healthfiles-production.up.railway.app/pacientes/getPorMedico/123"); 
-        setPacientes(response.data);
+        const response = await fetch("https://healthfiles-production.up.railway.app/pacientes/getPorMedico/123");
+        const data = await response.json();
+        setPacientes(data);
       } catch (error) {
         console.log(error);
       }
     }
-
-    fetchPacientes();
   }, []);
 
   const handleSearch = (text) => {

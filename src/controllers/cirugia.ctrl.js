@@ -178,3 +178,17 @@ export const deleteCirugia = async (req, res) => {
         })
     }
 };
+
+/*Devuelve las cirugias hechas por un medico a un paciente en específico*/
+export const getCirugiasMedPac = async (req, res) =>{
+    try{
+       const dni_paciente =req.params.dni_paciente; 
+       const dni_medico =req.params.dni_medico; 
+       const cirugias = await pool.query("SELECT cir.codigo_cirugia,concat(med.primer_nombre, ' ', med.primer_apellido) AS nombre_doctor,concat(p.primer_nombre, ' ', p.primer_apellido) AS nombre_paciente,med.dni_medico,p.dni_paciente,cir.tipo,cir.motivo,cir.tratamiento,mg.fecha,cir.observaciones FROM cirugia cir INNER JOIN medico_cirugia mg on mg.codigo_cirugia = cir.codigo_cirugia INNER JOIN medico med on med.dni_medico = mg.dni_medico INNER JOIN paciente p on p.dni_paciente = cir.dni_paciente WHERE med.dni_medico = ? and p.dni_paciente = ?", [dni_medico, dni_paciente]);
+       return res.send(cirugias); 
+    } 
+    catch (error){
+        res.status(500);
+        res.json({ msg: `Error al obtener los registros de la tabla "medico_cirugia". Error: ${error}` });
+    }
+};
