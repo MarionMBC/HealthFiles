@@ -10,6 +10,8 @@ export const obtenerCorreoContrasena = async (correo_electronico='juan.perez@gma
     }
 }
 
+
+// Metodo POST Formulario de Registro
 const URL = "https://healthfiles-production.up.railway.app/";
 
 export const GuardarPaciente = async (data) =>{

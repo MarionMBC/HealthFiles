@@ -96,7 +96,7 @@ export default function SignUpScreen() {
       return year + " / " + month + " / " + day;
     }
     
-    //Buttons
+    //Buttons SignUp
     const onAceptarPressed = () => {
       console.log(`Submitted: Genero: ${genero}, Fecha_Nacimiento: ${fechaNacimiento}, Tipo_Sangre: ${tipoSangre}`)
       const data = {
