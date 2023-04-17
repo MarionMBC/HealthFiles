@@ -1,6 +1,12 @@
 
 const URL = "https://healthfiles-production.up.railway.app/";
 
+/**
+ * @author Jennebier Esther Alvarado López
+ * @date 17 de abril del 2023
+ * @description Agenda una cita
+ * @param {Json} data Registro a ingresar en la base de datos
+ */
 export const GuardarCita = async (data) =>{
      const urlCita = `${URL}cita/create`
      await fetch(urlCita, {
@@ -52,6 +58,33 @@ export const obtenerCitas = async (dni_paciente="34567890123") => {
      return e;
 }
  }
+
+ /**
+  * @author Jennebier Esther Alvarado López
+  * @date 17 de abril del 2023
+  * @description Cancela una cita, elimina su registro
+  * @param {String} codigoCita 
+  * @returns Json
+  */
+ export const cancelarCita = async (codigoCita) => {
+  try {
+          const response = await fetch(`${URL}cita/update/${codigoCita}`, 
+          {
+            method: 'PUT',
+          headers:{
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({
+          estado: 'Cancelada'
+        })
+       });
+       const res = await response.json();
+       return res;   
+  } catch (e) {
+          return e
+  }
+}
+
   
 
 

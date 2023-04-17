@@ -3,6 +3,7 @@ import { Button, View, Text } from 'react-native';
 import MyModal from '../components/Modal.component';
 import CitaCardComponent from '../components/CitaComponent.component';
 import PacienteInfoComponent from '../components/PacienteInfo.component';
+import AgregarComponente from '../components/AgregarComponent.component';
 
 
 export default function CitasScreen({ navigation }) {
@@ -15,10 +16,6 @@ export default function CitasScreen({ navigation }) {
         ></PacienteInfoComponent>
 
         <View>
-        <Button
-          title="Registro de citas"
-          onPress={() => navigation.navigate('RegistroCita')}
-        />
         <MyModal
         tittleButton={"Valorar atención"}
         tittleModal={"Valorar atención médica"}
@@ -27,6 +24,7 @@ export default function CitasScreen({ navigation }) {
         
       </View>
       <CitaCardComponent></CitaCardComponent>
+      <AgregarComponente nombre={"Cita"} navigation = {navigation} />
      
       </View>
 );

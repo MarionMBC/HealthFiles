@@ -4,9 +4,10 @@ import {ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-nati
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {dateFormatter} from "../helpers/RegistroMedicamentos.helper";
 import { obtenerCitas } from '../helpers/RegistroCitas.helper';
+import CancelarCita from './CancelarCita.component'; 
 
 
-const CitaCardComponent = ({dni_paciente}) => {
+const CitaCardComponent = ({dni_paciente, setSearchStatus}) => {
     const [isHovered, setIsHovered] = useState(false);
     
     const [modalVisible, setModalVisible] = useState(false);
@@ -52,7 +53,9 @@ const CitaCardComponent = ({dni_paciente}) => {
                         </TouchableHighlight>
                         <TouchableHighlight underlayColor="transparent" onPress={()=>{
                             setModalVisible(true)}}>
-                            <Icon name={'trash'} size={25} color={'#2b7bb7'} />
+                            <Icon name={'ban'} size={25} color={'#2b7bb7'} 
+                            onPress={()=>{
+                                setModalVisible(true)}}/>
                         </TouchableHighlight>
                         <TouchableHighlight underlayColor="transparent"  onPress={() => {
                             console.log('Hi')}}>
@@ -60,7 +63,7 @@ const CitaCardComponent = ({dni_paciente}) => {
                         </TouchableHighlight>
                     </View>
                 </View>
-                
+                <CancelarCita modalVisible={modalVisible} setModalVisible={setModalVisible} codigo_cita={cita.codigo_cita} setSearchStatus={setSearchStatus} />
             </Card>
 
             ))}
