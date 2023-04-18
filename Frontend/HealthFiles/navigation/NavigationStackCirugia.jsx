@@ -7,7 +7,7 @@ const StackCirugia = createNativeStackNavigator();
 
 export default function NavigationStackCirugia(){
     return(
-        <StackCirugia.Navigator initialRouteName='Cirugia'> 
+        <StackCirugia.Navigator initialRouteName='Registro Cirugia'> 
             <StackCirugia.Screen  name="Registro Cirugia" component={RegistroCirugiaScreen}/>
 			<StackCirugia.Screen name="Agregar Cirugia" component={AgregarCirugiaScreen}/>
         </StackCirugia.Navigator>
