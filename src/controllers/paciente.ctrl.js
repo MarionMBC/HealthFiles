@@ -233,15 +233,15 @@ export const deletePaciente = async (req, res) => {
 
 export const getPacientesPorMedico = async (req, res) => {
     const { dni_medico } = req.params;
-  
     try {
-      const pacientes = await pool.query(`
-       SELECT p.*
-      FROM Paciente p
-      INNER JOIN Cita c ON p.dni_paciente = c.dni_paciente AND c.dni_medico = 12345678901
-      INNER JOIN Cirugia cr ON p.dni_paciente = cr.dni_paciente
-      INNER JOIN medico_cirugia mc ON cr.codigo_cirugia = mc.codigo_cirugia AND mc.dni_medico = 12345678901
-      `, [dni_medico, dni_medico]);
+      const [pacientes] = await pool.query(`
+      select pac.* 
+      from paciente pac
+      INNER JOIN cita c ON c.dni_paciente = pac.dni_paciente
+      INNER JOIN medico med ON med.dni_medico = c.dni_medico
+      WHERE med.dni_medico = ?
+      group by dni_paciente
+      `, [dni_medico]);
   
       res.json(pacientes[0]);
     } catch (error) {

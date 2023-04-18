@@ -2,11 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {Card} from "react-native-elements";
 import {ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {dateFormatter} from "../helpers/RegistroMedicamentos.helper";
-import { obtenerCirugias } from '../helpers/RegistroCirugia.helper';
+import { obtenerPacientes } from '../helpers/ListaPacientes.helper';
 
 
-const CardCirugia = ({dni_medico, dni_paciente}) => {
+const CardPacienteList = ({dni_medico}) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -16,34 +15,32 @@ const CardCirugia = ({dni_medico, dni_paciente}) => {
         console.log(isHovered)
     }
 
-    const  [cirugias, setCirugias] = useState([])
+    const  [pacientes, setPacientes] = useState([])
 
     useEffect(() => {
         const obtenerDatos = async () =>{
-            const datos = await obtenerCirugias(dni_medico, dni_paciente)
-            setCirugias(datos[0]);
+            const datos = await obtenerPacientes(dni_medico)
+            setPacientes(datos[0]);
         };
         obtenerDatos();
-    }, [dni_medico, dni_paciente]);
+    }, [dni_medico]);
 
 
     return (
         <ScrollView>
-            {cirugias.map((cirugia) => {
-                <Card key={cirugia.codigo_cirugia} onPress={()=>{handleMouseEnter()}} containerStyle={{shadowColor: '#2b7bb7',
+            {pacientes.map((paciente) => {
+                <Card key={paciente.dni_paciente} onPress={()=>{handleMouseEnter()}} containerStyle={{shadowColor: '#2b7bb7',
                 shadowOffset: { width: 0, height: 2 },
                 shadowOpacity: 0.25,
                 shadowRadius: 3.84,
                 elevation: 5,borderRadius: 10}}>
                 <View style={styles.cardContainer}>
                     <View>
-                        <Icon style={{marginLeft: 10}} name={'scalpel-line-dashed'} size={30} color={'#2b7bb7'} />
+                        <Icon style={{marginLeft: 10}} name={'hospital-user'} size={30} color={'#2b7bb7'} />
                     </View>
                     <View style={styles.CardDescriptionView}>
-                        <Text style={styles.cardTittle}>{cirugia.codigo_cirugia}</Text>
-                        <Text style={styles.cardContentText}>{cirugia.motivo}</Text>
-                        <Text style={styles.cardContentText}>Fecha: {dateFormatter(cirugia.fecha)}</Text>
-                        <Text style={styles.cardContentText}>{cirugia.tipo}</Text>
+                        <Text style={styles.cardTittle}>{paciente.primer_nombre + paciente.segundo_nombre + paciente.primer_apellido + paciente.paciente.segundo_apellido }</Text>
+                        <Text style={styles.cardContentText}>{paciente.dni_paciente}</Text>
                     </View>
                     <View style={styles.crudButton}>
                         <TouchableHighlight underlayColor="transparent">
@@ -105,4 +102,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default CardCirugia;
+export default CardPacienteList;

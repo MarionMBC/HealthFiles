@@ -2,33 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import PacienteListItem from "../components/PacienteListItem";
+import CardPacienteList from "../components/CardPacienteList.component";
 
 export default function PantallaPacientes({navigation}) {
   const [searchText, setSearchText] = useState('');
-  const [pacientes, setPacientes] = useState([]);
-
-  useEffect(() => {
-    async function fetchPacientes() {
-      try {
-        const response = await fetch("https://healthfiles-production.up.railway.app/pacientes/getPorMedico/123");
-        const data = await response.json();
-        setPacientes(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }, []);
 
   const handleSearch = (text) => {
     setSearchText(text);
   };
-
-  const filteredPacientes = pacientes.filter(
-    (paciente) =>
-      paciente.nombres.toLowerCase().includes(searchText.toLowerCase()) ||
-      paciente.apellidos.toLowerCase().includes(searchText.toLowerCase())
-  );
 
   return (
     <View style={styles.container}>
@@ -44,16 +25,8 @@ export default function PantallaPacientes({navigation}) {
         />
       </View>
 
-      <View style={styles.list}>
-        {filteredPacientes.length > 0 ? (
-          <FlatList
-            data={filteredPacientes}
-            renderItem={({ item }) => <PacienteListItem paciente={item} />}
-            keyExtractor={(item) => item.id.toString()}
-          />
-        ) : (
-          <Text>No se encontraron pacientes</Text>
-        )}
+      <View style={{ marginBottom: 15 }}>
+      <CardPacienteList></CardPacienteList>
       </View>
       <View style={styles.addButtonContainer}>
         <TouchableOpacity style={styles.addButton}>
