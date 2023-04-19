@@ -53,8 +53,8 @@ const AgregarMedicamentoScreen = ({navigation}) => {
                         shadowOffset: { width: 0, height: 2 },
                         shadowOpacity: 0.25,
                         shadowRadius: 3.84,
-                        elevation: 5, position: 'relative'}}></Calendar>
-
+                        elevation: 5, position: 'relative'}}>
+                    </Calendar>
                 </View>
                 <View style={{display: 'flex', alignItems: 'center', margin: 10, flexDirection: 'row'}}>
                     {/*<Icon name={'clock'} color={'black'} size={30} ></Icon>

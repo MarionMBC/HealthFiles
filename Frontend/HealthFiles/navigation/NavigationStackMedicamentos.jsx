@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MedicinasScreen from '../screens/MedicinasScreen';
 import RegistroMedicamentoScreen from '../screens/RegistroMedicamentoScreen';
@@ -11,8 +11,9 @@ import DetalleMedicamentoScreen from "../screens/DetalleMedicamentoScreen";
 const StackMedicamentos = createNativeStackNavigator();
 
 export default function NavigationStackMedicamentos(){
+	const [ status, setStatus] = useState(false);
 	return(
-
+		
 		<StackMedicamentos.Navigator>
 			<StackMedicamentos.Screen  name="Registro de Medicamentos" component={RegistroMedicamentoScreen}/>
 			<StackMedicamentos.Screen name="Agregar Medicamento" component={AgregarMedicamentoScreen}/>

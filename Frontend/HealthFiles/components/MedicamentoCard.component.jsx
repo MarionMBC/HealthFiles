@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Card, Image} from "react-native-elements";
 import {StyleSheet, Text, TouchableHighlight, View} from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -7,7 +7,7 @@ import EliminarMedicamentoComponent from "./EliminarMedicamento.component";
 
 
 
-const MedicamentoCardComponent = ({medicamento, navigation, setSearchStatus}) => {
+const MedicamentoCardComponent = ({medicamento, navigation}) => {
     const [isHovered, setIsHovered] = useState(false);
     const {
         codigo_medicamento,
@@ -33,6 +33,8 @@ const MedicamentoCardComponent = ({medicamento, navigation, setSearchStatus}) =>
     }
 
 
+   
+
 
     return (
         <Card key={codigo_medicamento} onPress={()=>{handleMouseEnter()}} containerStyle={{shadowColor: '#2b7bb7',
@@ -54,19 +56,11 @@ const MedicamentoCardComponent = ({medicamento, navigation, setSearchStatus}) =>
                     <TouchableHighlight underlayColor="transparent" onPress={()=>{handleViewMed(navigation, medicamento)}}>
                         <Icon name={'eye'} size={25} color={'#2b7bb7'} />
                     </TouchableHighlight>
-                    <TouchableHighlight underlayColor="transparent" onPress={()=>{
-                        setModalVisible(true)}}>
-                        <Icon name={'trash'} size={25} color={'#2b7bb7'} />
-                    </TouchableHighlight>
-                    <TouchableHighlight underlayColor="transparent"   onPress={() => {
-                        console.log('Hi')}}>
-                        <Icon name={'edit'} size={25} color={'#2b7bb7'} />
-                    </TouchableHighlight>
+                    
                 </View>
             </View>
-            <EliminarMedicamentoComponent modalVisible={modalVisible} setModalVisible={setModalVisible} codigo_medicamento={codigo_medicamento} setSearchStatus={setSearchStatus} />
+            <EliminarMedicamentoComponent modalVisible={modalVisible} setModalVisible={setModalVisible} codigo_medicamento={codigo_medicamento}  setStatus/>
         </Card>
-
     );
 }
 
