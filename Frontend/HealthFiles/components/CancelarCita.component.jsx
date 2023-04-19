@@ -3,14 +3,14 @@ import {Modal, Pressable, Text, StyleSheet, View, Alert} from "react-native";
 import { cancelarCita } from '../helpers/RegistroCitas.helper';
 
 
-const CancelarCita = ({modalVisible, setModalVisible, codigo_cita, setSearchStatus}) => {
+const CancelarCita = ({modalVisible, setModalVisible, codigo_cita}) => {
 
     const [respuesta, setRespuesta] = useState();
     const handleDelete = () => {
         setModalVisible(!modalVisible);
             cancelarCita(codigo_cita).then(r => {
                 setRespuesta(r)
-                setSearchStatus(false)
+                
             })
     }
 

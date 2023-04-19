@@ -80,6 +80,7 @@ export default function RegistroCitaScreen({navigation}) {
         valoracion:0
     };
     GuardarCita(data);
+    navigation.goBack();
     
   };
 
