@@ -3,24 +3,23 @@
  * Date: 06/04/2023
  * Description: Pantalla para registro de un paciente
  */
-
 import { StatusBar } from 'expo-status-bar';
 import React from 'react'
 import { useState } from 'react';
 import {Text, View, TextInput, Pressable, ScrollView, Platform, TouchableOpacity } from 'react-native'
-import ButtonsSignIn from '../../../Frontend/HealthFiles/components/ButtonsSignIn.component'
+import ButtonsSignIn from '../../../components/ButtonsSignIn'
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker'
-import CustomInput from '../../../Frontend/HealthFiles/components/CustomInput.component';
-import { useForm } from 'react-hook-form';
+import CustomInput from '../../../components/CustomInput';
+import { useForm} from 'react-hook-form';
 import { SelectList } from 'react-native-dropdown-select-list';
-import styles from '../../HealthFiles/styles/styles';
-import { GuardarPaciente } from '../helpers/Login.helper';
+import styles from '../../styles/styles';
+import guardarPaciente from './../../.././helpers/LoginUser.helper'
 
 export default function SignUpScreen() {
     const navigation = useNavigation();
 
-    //Expresiones Regulares Validaciones Formulario
+    //Expresiones Regulares Validaciones
     const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;  
     const PASSWORD_REGEX =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     const PHONE_REGEX = /(\(?(\+54)\)?)?(11)(\d{8})/;
@@ -28,22 +27,89 @@ export default function SignUpScreen() {
 
     //Handles
     const {control, handleSubmit, watch} = useForm();
-    const pwd = watch('Contraseña');
+    const pwd = watch('Contrasena');
 
     //DatePicker
     const [date, setDate]= useState(new Date());
     const [showPicker, setShowPicker] = useState(false);
     const [fechaNacimiento, setFechaNacimiento] = useState('');
 
+    //Variables de Estados
+    const [dni, setDni] = useState('');
+    const [primerNombre, setPrimerNombre] = useState('');
+    const [segundoNombre, setSegundoNombre] = useState('');
+    const [primerApellido, setPrimerApellido] = useState('');
+    const [segundoApellido, setSegundoApellido] = useState('');
+    const [telefono, setTelefono] = useState('');
+    const [correoElectronico, setCorreoElectronico] = useState('');
+    const [contrasena, setContrasena] = useState('');
+    const [confirmacionContrasena, setConfirmacionContrasena] = useState('');
+    const [pin, setPin] = useState('');
+    const [imagenPerfil, setImagenPerfil] = useState('');
+    const [peso, setPeso] = useState('');
+    const [altura, setAltura] = useState('');
+    const [contactoEmergencia, setContactoEmergencia] = useState('');
+    const [telefonoEmergencia, setTelefonoEmergencia] = useState('');
+
+    //Handles
+    const handleId = (text) =>{
+      setDni(text);
+    }
+    const handleFirstName = (text) =>{
+      setPrimerNombre(text);
+    }
+    const handleMiddleName = (text) =>{
+      setSegundoNombre(text);
+    }
+    const handleLastName = (text) =>{
+      setPrimerApellido(text);
+    }
+    const handleSecondName = (text) =>{
+      setSegundoApellido(text);
+    }
+    const handlePhone = (text) =>{
+      setTelefono(text);
+    }
+    const handleEmail = (text) =>{
+      setCorreoElectronico(text);
+    }
+    const handlePassword = (text) =>{
+      setContrasena(text);
+    }
+    const handleConfirmPassword = (text) =>{
+      setConfirmacionContrasena(text);
+    }
+    const handleCode = (text) =>{
+      setPin(text);
+    }
+    const handleImage = (text) =>{
+      setImagenPerfil(text);
+    }
+    const handleWeight = (text) =>{
+      setPeso(text);
+    }
+    const handleHeight = (text) =>{
+      setAltura(text);
+    }
+    const handleEmergency = (text) =>{
+      setContactoEmergencia(text);
+    }
+    const handlePhoneEmergency = (text) =>{
+      setTelefonoEmergencia(text);
+    }
+
     //Lista desplegable para Genero
     const [genero, setGenero] = useState('');
     const datos = [
-    {key: '1', value: '- Femenino'},
-    {key: '2', value: '- Masculino'},
-    {key: '3', value: '- Prefiero no mencionarlo'},
+    {key: '1', value: ' F'},
+    {key: '2', value: ' M'},
     ]
+
+    const handleGender = (text) => {
+      setGenero(text);
+    }
     //Lista despeglable para tipo de sangre
-    const [selected, setSelected] = useState('');
+    const [tipoSangre, setTipoSangre] = useState('');
     const data = [
     {key: '1', value: '-  A+'},
     {key: '2', value: '-  A-'},
@@ -96,30 +162,50 @@ export default function SignUpScreen() {
       return year + " / " + month + " / " + day;
     }
     
-    //Buttons SignUp
+    //Submitt Button 
     const onAceptarPressed = () => {
-      console.log(`Submitted: Genero: ${genero}, Fecha_Nacimiento: ${fechaNacimiento}, Tipo_Sangre: ${tipoSangre}`)
+      console.log(`Submitted: 
+      Dni: ${dni},
+      Primer_Nombre: ${primerNombre},
+      Segundo_Nombre: ${segundoNombre},
+      Primer_Apellido: ${primerApellido},                
+      Segundo_Apellido: ${segundoApellido},
+      Genero: ${genero}, 
+      Fecha_Nacimiento: ${fechaNacimiento}, 
+      Telefono: ${telefono},
+      Correo_Electronico: ${correoElectronico},
+      Contrasena: ${contrasena},
+      Pin: ${pin},
+      Img_Perfil: ${imagenPerfil},
+      Peso: ${peso},
+      Altura: ${altura},
+      Tipo_Sangre: ${tipoSangre},
+      Nombre_Contacto_Emergencia: ${contactoEmergencia},
+      Telefono_Contacto_Emergencia: ${telefonoEmergencia}
+      `)
+    
       const data = {
-        dni_paciente: "69784285048",
-        primer_nombre: "Xiomara",
-        segundo_nombre: "Maria",
-        primer_apellido: "Hernandez",
-        segundo_apellido: "Lopez",
+        dni_paciente: dni,
+        primer_nombre: primerNombre,
+        segundo_nombre: segundoNombre,
+        primer_apellido: primerApellido,
+        segundo_apellido: segundoApellido,
         genero: genero,
         fecha_nacimiento: fechaNacimiento,
-        telefono: "+541112200052",
-        correo_electronico: "xiomaral@gmail.com",
-        contrasena: "password1239",
-        pin: "0309",
-        img_perfil: "imagen5.jpg",
-        peso: "59",
-        altura: "1.59",
+        telefono: telefono,
+        correo_electronico: correoElectronico,
+        contrasena: contrasena,
+        pin: pin,
+        img_perfil: imagenPerfil,
+        peso: peso,
+        altura: altura,
         tipo_sangre: tipoSangre,
-        nombre_contacto_emergencia: "Manuel Zelaya",
-        telefono_contacto_emergencia: "+541151239999"
+        nombre_contacto_emergencia: contactoEmergencia,
+        telefono_contacto_emergencia: telefonoEmergencia
       };
-      GuardarPaciente(data);
-      navigation.navigate('Confirmar Registro')
+      guardarPaciente(data);
+      //navigation.navigate('Confirmar Registro')
+      navigation.navigate('Pantalla de Inicio')
     };
 
     const onCancelarPressed = () => {
@@ -131,36 +217,41 @@ export default function SignUpScreen() {
 
     return (
         <ScrollView>
-        <View style = {styles.container}>
-          
+        <View style = {styles.container1}>
           <Text style ={styles.subtitulos1}>Registro de Paciente</Text>
 
-          <Text //DNI
+          <Text //************************DNI************************
             style = {styles.subtitulos_2}
             > DNI </Text>
           <CustomInput 
-              name="DNI"
+              name="Dni"
               control={control}
-              placeholder='08012005000'
+              onChangeText = {handleId}
+              value={dni}
+              placeholder='1235849873328'
               marginTop = {6}
-              rules={{
+              keyboardType='number-pad'
+              rules={{  
               required: 'El campo DNI esta vacio',
               minLength: {
                 value: 11,
-                message: 'Minimo de caracteres es de 13',
+                message: 'Minimo de caracteres es de 11',
               },  
               maxLength: {
                 value: 11,
-                message: 'Maximo de caracteres es de 13',
+                message: 'Maximo de caracteres es de 11',
               },
             }}
           />
-          <Text //PRIMER NOMBRE
+
+          <Text //************************PRIMER NOMBRE************************
             style = {styles.subtitulos_2}
             > Primer Nombre </Text>
           <CustomInput 
-              name="Primer Nombre"
+              name="PrimerNombre"
               control={control}
+              value={primerNombre}
+              onChangeText= {handleFirstName}
               placeholder='Mario'
               marginTop = {6}
               rules={{
@@ -176,16 +267,18 @@ export default function SignUpScreen() {
             }}
           />
 
-          <Text //SEGUNDO NOMBRE
+          <Text //************************SEGUNDO NOMBRE************************
             style = {styles.subtitulos_2}
             > Segundo Nombre </Text>
           <CustomInput 
-              name="Segundo Nombre"
+              name="SegundoNombre"
               control={control}
+              value={segundoNombre}
+              onChangeText = {handleMiddleName}
               placeholder='David'
               marginTop = {6}
               rules={{
-                required: 'El campo Segundo Nombre esta vacio',
+                //required: 'El campo Segundo Nombre esta vacio',
                 minLength: {
                 value: 3,
                 message: 'Minimo de caracteres es de 3',
@@ -197,13 +290,15 @@ export default function SignUpScreen() {
             }}
           />
     
-          <Text //PRIMER APELLIDO
+          <Text //************************PRIMER APELLIDO************************
             style = {styles.subtitulos_2}
             > Primer Apellido </Text>
           <CustomInput 
-              name="Primer Apellido"
+              name="PrimerApellido"
+              value={primerApellido}
+              onChangeText = {handleLastName}
               control={control}
-              placeholder="Alvarez Hernandez"
+              placeholder="Alvarez"
               marginTop = {6}  
               rules={{
                 required: 'El campo Primer Apellido esta vacio', 
@@ -218,16 +313,18 @@ export default function SignUpScreen() {
               }}   
           />
 
-          <Text //SEGUNDO APELLIDO
+          <Text //************************SEGUNDO APELLIDO************************
             style = {styles.subtitulos_2}
             > Segundo Apellido </Text>
           <CustomInput 
-              name="Segundo Apellido"
+              name="SegundoApellido"
               control={control}
-              placeholder="Alvarez Hernandez"
+              value={segundoApellido}
+              onChangeText = {handleSecondName}
+              placeholder="Hernandez"
               marginTop = {6}  
               rules={{
-                required: 'El campo Segundo Apellido esta vacio',
+                //required: 'El campo Segundo Apellido esta vacio',
                 minLength: {
                   value: 4,
                   message: 'Minimo de caracteres es de 3',
@@ -239,12 +336,12 @@ export default function SignUpScreen() {
               }}   
           />
 
-          <Text //GENERO
+          <Text //************************GENERO************************
             style = {styles.subtitulos_2}
             > Genero </Text>
           <SelectList 
               data = {datos}
-              setSelected = {setGenero}
+              setSelected = {handleGender}
               name="Genero"
               control={control}
               placeholder='Seleccionar Genero'
@@ -257,7 +354,7 @@ export default function SignUpScreen() {
                 marginTop: 15,
                 paddingStart: 10,
                 marginVertical: 6,
-                marginHorizontal: 40
+                marginHorizontal: -0.5
               }}
               dropdownStyle = {{backgroundColor: 'white'}}
               dropdownItemStyles={{marginVertical:3}}
@@ -265,7 +362,7 @@ export default function SignUpScreen() {
             
           />
           
-          <Text //FECHA NACIMIENTO
+          <Text //************************FECHA NACIMIENTO************************
             style = {styles.subtitulos_2}
             > Fecha de nacimiento </Text>
           <TextInput
@@ -325,21 +422,27 @@ export default function SignUpScreen() {
           </Pressable>
           )}
          
-          <Text //TELEFONO
+          <Text //************************TELEFONO************************
             style = {styles.subtitulos_2}
             > Telefono </Text>
           <CustomInput 
               name="Telefono"
               control={control}
+              value={telefono}
+              onChangeText = {handlePhone}
               placeholder='+541185221699'
               marginTop = {6} 
-              //keyboardType='
+              keyboardType='phone-pad'
               rules= {{
                 required: 'El campo Telefono esta vacio', 
                 minLength: {
                   value: 13,
                   message: 'Ingrese un numero de telefono valido',
-                },  
+                }, 
+                maxLength: {
+                  value: 13,
+                  message: 'Ingrese un numero de telefono valido',
+                }, 
                 pattern: {
                   value: PHONE_REGEX, 
                   message: 'Ingrese un formato de telefono valido: +541185221699'
@@ -348,12 +451,14 @@ export default function SignUpScreen() {
             
           />
 
-          <Text //CORREO ELECTRONICO
+          <Text //************************CORREO ELECTRONICO************************
             style = {styles.subtitulos_2}
             > Correo electronico </Text>
           <CustomInput 
               name="CorreoElectronico"
               control={control}
+              value={correoElectronico}
+              onChangeText = {handleEmail}
               placeholder='example123@example.com'
               marginTop = {6}  
               rules = {{
@@ -363,12 +468,14 @@ export default function SignUpScreen() {
               keyboardType='email-address'   
           />
 
-          <Text //CONTRASENA
+          <Text //************************CONTRASENA************************
             style = {styles.subtitulos_2}
             > Contraseña </Text>
           <CustomInput 
-              name="Contraseña"
+              name="Contrasena"
               control={control}
+              value={contrasena}
+              onChangeText= {handlePassword}
               placeholder='Ingresar Contraseña'
               secureTextEntry={true}
               marginTop = {6}  
@@ -380,12 +487,14 @@ export default function SignUpScreen() {
               }} 
           />
 
-          <Text //CONFIRMACION DE CONTRASENA
+          <Text //************************CONFIRMACION DE CONTRASENA************************
             style = {styles.subtitulos_2}
             > Confirmacion de Contraseña </Text>
           <CustomInput 
-              name="ConfirmacionContraseña"
+              name="ConfirmacionContrasena"
               control={control}
+              value={confirmacionContrasena}
+              onChangeText= {handleConfirmPassword}
               placeholder='Ingresar Contraseña Nuevamente'
               secureTextEntry={true}
               marginTop = {6}   
@@ -395,12 +504,14 @@ export default function SignUpScreen() {
               }} 
           />
 
-          <Text //PIN
+          <Text //************************PIN************************
             style = {styles.subtitulos_2}
             > PIN </Text>
           <CustomInput 
-              name="PIN"
+              name="Pin"
               control={control}
+              value={pin}
+              onChangeText= {handleCode}
               placeholder='Ingrese un pin de 4 digitos'
               marginTop = {6}  
               keyboardType='number-pad'   
@@ -418,12 +529,14 @@ export default function SignUpScreen() {
               }}  
           />
 
-          <Text //IMAGEN DE PERFIL
+          <Text //************************IMAGEN DE PERFIL************************
             style = {styles.subtitulos_2}
           > Imagén de Perfil </Text>
           <CustomInput 
-              name="Imagen de Perfil"
+              name="ImagenPerfil"
               control={control}
+              value={imagenPerfil}
+              onChangeText= {handleImage}
               placeholder='imagen.jpg'
               marginTop = {6}  
               rules = {{
@@ -432,14 +545,15 @@ export default function SignUpScreen() {
               }}
               keyboardType='email-address'   
           />
-
-          <Text //PESO
+          <Text //************************PESO************************
             style = {styles.subtitulos_2}
             > Peso </Text>
           <CustomInput 
-              name="PESO"
+              name="Peso"
               control={control}
-              placeholder='LBS'
+              value={peso}
+              onChangeText= {handleWeight}
+              placeholder='KG'
               marginTop = {6}  
               keyboardType='decimal-pad'   
               rules = {{
@@ -449,21 +563,23 @@ export default function SignUpScreen() {
                   message: 'Ingrese un valor de peso Valido'
                 },  
                 max: {
-                  value: 350,
+                  value: 250,
                   message: 'Ingrese un valor de peso Valido'
                 },
               }} 
           />
 
-          <Text //ALTURA
+          <Text //************************ALTURA************************
             style = {styles.subtitulos_2}
             > Altura </Text>
           <CustomInput 
-              name="ALTURA"
+              name="Altura"
               control={control}
+              value={altura}
+              onChangeText= {handleHeight}
               placeholder='mts'
               marginTop = {6}  
-              keyboardType='decimal-pad'  
+              keyboardType='decimal-pad' 
               rules = {{
                 required: 'El campo Altura esta vacio',
                 min: {
@@ -477,14 +593,15 @@ export default function SignUpScreen() {
               }}   
           />
 
-          <Text //TIPO DE SANGRE
+          <Text //************************TIPO DE SANGRE************************
             style = {styles.subtitulos_2}
             > Tipo de Sangre </Text>
 
           <SelectList 
+          name="TipoSangre"
           data={data} 
-          setSelected={setSelected}
-          name="TIPO DE SANGRE"
+          setSelected={setTipoSangre}
+          value={tipoSangre}
           control={control}
           placeholder='Tipo de Sangre'    
           boxStyles={{
@@ -502,12 +619,14 @@ export default function SignUpScreen() {
         />
           
 
-          <Text //CONTACTO DE EMERGENCIA
+          <Text //************************CONTACTO DE EMERGENCIA************************
             style = {styles.subtitulos_2}
             > Contacto Emergencia </Text>
           <CustomInput
-              name="CONTACTO DE EMERGENCIA"
+              name="ContactoEmergencia"
               control={control}
+              value={contactoEmergencia}
+              onChangeText= {handleEmergency}
               placeholder='Nombre Contacto'
               marginTop = {6}  
               rules = {{
@@ -515,12 +634,15 @@ export default function SignUpScreen() {
               }}  
           />
 
-          <Text //CELULAR CONTACTO DE EMERGENCIA
+          <Text //************************CELULAR CONTACTO DE EMERGENCIA************************
             style = {styles.subtitulos_2}
             > Celular Contacto Emergencia </Text>
           <CustomInput
-              name="CELULAR CONTACTO DE EMERGENCIA"
+              name="TelefonoContactoEmergencia"
               control={control}
+              value={telefonoEmergencia}
+              onChangeText= {handlePhoneEmergency}
+              keyboardType='phone-pad'
               placeholder='+541185221699'
               marginTop = {6}  
               rules = {{
@@ -529,6 +651,10 @@ export default function SignUpScreen() {
                   value: 13,
                   message: 'Ingresar un numero de telefono valido',
                 }, 
+                maxLength: {
+                  value: 13,
+                  message: 'Ingrese un numero de telefono valido',
+                },
                 pattern: {
                   value: PHONE_REGEX, 
                   message: 'Ingrese un formato de telefono valido: +541185221699'
@@ -538,7 +664,7 @@ export default function SignUpScreen() {
          
           <ButtonsSignIn 
             text = "Registrar" onPress={handleSubmit(onAceptarPressed)}
-                type = 'Pri'
+                type = 'Pri'   
           />
           
           <ButtonsSignIn 
