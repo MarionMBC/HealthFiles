@@ -10,7 +10,7 @@ export default function NavigationStackCitas(){
 		
 		<StackCitas.Navigator initialRouteName='Cita'> 
 			<StackCitas.Screen name="Cita" component={CitasScreen}></StackCitas.Screen>
-			<StackCitas.Screen name="RegistroCita" component={RegistroCitaScreen}/>
+			<StackCitas.Screen name="Agregar Cita" component={RegistroCitaScreen}/>
 		</StackCitas.Navigator>
 	)
 	

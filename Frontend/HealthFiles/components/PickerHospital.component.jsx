@@ -29,7 +29,7 @@ export default function PickerComp({ selectedValue, onValueChange, dni}) {
   return (
     <Picker
       selectedValue={selectedValue}
-      style={{ height: 50, width: 150 }}
+      style={{ height: 50, width: 300 }}
       onValueChange={onValueChange}
     >
       {opcionesPicker.map((opcion) => (

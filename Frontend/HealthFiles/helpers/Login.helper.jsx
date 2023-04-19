@@ -9,3 +9,24 @@ export const obtenerCorreoContrasena = async (correo_electronico='juan.perez@gma
             return e
     }
 }
+
+
+// Metodo POST Formulario de Registro
+const URL = "https://healthfiles-production.up.railway.app/";
+
+export const GuardarPaciente = async (data) =>{
+     const urlCita = `${URL}paciente/create`
+     await fetch(urlPaciente, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}

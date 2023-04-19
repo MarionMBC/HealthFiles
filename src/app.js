@@ -7,6 +7,7 @@ import citaRoute from './routes/citas.routes.js';
 import medico_cirugiaRoute from './routes/medico_cirugia.routes.js';
 import medico_hospitalRoute from './routes/medico_hospital.routes.js';
 import horarioRoute from './routes/horario.routes.js';
+import cirugiaRoute from './routes/cirugia.routes.js';
 import registro_citas_agendadasRoute from './routes/registro_citas_agendadas.routes.js';
 import medicamento_pacienteRoute from "./routes/medicamento_paciente.routes.js";
 import bodyParse from "body-parser";
@@ -35,6 +36,7 @@ app.use('/medicamento_paciente', medicamento_pacienteRoute)
 app.use('/medico_hospital', medico_hospitalRoute);
 app.use('/horario', horarioRoute);
 app.use('/registro_citas_agendadas', registro_citas_agendadasRoute);
+app.use('/cirugia', cirugiaRoute);
 
 
 

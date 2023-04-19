@@ -15,6 +15,7 @@ import CustomInput from '../../../Frontend/HealthFiles/components/CustomInput.co
 import { useForm } from 'react-hook-form';
 import { SelectList } from 'react-native-dropdown-select-list';
 import styles from '../../HealthFiles/styles/styles';
+import { GuardarPaciente } from '../helpers/Login.helper';
 
 export default function SignUpScreen() {
     const navigation = useNavigation();
@@ -95,11 +96,32 @@ export default function SignUpScreen() {
       return year + " / " + month + " / " + day;
     }
     
-
-    //Buttons
+    //Buttons SignUp
     const onAceptarPressed = () => {
+      console.log(`Submitted: Genero: ${genero}, Fecha_Nacimiento: ${fechaNacimiento}, Tipo_Sangre: ${tipoSangre}`)
+      const data = {
+        dni_paciente: "69784285048",
+        primer_nombre: "Xiomara",
+        segundo_nombre: "Maria",
+        primer_apellido: "Hernandez",
+        segundo_apellido: "Lopez",
+        genero: genero,
+        fecha_nacimiento: fechaNacimiento,
+        telefono: "+541112200052",
+        correo_electronico: "xiomaral@gmail.com",
+        contrasena: "password1239",
+        pin: "0309",
+        img_perfil: "imagen5.jpg",
+        peso: "59",
+        altura: "1.59",
+        tipo_sangre: tipoSangre,
+        nombre_contacto_emergencia: "Manuel Zelaya",
+        telefono_contacto_emergencia: "+541151239999"
+      };
+      GuardarPaciente(data);
       navigation.navigate('Confirmar Registro')
-    }
+    };
+
     const onCancelarPressed = () => {
       navigation.navigate('Inicio de Sesion')
     }
