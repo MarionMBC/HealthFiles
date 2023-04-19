@@ -85,6 +85,13 @@ export const obtenerCitas = async (dni_paciente="34567890123") => {
   }
 }
 
+
+
+
+export const handleViewCita =  (navigation, cita) => {
+  navigation.navigate('Detalle Cita',  cita )
+}
+
   
 
 
