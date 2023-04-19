@@ -67,13 +67,11 @@ export const createMedicamento = async (req, res) => {
         const {
             codigo_medicamento,
             dni_medico,
-            nombre,
-            estado,
+            nombre_comercial,
+            nombre_generico,
             nivel_importancia,
             fecha_inicial,
             fecha_final,
-            cantidad_principio_act,
-            cantidad_tomar,
             frecuencia
         } = req.body;
         const medicamento = await pool.query(
@@ -186,7 +184,7 @@ export const deleteMedicamento = async req => {
 
 export const getNombreMedicamentos = async (req, res) => {
     try {
-        const [result] = await pool.query("Select nombre_comercial from healthfiles.medicamento");
+        const [result] = await pool.query("Select nombre_comercial, codigo_medicamento from healthfiles.medicamento");
         if (result.length === 0) {
             res.status(200).send("No se encontraron medicamentos")
         } else {

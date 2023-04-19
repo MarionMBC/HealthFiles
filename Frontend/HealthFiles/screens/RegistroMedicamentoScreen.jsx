@@ -6,116 +6,65 @@ import TittleComponent from "../components/Tittle.component";
 import AgregarComponente from "../components/AgregarComponent.component";
 
 const RegistroMedicamentoScreen = ({ navigation }) => {
-    const [search, setSearch] = useState([]);
-    const [medicamentos, setMedicamentos] = useState([]);
-    const [searchStatus, setSearchStatus] = useState(false);
-    const [ status, setStatus] = useState(false);
+  const [medicamentos, setMedicamentos] = useState([]);
 
-useEffect(() => {
+  useEffect(() => {
     fetch(
-        "https://healthfiles-production.up.railway.app/medicamento_paciente/get/78901234567"
-    ).then((res) => res.json())
-        .then((res) => {
-            setMedicamentos(res)
-            setSearch(res);
-        })
-        .catch((e) => console.log(e));
-}, [status]);
-    
+      "https://healthfiles-production.up.railway.app/medicamento_paciente/get/78901234567"
+    )
+      .then((response) => response.json())
+      .then((json) => setMedicamentos(json))
+      .catch((error) => console.error(error));
+  }, [medicamentos]);
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerStyle: {
+        backgroundColor: "#429adc",
+      },
+      headerTintColor: "white",
+      headerTitleStyle: {
+        fontWeight: 400,
+        fontSize: 20,
+      },
+    });
+  }, [navigation]);
 
-
-
-const searchFilterFunction = (text) => {
-    if (text ) {
-        const newData = medicamentos.filter((item) => {
-            const itemName = item.nombre_comercial ? item.nombre_comercial.toUpperCase() : "".toUpperCase();
-            const textData = text.toUpperCase();
-            return itemName.indexOf(textData) > -1;
-        });
-        setSearch(newData);
-    } else {
-        setSearch(medicamentos)
-        setStatus(!status)
-        
-}
-}
-
-
-    useLayoutEffect(() => {
-        
-        navigation.setOptions({
-            headerSearchBarOptions: {
-                onChangeText: (event) => {
-                    searchFilterFunction(event.nativeEvent.text);
-                    },
-                placeholder: "Buscar medicamento",
-            },
-            headerStyle: {
-                backgroundColor: "#429adc",
-            },
-            headerTintColor: "white",
-            headerTitleStyle: {
-                fontWeight: 400,
-                fontSize: 20,
-            },
-        });
-        }, [navigation]);
-
-
-    return (
-        <ScrollView>
-            <PacienteInfoComponent
-                nombrePaciente={"Marion Melchisedec Bustamante Castro"}
-                dniPaciente={"0806-2001-00506"}
+  return (
+    <ScrollView>
+      <PacienteInfoComponent
+        nombrePaciente={"Marion Melchisedec Bustamante Castro"}
+        dniPaciente={"0806-2001-00506"}
+      />
+      <View style={{ marginBottom: 15 }}>
+        {medicamentos.length > 0 ? (
+          medicamentos.map((med) => (
+            <MedicamentoCardComponent
+              key={med.codigo_medicamento}
+              navigation={navigation}
+              medicamento={med}
+              dni_medico={"34567890123"}
+              dni_paciente={"78901234567"}
             />
+          ))
+        ) : (
+          <Text
+            style={{
+              backgroundColor: "#e09090",
+              margin: 10,
+              fontSize: 18,
+              fontWeight: "400",
+              padding: 5,
+            }}
+          >
+            No hay medicamentos registrados...
+          </Text>
+        )}
+      </View>
 
-            <View style={{ marginBottom: 15 }}>
-
-                {
-                (medicamentos.length > 0) ?  
-                    !searchStatus ? 
-                    search.map((med) => (
-                        <MedicamentoCardComponent
-                            key={med.codigo_medicamento}
-                            navigation={navigation}
-                            medicamento={med}
-                        />
-                        ))  :  search.map((med) => (
-                            <MedicamentoCardComponent
-                                key={med.codigo_medicamento}
-                                navigation={navigation}
-                                medicamento={med}
-
-                            />
-
-                            ))
-                :
-                    <Text
-                        style={{
-                        backgroundColor: "#e09090",
-                            margin: 10,
-                            fontSize: 18,
-                            fontWeight: "400",
-                            padding: 5,
-                        }}
-                        >
-                        No se encontraron resultados.
-                    </Text>
-
-                    }
-
-
-            </View>
-
-
-            <AgregarComponente nombre={"Medicamento"} navigation = {navigation} />
-
-        </ScrollView>
-
-        )
-}
-
-
+      <AgregarComponente nombre={"Medicamento"} navigation={navigation} params={{dni_medico:"34567890123", dni_paciente:"78901234567"}}/>
+    </ScrollView>
+  );
+};
 
 export default RegistroMedicamentoScreen;
