@@ -80,10 +80,10 @@ export default function RegistroCitaScreen({navigation}) {
         valoracion:0
     };
     GuardarCita(data);
+    
   };
 
-  
-  
+
 
   return (
     <ScrollView>
@@ -149,18 +149,25 @@ export default function RegistroCitaScreen({navigation}) {
 
       
        </View>
-       <View style={styles.buttonsContainer2}>
+      
+      <View style={styles.buttonsContainer2}>
+      
+    
       <Button
         title="Agendar"
         onPress={handleSubmit}
        
       />
       
+      
       <Button 
         color="error"
         title="Cancelar"
-        onPress={() => navigation.navigate('HealthFiles')}
+        onPress={() => navigation.navigate('Cita')}
       />
+      
+      
+      
       </View>
 
     </View>

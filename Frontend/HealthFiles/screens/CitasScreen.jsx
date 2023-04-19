@@ -23,7 +23,7 @@ export default function CitasScreen({ navigation }) {
        
         
       </View>
-      <CitaCardComponent></CitaCardComponent>
+      <CitaCardComponent dni_paciente={"34567890123"}></CitaCardComponent>
       <AgregarComponente nombre={"Cita"} navigation = {navigation} />
      
       </View>

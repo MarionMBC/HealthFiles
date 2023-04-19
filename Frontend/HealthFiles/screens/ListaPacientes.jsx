@@ -26,7 +26,7 @@ export default function PantallaPacientes({navigation}) {
       </View>
 
       <View style={{ marginBottom: 15 }}>
-      <CardPacienteList></CardPacienteList>
+     
       </View>
       <View style={styles.addButtonContainer}>
         <TouchableOpacity style={styles.addButton}>
