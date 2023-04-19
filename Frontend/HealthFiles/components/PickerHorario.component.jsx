@@ -27,7 +27,7 @@ export default function PickerHorario({ selectedValue, setSelectedValue, dni, co
   return (
     <Picker
       selectedValue={selectedValue}
-      style={{ height: 50, width: 150 }}
+      style={{ height: 50, width: 330, borderWidth:1, borderRadius:10, backgroundColor:'white'}}
       onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
     >
       {opcionesPicker.map((opcion) => (

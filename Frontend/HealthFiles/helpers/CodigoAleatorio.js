@@ -4,5 +4,5 @@ export default function CodigoAleatorio(){
     for (let i=0; i<10; i++){
         codigo += cadena.charAt(Math.floor(Math.random()*cadena.length));
     }
-    return cadena;
+    return codigo;
 }
