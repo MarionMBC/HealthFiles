@@ -65,7 +65,9 @@ export const createMedicamentoPaciente = async (req, res) => {
             frecuencia
         ]
     );
-    res.status(200).send(`Registro agregado exitosamente`);
+    return res.status(200).json(
+            msg: `El registro ha sido agregado satisfactoriamente`
+        );
     } catch (error) {
         return res.status(500).json({
             msg: `Algo ha salido mal al crear el registro. Error: ${error}`
