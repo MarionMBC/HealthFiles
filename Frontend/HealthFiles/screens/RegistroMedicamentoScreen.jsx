@@ -14,7 +14,7 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
     )
       .then((response) => response.json())
       .then((json) => setMedicamentos(json))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error("e", error));
   }, [medicamentos]);
 
   useLayoutEffect(() => {
@@ -66,6 +66,7 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
         nombre={"Medicamento"}
         navigation={navigation}
         params={{ dni_medico: "34567890123", dni_paciente: "78901234567" }}
+        
       />
     </ScrollView>
   );
