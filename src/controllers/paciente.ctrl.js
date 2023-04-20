@@ -243,7 +243,7 @@ export const getPacientesPorMedico = async (req, res) => {
       group by dni_paciente
       `, [dni_medico]);
   
-      res.json(pacientes[0]);
+      res.json(pacientes);
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Hubo un error al obtener los pacientes por médico' });
