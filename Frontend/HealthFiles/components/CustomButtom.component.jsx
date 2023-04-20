@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableHighlight, Text } from "react-native";
 
-const CustomButtom = ({ title }) => {
+const CustomButtom = ({ title, onClick }) => {
   return (
     <TouchableHighlight
       style={{
@@ -12,7 +12,7 @@ const CustomButtom = ({ title }) => {
         alignItems: "center",
       }}
       onPress={() => {
-        console.log("Confirmar");
+       onClick();
       }}
     >
       <Text style={{ color: "#fff", fontSize: 18, fontWeight: "500" }}>

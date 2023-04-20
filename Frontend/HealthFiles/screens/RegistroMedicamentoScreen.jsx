@@ -62,7 +62,11 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
         )}
       </View>
 
-      <AgregarComponente nombre={"Medicamento"} navigation={navigation} params={{dni_medico:"34567890123", dni_paciente:"78901234567"}}/>
+      <AgregarComponente
+        nombre={"Medicamento"}
+        navigation={navigation}
+        params={{ dni_medico: "34567890123", dni_paciente: "78901234567" }}
+      />
     </ScrollView>
   );
 };

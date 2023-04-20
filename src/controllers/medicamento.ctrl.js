@@ -75,7 +75,7 @@ export const createMedicamento = async (req, res) => {
             frecuencia
         } = req.body;
         const medicamento = await pool.query(
-            "INSERT INTO healthfiles.medicamento (codigo_medicamento, dni_medico, nombre, estado, nivel_importancia, fecha_inicial, fecha_final, cantidad_principio_act, cantidad_tomar, frecuencia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "INSERT INTO healthfiles.medicamento (codigo_medicamento, dni_medico, nombre_comercial, nombre_generico, nivel_importancia, fecha_inicial, fecha_final, f) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             [
                 codigo_medicamento,
                 dni_medico,

@@ -9,9 +9,7 @@ const AgregarComponente = ({ nombre, navigation, params }) => {
       style={styles.style}
       underlayColor="transparent"
       //    navigation.navigate('Detalles de Medicamento',  medicamento )
-      onPress={() =>
-        navigation.navigate(`Agregar ${nombre}`, (params = { params }))
-      }
+      onPress={() => navigation.navigate(`Agregar ${nombre}`, params)}
     >
       {addIcon}
     </TouchableHighlight>

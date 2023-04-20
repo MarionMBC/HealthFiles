@@ -42,26 +42,39 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
   };
 
   const [selected, setSelected] = useState("");
+  const [selectedKey, setSelectedKey] = useState("");
   const [medicamentos, setMedicamentos] = useState();
   const [refresh, setRefresh] = useState(false);
   const [frecuencia, setFrecuencia] = useState("");
   const [importancia, setImportancia] = useState("Alta");
+  /* 
+  useEffect(() => {
+    console.log(selectedKey);
+  }, [selectedKey]); */
 
-  /*   useEffect(() => {
-    console.log(frecuencia);
-  }, []); */
-
-
-  const handleSend = ( ) => {
+  const handleSend = () => {
+    const nowDate = new Date()
+      .toLocaleDateString("es-HN", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      })
+      .replace(/\//g, "-");
+    //reverse date format to match database format
+    const nowDateArray = nowDate.split("-");
+    const nowDateReversed =
+      nowDateArray[2] + "-" + nowDateArray[1] + "-" + nowDateArray[0];
     const data = {
-      codigo_medicamento: selected,
-      fecha_inicio: selectedDate,
+      dni_medico: route.params.dni_medico,
+      dni_paciente: route.params.dni_paciente,
+      codigo_medicamento: selectedKey,
+      fecha_inicio: nowDateReversed,
       fecha_fin: selectedDate,
       frecuencia: frecuencia,
       importancia: importancia,
     };
     fetch(
-      "https://healthfiles-production.up.railway.app/medicamento/insertar",
+      "https://healthfiles-production.up.railway.app/medicamento_paciente/create",
       {
         method: "POST",
         headers: {
@@ -78,7 +91,7 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
         }
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   const onRefresh = React.useCallback(() => {
     setRefresh(true);
@@ -121,6 +134,9 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
         <View style={{ marginTop: 10 }}>
           <SelectList
             setSelected={setSelected}
+            onSelect={() => {
+              setSelectedKey(selected);
+            }}
             data={medicamentos}
             boxStyles={{
               borderRadius: 10,
@@ -242,8 +258,10 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
           </RadioButton.Group>
         </View>
 
-        {/*A button to add the medicine with a good style*/}
-        <CustomButtom title={"Agregar medicamento"}></CustomButtom>
+        <CustomButtom
+          title={"Agregar medicamento"}
+          onClick={handleSend}
+        ></CustomButtom>
       </View>
     </ScrollView>
   );

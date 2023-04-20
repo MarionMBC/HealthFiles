@@ -48,19 +48,19 @@ export const createMedicamentoPaciente = async (req, res) => {
         dni_paciente,
         dni_medico,
         codigo_medicamento,
-        fecha_incio,
         fecha_fin,
+        fecha_inicio,
         importancia,
         frecuencia
     } = req.body;
     await pool.query(
-        "INSERT INTO medicamento_paciente (dni_medico, dni_paciente, codigo_medicamento, fecha_inicio, fecha_fin, importancia, frecuencia) VALUES (? ,?, ?, ?, ?, ?, ?)",
+        "INSERT INTO medicamento_paciente (dni_medico, dni_paciente, codigo_medicamento,  fecha_fin, fecha_inicio, importancia, frecuencia) VALUES (? ,?, ?, ?, ?, ?, ?)",
         [
             dni_medico,
             dni_paciente,
             codigo_medicamento, 
-            fecha_incio,
             fecha_fin,
+            fecha_inicio,
             importancia,
             frecuencia
         ]
