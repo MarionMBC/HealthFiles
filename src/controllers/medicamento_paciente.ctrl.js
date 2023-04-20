@@ -45,9 +45,9 @@ export const getMedicamentoPaciente = async (req, res) => {
 export const createMedicamentoPaciente = async (req, res) => {
     try {
     const {
-        codigo_medicamento,
         dni_paciente,
         dni_medico,
+        codigo_medicamento,
         fecha_fin,
         fecha_inicio,
         importancia,
@@ -65,9 +65,7 @@ export const createMedicamentoPaciente = async (req, res) => {
             frecuencia
         ]
     );
-    return res.status(200).json(
-            msg: `El registro ha sido agregado satisfactoriamente`
-        );
+    res.send(`Registro: ${req.body} agregado exitosamente`);
     } catch (error) {
         return res.status(500).json({
             msg: `Algo ha salido mal al crear el registro. Error: ${error}`
