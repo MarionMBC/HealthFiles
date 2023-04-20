@@ -45,27 +45,27 @@ export const getMedicamentoPaciente = async (req, res) => {
 export const createMedicamentoPaciente = async (req, res) => {
     try {
     const {
+        codigo_medicamento,
         dni_paciente,
         dni_medico,
-        codigo_medicamento,
         fecha_fin,
         fecha_inicio,
         importancia,
         frecuencia
     } = req.body;
     await pool.query(
-        "INSERT INTO medicamento_paciente (dni_medico, dni_paciente, codigo_medicamento,  fecha_fin, fecha_inicio, importancia, frecuencia) VALUES (? ,?, ?, ?, ?, ?, ?)",
+        "INSERT INTO medicamento_paciente (codigo_medicamento, dni_medico, dni_paciente,  fecha_fin, fecha_inicio, importancia, frecuencia) VALUES (? ,?, ?, ?, ?, ?, ?)",
         [
+            codigo_medicamento, 
             dni_medico,
             dni_paciente,
-            codigo_medicamento, 
             fecha_fin,
             fecha_inicio,
             importancia,
             frecuencia
         ]
     );
-    res.send(`Registro: ${req.body} agregado exitosamente`);
+    res.status(200).send(`Registro agregado exitosamente`);
     } catch (error) {
         return res.status(500).json({
             msg: `Algo ha salido mal al crear el registro. Error: ${error}`

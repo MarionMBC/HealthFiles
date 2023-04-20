@@ -80,14 +80,15 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: data,
       }
     )
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
-        if (json.status === "success") {
-          navigation.navigate("RegistroMedicamentos");
+        console.log("g", json);
+        if (json.status === 200) {
+          console.log("Medicamento agregado");
+          navigation.navigate("Registro de Medicamentos");
         }
       })
       .catch((err) => console.log(err));
