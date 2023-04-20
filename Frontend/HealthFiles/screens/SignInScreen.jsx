@@ -12,6 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
 import CustomInput from '../../../Frontend/HealthFiles/components/CustomInput.component';
 import styles from '../../HealthFiles/styles/styles';
+import { obtenerCorreoContrasena } from '../helpers/Login.helper';
 
 export default function SignInScreen() {
     const { height} = useWindowDimensions();
@@ -21,8 +22,14 @@ export default function SignInScreen() {
     const navigation = useNavigation();
   
     const onInicioSesionPressed = () => {
-      //Validar el Usuario
-      navigation.navigate('Pantalla de Inicio');
+      resultado = obtenerCorreoContrasena ()
+      keys = object.keys(resultado)
+      if (keys.length > 1) {
+        navigation.navigate('Pantalla de Inicio');
+      } else {
+        message = 'Correo o Contrasena son invalidos'
+      }
+      
     }
     const onContrasenaOlvidadaPressed = () => {
       navigation.navigate('Contrasena Olvidada');

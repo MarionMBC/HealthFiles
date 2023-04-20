@@ -3,13 +3,12 @@ import {  StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import NavigationTabs from './navigation/NavigationTabs.jsx';
 import NavigationStack from './navigation/NavigationStackCitas.jsx';
+import SignInScreen from './screens/SignInScreen.jsx';
 
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <NavigationTabs></NavigationTabs>
-    </NavigationContainer>
+    <SignInScreen />
  
     
   );
