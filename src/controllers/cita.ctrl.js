@@ -170,7 +170,7 @@ export const updateCita = async (req, res) => {
 
 //Con IFNULL() verificamos si el primer parametro es nulo, si lo es mantenemos el valor actual
     await pool.query(
-        "UPDATE cita dni_paciente=IFNULL(?, dni_paciente),dni_medico=IFNULL(?, dni_medico),codigo_hospital=IFNULL(?, codigo_hospital), fecha=IFNULL(?, fecha), hora=IFNULL(?, hora), razon=IFNULL(?, razon), estado = IFNULL(?, estado), diagnostico=IFNULL(?, diagnostico), tratamiento=IFNULL(?, tratamiento), valoracion=IFNULL(?, valoracion) where codigo_cita = ?",
+        "UPDATE cita set dni_paciente=IFNULL(?, dni_paciente),dni_medico=IFNULL(?, dni_medico),codigo_hospital=IFNULL(?, codigo_hospital), fecha=IFNULL(?, fecha), hora=IFNULL(?, hora), razon=IFNULL(?, razon), estado = IFNULL(?, estado), diagnostico=IFNULL(?, diagnostico), tratamiento=IFNULL(?, tratamiento), valoracion=IFNULL(?, valoracion) where codigo_cita = ?",
         [
             dni_paciente,
             dni_medico,
