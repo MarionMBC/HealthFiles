@@ -7,14 +7,15 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react'
 import { useState } from 'react';
 import {Text, View, TextInput, Pressable, ScrollView, Platform, TouchableOpacity } from 'react-native'
-import ButtonsSignIn from '../../../components/ButtonsSignIn'
+import ButtonsSignIn from '../components/ButtonsSignIn.component';
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker'
-import CustomInput from '../../../components/CustomInput';
+import CustomInput from '../components/CustomInput.component';
 import { useForm} from 'react-hook-form';
 import { SelectList } from 'react-native-dropdown-select-list';
-import styles from '../../styles/styles';
-import guardarPaciente from './../../.././helpers/LoginUser.helper'
+import styles from '../styles/styles';
+import { guardarPaciente } from '../helpers/Login.helper';
+
 
 export default function SignUpScreen() {
     const navigation = useNavigation();
@@ -209,7 +210,7 @@ export default function SignUpScreen() {
     };
 
     const onCancelarPressed = () => {
-      navigation.navigate('Inicio de Sesion')
+      navigation.navigate('Login')
     }
     const onIniciodeSesionPressed = () => {
       navigation.navigate('Inicio de Sesion')
