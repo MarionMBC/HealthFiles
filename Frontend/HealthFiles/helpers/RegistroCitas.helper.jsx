@@ -70,7 +70,7 @@ export const obtenerCitas = async (dni_paciente="34567890123") => {
   try {
           const response = await fetch(`${URL}cita/update/${codigoCita}`, 
           {
-            method: 'PUT',
+            method: 'PATCH',
           headers:{
             'Content-Type': 'application/json'
           },
