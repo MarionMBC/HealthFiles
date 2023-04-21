@@ -9,7 +9,7 @@ import React from 'react'
 import {Text, View, useWindowDimensions, Image, ScrollView } from 'react-native'
 import ButtonsSignIn from '../../../Frontend/HealthFiles/components/ButtonsSignIn.component';
 import { useNavigation } from '@react-navigation/native';
-import {useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import CustomInput from '../../../Frontend/HealthFiles/components/CustomInput.component';
 import styles from '../../HealthFiles/styles/styles';
 import { obtenerCorreoContrasena } from '../helpers/Login.helper';
@@ -22,6 +22,7 @@ export default function SignInScreen() {
     const navigation = useNavigation();
   
     const onInicioSesionPressed = () => {
+      
       resultado = obtenerCorreoContrasena ()
       keys = object.keys(resultado)
       if (keys.length > 1) {
