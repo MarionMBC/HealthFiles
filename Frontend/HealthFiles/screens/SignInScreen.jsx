@@ -47,7 +47,7 @@ export default function SignInScreen() {
           
           <Image 
             style = {[styles.imagen, {height: height * 0.3}]}
-            source = { require('../../../assets/imagenLogoOff.jpg')}
+            source = { require('../assets/ImagenLogoOff.jpg')}
             resizeMode = 'contain'
           />
           
