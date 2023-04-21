@@ -5,7 +5,7 @@
  */
 
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -24,19 +24,37 @@ import { obtenerCorreoContrasena } from "../helpers/Login.helper";
 
 export default function SignInScreen({ navigation }) {
   const { height } = useWindowDimensions();
-  console.log(navigation);
-
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  /*   const navigation = useNavigation(); */
+  const [correo, setCorreo] = useState (); 
+  const [constrasena, setContrasena] = useState();
+  const [resultado, setResultado] = useState();
 
-  const onInicioSesionPressed = () => {
-    resultado = obtenerCorreoContrasena();
-    keys = object.keys(resultado);
+  useEffect(() => {
+    fetch("https:/healthfiles-production.up.railway.app/paciente/get/${correo_electronico}/${contrasena}")
+      .then((res)=>res.json())
+      .then((json)=>{
+        setResultado(json)
+      })
+      .catch((e)=>console.log(e))
+  }, [resultado])
+
+  const onInicioSesionPressed = (correo_electronico='juan.perez@gmail.com', contrasena='password123') => {
+      
+
+      console.log("d", resultado);
+    var keys = Object.keys(
+      resultado.then
+        ? resultado.then((result) => {
+            return result;
+          })
+        : resultado
+    );
+
     if (keys.length > 1) {
       navigation.navigate("Pantalla de Inicio");
     } else {
