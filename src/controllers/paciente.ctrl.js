@@ -68,7 +68,7 @@ export const getUsuarioPaciente = async (req, res) => {
     if (paciente.length<=0){ //Verificación de que el objeto no venga vacío
         res.status(404).json({msg: "Paciente no encontrado"})
     }else{ //Si no viene vacío
-        res.send(paciente[0]);
+        res.status(200).json(paciente[0]);
     }
     } catch (error) {
         return res.status(500).json({

@@ -12,7 +12,7 @@ const CustomButtom = ({ title, onClick }) => {
         alignItems: "center",
       }}
       onPress={() => {
-       onClick();
+        onClick();
       }}
     >
       <Text style={{ color: "#fff", fontSize: 18, fontWeight: "500" }}>

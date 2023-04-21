@@ -15,7 +15,7 @@ import styles from '../../HealthFiles/styles/styles';
 
 WebBrowser.maybeCompleteAuthSession();
 
-export default function SignInScreen()  {
+export default function LogininGmailScreen()  {
     const { height} = useWindowDimensions();
 
     const [accessToken, setAccessToken] = React.useState(null);

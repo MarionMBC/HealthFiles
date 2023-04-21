@@ -1,16 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import {  StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import NavigationStackLogin from './navigation/NavigationSignIn.jsx';
 import NavigationTabs from './navigation/NavigationTabs.jsx';
-import NavigationStack from './navigation/NavigationStackCitas.jsx';
-import SignInScreen from './screens/SignInScreen.jsx';
 
 
 export default function App() {
   return (
-    <SignInScreen />
- 
-    
+    <NavigationContainer>
+      <NavigationTabs></NavigationTabs>
+    </NavigationContainer>
+
   );
 }
 
