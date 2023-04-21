@@ -8,42 +8,42 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import { Controller } from 'react-hook-form'
 
-const CustomInput = ({control, name, placeholder, rules = {}, secureTextEntry, keyboardType}) => {
-const [ data, setData ] = useState();
+const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, keyboardType }) => {
+    const [data, setData] = useState();
     return (
-    
-      <Controller 
-        control={control}
-        name = {name}
-        rules={rules}
-        render={({field: {value, onChange, onBlur}, fieldState: {error}}) => (
-            <>
-            <View style={[styles.container, {borderColor: error ? 'red' :'gray'}]}>
-            <TextInput 
-               placeholder={placeholder} 
-               value={value}
-               onChangeText={(e)=> {
-                console.log(e);
-            }}
-               onBlur={onBlur}
-               style={[styles.textInput, {}]}
-               secureTextEntry = {secureTextEntry}
-               keyboardType={keyboardType}
-               
-               rules={{
-                required: 'El Campo Fecha de Nacimiento esta vacio',
-               }}
-            />
-            </View>
-            {error && (
-            <Text 
-                style={{color: 'red', alignSelf: 'stretch', marginHorizontal: 50}}
-            >{error.message || 'Error'}</Text>
+
+        <Controller
+            control={control}
+            name={name}
+            rules={rules}
+            render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
+                <>
+                    <View style={[styles.container, { borderColor: error ? 'red' : 'gray' }]}>
+                        <TextInput
+                            placeholder={placeholder}
+                            value={value}
+                            onChangeText={(e) => {
+                                console.log(e);
+                            }}
+                            onBlur={onBlur}
+                            style={[styles.textInput, {}]}
+                            secureTextEntry={secureTextEntry}
+                            keyboardType={keyboardType}
+
+                            rules={{
+                                required: 'El Campo Fecha de Nacimiento esta vacio',
+                            }}
+                        />
+                    </View>
+                    {error && (
+                        <Text
+                            style={{ color: 'red', alignSelf: 'stretch', marginHorizontal: 50 }}
+                        >{error.message || 'Error'}</Text>
+                    )}
+                </>
             )}
-            </>
-          )}
-      />
-  )
+        />
+    )
 }
 
 const styles = StyleSheet.create({
