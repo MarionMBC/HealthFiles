@@ -7,7 +7,7 @@ import NavigationTabs from './navigation/NavigationTabs.jsx';
 export default function App() {
   return (
     <NavigationContainer>
-      <NavigationTabs></NavigationTabs>
+      <NavigationStackLogin></NavigationStackLogin>
     </NavigationContainer>
 
   );

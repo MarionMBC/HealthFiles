@@ -13,7 +13,7 @@ export default function NavigationStackHome() {
       cardStyle={{ backgroundColor: "red" }}
       initialRouteName="Inicio"
     >
-      <StackHome.Screen name="Inicio" component={ListaPacientes} />
+      <StackHome.Screen name="Inicio" component={ListaPacientes} options={{ headerShown: false }} />
     </StackHome.Navigator>
   );
 }

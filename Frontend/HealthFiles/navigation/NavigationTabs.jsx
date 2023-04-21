@@ -1,14 +1,10 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import HomeScreen from "../screens/HomeScreen";
 import NavigationStackExamenes from "./NavigationStackExamenes";
 import ReportesScreen from "../screens/ReportesScreen";
 import NavigationStackCitas from "./NavigationStackCitas";
 import NavigationStackMedicamentos from "./NavigationStackMedicamentos";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import MedicinasScreen from "../screens/MedicinasScreen";
-import RegistroCitaScreen from "../screens/RegistroCitaScreen";
-import RegistroRecordatorioScreen from "../screens/RegistroRecordatorioScreen";
 import NavigationStackRecordatorio from "./NavigationStackRecordatorio";
 import ListaPacientes from "../screens/ListaPacientes.jsx";
 import NavigationStackHome from "./NavigationHome";

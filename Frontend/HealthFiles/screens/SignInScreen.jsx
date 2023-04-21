@@ -31,7 +31,7 @@ export default function SignInScreen({ navigation }) {
   } = useForm();
 
   const [correo, setCorreo] = useState (); 
-  const [constrasena, setContrasena] = useState();
+  const [contrasena, setContrasena] = useState();
   const [resultado, setResultado] = useState();
 
   useEffect(() => {
@@ -70,6 +70,22 @@ export default function SignInScreen({ navigation }) {
   const onRegistroPressed = () => {
     navigation.navigate("Registro");
   };
+
+  const handleIgreso = async () => {
+    try {
+      const res = await obtenerCorreoContrasena(correo, contrasena);
+      if (res.msg === 'Paciente no encontrado') {
+        console.log(res.msj);
+      } else {
+        console.log(res);
+        navigation.navigate('Pantalla de Inicio');
+      }
+    } catch (e) {
+      console.error(e);
+      setError('Ha ocurrido un error. Por favor, intenta nuevamente.');
+    }
+  };
+
 
   return (
     <ScrollView>
@@ -114,7 +130,7 @@ export default function SignInScreen({ navigation }) {
 
         <ButtonsSignIn
           text="Iniciar Sesion"
-          onPress={handleSubmit(onInicioSesionPressed)}
+          onPress={handleIgreso}
         />
 
         <ButtonsSignIn

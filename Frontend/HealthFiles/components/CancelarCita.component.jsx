@@ -1,22 +1,26 @@
-import React, {useEffect, useState} from 'react';
-import {Modal, Pressable, Text, StyleSheet, View, Alert} from "react-native";
+/**
+ * @author Jennebier Esther Alvarado López
+ * @description Componente modal para confirmar la cancelación de una cita
+ */
+import React, { useEffect, useState } from 'react';
+import { Modal, Pressable, Text, StyleSheet, View, Alert } from "react-native";
 import { cancelarCita } from '../helpers/RegistroCitas.helper';
 
 
-const CancelarCita = ({modalVisible, setModalVisible, codigo_cita}) => {
+const CancelarCita = ({ modalVisible, setModalVisible, codigo_cita }) => {
 
     const [respuesta, setRespuesta] = useState();
     const handleDelete = () => {
         setModalVisible(!modalVisible);
-            cancelarCita(codigo_cita).then(r => {
-                setRespuesta(r)
-                
-            })
+        cancelarCita(codigo_cita).then(r => {
+            setRespuesta(r)
+
+        })
     }
 
 
     return (
-        <View style={styles.centeredView }>
+        <View style={styles.centeredView}>
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -26,22 +30,24 @@ const CancelarCita = ({modalVisible, setModalVisible, codigo_cita}) => {
                     setModalVisible(!modalVisible);
                 }}>
                 <View style={styles.centeredView}>
-                    <View style={[styles.modalView, {shadowColor: '#000',
+                    <View style={[styles.modalView, {
+                        shadowColor: '#000',
                         shadowOffset: { width: 0, height: 2 },
                         shadowOpacity: 0.25,
                         shadowRadius: 3.84,
-                        elevation: 8}]}>
+                        elevation: 8
+                    }]}>
                         <Text style={styles.modalText}>¿Seguro desea cancelar la cita?</Text>
-                        <View style={{display: 'flex',flexDirection: 'row'}}>
+                        <View style={{ display: 'flex', flexDirection: 'row' }}>
                             <Pressable
                                 style={[styles.button, styles.buttonClose]}
                                 onPress={() => handleDelete()}>
                                 <Text style={styles.textStyle}>Sí, quiero</Text>
                             </Pressable><Pressable
-                            style={[styles.button, styles.buttonCancel]}
-                            onPress={() => setModalVisible(!modalVisible)}>
-                            <Text style={styles.textStyle}>No, quiero</Text>
-                        </Pressable>
+                                style={[styles.button, styles.buttonCancel]}
+                                onPress={() => setModalVisible(!modalVisible)}>
+                                <Text style={styles.textStyle}>No, quiero</Text>
+                            </Pressable>
                         </View>
                     </View>
                 </View>
@@ -84,10 +90,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         marginHorizontal: 5
     },
-        buttonCancel: {
-            backgroundColor: '#2196F3',
-            marginHorizontal: 5
-        },
+    buttonCancel: {
+        backgroundColor: '#2196F3',
+        marginHorizontal: 5
+    },
     textStyle: {
         color: 'white',
         fontWeight: 'bold',

@@ -5,6 +5,7 @@ import PantallaInicioScreen from "../screens/PantallaInicioScreen";
 import { backgroundColor } from "react-native-calendars/src/style";
 import LogininGmailScreen from "../screens/LoginGmailScreen";
 import SignUpScreen from "../screens/SignUpScreen";
+import NavigationTabs from "./NavigationTabs";
 
 
 const StackSignScreen = createNativeStackNavigator();
@@ -21,7 +22,7 @@ export default function NavigationStackLogin() {
       <StackSignScreen.Screen name="Registro" component={SignUpScreen} />
       <StackSignScreen.Screen
         name="Pantalla de Inicio"
-        component={PantallaInicioScreen}
+        component={NavigationTabs}
       />
 
      
