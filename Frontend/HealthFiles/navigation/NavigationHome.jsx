@@ -11,7 +11,7 @@ export default function NavigationStackHome(){
         
         <StackHome.Navigator headerStyle={{backgroundColor:'red'}} cardStyle={{backgroundColor: 'red'}} initialRouteName='Inicio'>
             <StackHome.Screen  name="Inicio" component={ListaPacientes}/>
-            
+        
         </StackHome.Navigator>
     )
     

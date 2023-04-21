@@ -128,7 +128,14 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
       }
     >
       <View>
-        <View style={{ marginTop: 10 }}>
+        <View
+          style={{
+            marginTop: 10,
+            display: "flex",
+            flexDirection: "row",
+            backgroundColor: "red",
+          }}
+        >
           <SelectList
             setSelected={setSelected}
             onSelect={() => {
@@ -154,6 +161,7 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
             }}
           />
         </View>
+
         <View>
           <Text
             style={{
@@ -171,7 +179,6 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
           <Calendar
             onDayPress={(day) => {
               setSelectedDate(day.dateString);
-              console.log(day.dateString);
             }}
             markedDates={{
               [selectedDate]: {
