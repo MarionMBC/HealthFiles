@@ -11,8 +11,7 @@ import NavigationStackHome from "./NavigationHome";
 import NavigationStackCirugia from "./NavigationStackCirugia";
 
 const Tab = createMaterialBottomTabNavigator();
-export default function NavigationTabs({ navigation, route }) {
-  route = route.params.res
+export default function NavigationTabs({ /* navigation */ }) {
 
   return (
     <Tab.Navigator
@@ -57,7 +56,7 @@ export default function NavigationTabs({ navigation, route }) {
             <MaterialCommunityIcons name="pill" color={color} size={26} />
           ),
 
-          route: { route }
+
 
         }}
       ></Tab.Screen>

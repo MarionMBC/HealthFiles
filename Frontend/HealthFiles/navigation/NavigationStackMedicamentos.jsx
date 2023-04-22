@@ -15,10 +15,6 @@ export default function NavigationStackMedicamentos() {
       <StackMedicamentos.Screen
         name="Registro de Medicamentos"
         component={RegistroMedicamentoScreen}
-<<<<<<< HEAD
-      
-=======
->>>>>>> parent of 561fed5 (Merge branch 'development' of https://github.com/MarionMBC/HealthFiles into development)
       />
       <StackMedicamentos.Screen
         name="Agregar Medicamento"

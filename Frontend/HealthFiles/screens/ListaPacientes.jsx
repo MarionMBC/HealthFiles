@@ -5,6 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import CardPacienteList from "../components/CardPacienteList.component";
 
 export default function PantallaPacientes({navigation}) {
+  console.log("Pacientes", navigation);
   const [searchText, setSearchText] = useState('');
 
   const handleSearch = (text) => {
