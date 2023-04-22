@@ -23,6 +23,7 @@ export default function NavigationStackLogin() {
       <StackSignScreen.Screen
         name="Pantalla de Inicio"
         component={NavigationTabs}
+        options={{ headerShown: false }}
       />
 
      
