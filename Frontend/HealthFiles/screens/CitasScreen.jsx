@@ -23,7 +23,11 @@ export default function CitasScreen({ navigation }) {
        
         
       </View>
+<<<<<<< HEAD
       <CitaCardComponent dni_paciente={"34567890123"}></CitaCardComponent>
+=======
+      <CitaCardComponent dni_paciente={"34567890123"} navigation={navigation}></CitaCardComponent>
+>>>>>>> parent of 2d7c6c4 (Listado de pacientes por médico, se agrega componente para renderizar examenes)
       <AgregarComponente nombre={"Cita"} navigation = {navigation} />
      
       </View>
