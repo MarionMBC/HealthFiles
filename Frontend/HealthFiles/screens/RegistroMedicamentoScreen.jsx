@@ -5,7 +5,8 @@ import PacienteInfoComponent from "../components/PacienteInfo.component";
 import TittleComponent from "../components/Tittle.component";
 import AgregarComponente from "../components/AgregarComponent.component";
 
-const RegistroMedicamentoScreen = ({ navigation }) => {
+const RegistroMedicamentoScreen = ({ navigation, route }) => {
+  console.log(route);
   const [medicamentos, setMedicamentos] = useState([]);
 
   useEffect(() => {
@@ -66,7 +67,7 @@ const RegistroMedicamentoScreen = ({ navigation }) => {
         nombre={"Medicamento"}
         navigation={navigation}
         params={{ dni_medico: "34567890123", dni_paciente: "78901234567" }}
-        
+
       />
     </ScrollView>
   );

@@ -8,11 +8,7 @@ const StackHome = createNativeStackNavigator();
 
 export default function NavigationStackHome() {
   return (
-    <StackHome.Navigator
-      headerStyle={{ backgroundColor: "red" }}
-      cardStyle={{ backgroundColor: "red" }}
-      initialRouteName="Inicio"
-    >
+    <StackHome.Navigator headerStyle={{ backgroundColor: "red" }} cardStyle={{ backgroundColor: "red" }} initialRouteName="Inicio">
       <StackHome.Screen name="Inicio" component={ListaPacientes} options={{ headerShown: false }} />
     </StackHome.Navigator>
   );

@@ -11,7 +11,9 @@ import NavigationStackHome from "./NavigationHome";
 import NavigationStackCirugia from "./NavigationStackCirugia";
 
 const Tab = createMaterialBottomTabNavigator();
-export default function NavigationTabs() {
+export default function NavigationTabs({ navigation, route }) {
+  route = route.params.res
+
   return (
     <Tab.Navigator
       initialRouteName="Pacientes"
@@ -50,9 +52,13 @@ export default function NavigationTabs() {
         name="Medicinas"
         component={NavigationStackMedicamentos}
         options={{
+
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="pill" color={color} size={26} />
           ),
+
+          route: { route }
+
         }}
       ></Tab.Screen>
       <Tab.Screen
