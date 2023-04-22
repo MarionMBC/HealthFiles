@@ -1,4 +1,4 @@
-const URL = "https://healthfiles-production.up.railway.app/";
+const URL = "https://healthfiles.azurewebsites.net/";
 
 /**
  * @author Jennebier Esther Alvarado López
@@ -68,18 +68,18 @@ export const obtenerCitas = async (dni_paciente = "34567890123") => {
  */
 export const cancelarCita = async (codigoCita) => {
   try {
-          const response = await fetch(`${URL}cita/update/${codigoCita}`, 
-          {
-            method: 'PUT',
-          headers:{
-            'Content-Type': 'application/json'
-          },
+    const response = await fetch(`${URL}cita/update/${codigoCita}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
           estado: 'Cancelada'
         })
-       });
-       const res = await response.json();
-       return res;   
+      });
+    const res = await response.json();
+    return res;
   } catch (e) {
     return e;
   }

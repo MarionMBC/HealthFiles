@@ -1,4 +1,4 @@
-const URL = "https://healthfiles-production.up.railway.app/";
+const URL = "https://healthfiles.azurewebsites.net/";
 
 export const obtenerCirugias = async (
   dni_medico = "12345678901",

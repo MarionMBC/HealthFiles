@@ -74,7 +74,7 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
       importancia: importancia,
     };
     fetch(
-      "https://healthfiles-production.up.railway.app/medicamento_paciente/create",
+      "https://healthfiles.azurewebsites.net/medicamento_paciente/create",
       {
         method: "POST",
         headers: {
@@ -93,7 +93,7 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
   const onRefresh = React.useCallback(() => {
     setRefresh(true);
     fetch(
-      "https://healthfiles-production.up.railway.app/medicamento/get/nombres"
+      "https://healthfiles.azurewebsites.net/medicamento/get/nombres"
     )
       .then((res) => res.json())
       .then((json) => {
@@ -108,7 +108,7 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     fetch(
-      "https://healthfiles-production.up.railway.app/medicamento/get/nombres"
+      "https://healthfiles.azurewebsites.net/medicamento/get/nombres"
     )
       .then((res) => res.json())
       .then((json) => {
