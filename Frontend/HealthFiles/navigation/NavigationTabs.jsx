@@ -16,17 +16,17 @@ export default function NavigationTabs({ navigation, route }) {
 
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Pacientes"
       activeColor="#125ba5"
       inactiveColor="#848385"
       barStyle={{ backgroundColor: "#F9F7E9" }}
     >
       <Tab.Screen
-        name="Home"
+        name="Pacientes"
         component={NavigationStackHome}
         options={{
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
+            <MaterialCommunityIcons name="account-group" color={color} size={26} />
           ),
         }}
       ></Tab.Screen>
@@ -83,15 +83,7 @@ export default function NavigationTabs({ navigation, route }) {
           ),
         }}
       ></Tab.Screen>
-      <Tab.Screen
-        name="Recordatorios"
-        component={NavigationStackRecordatorio}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
-          ),
-        }}
-      ></Tab.Screen>
+     
     </Tab.Navigator>
   );
 }

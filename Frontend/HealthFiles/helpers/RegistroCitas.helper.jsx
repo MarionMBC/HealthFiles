@@ -88,3 +88,23 @@ export const cancelarCita = async (codigoCita) => {
 export const handleViewCita = (navigation, cita) => {
   navigation.navigate("Detalle Cita", cita);
 };
+
+
+
+/**
+ * @author Jennebier Esther Alvarado López
+ * @date 15 de abril del 2023
+ * @description Obtiene los detalles de una cita dado su código
+ * @param {String} dni_medico
+ * @returns respuesta en Json
+ */
+export const obtenerCita = async (codigo_cita) => {
+  try {
+    const urlCita = `${URL}cita/get/${codigo_cita}`;
+    const response = await fetch(urlCita);
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    return e;
+  }
+};

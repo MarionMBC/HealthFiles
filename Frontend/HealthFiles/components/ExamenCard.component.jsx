@@ -1,18 +1,17 @@
 /**
  * @author Jennebier Esther Alvarado López
- * @description Componente tipo tarjeta que trae las citas de la base de datos y las renderiza
+ * @description Componente tipo tarjeta que trae los examenes de la base de datos y las renderiza
  */
 import React, { useState, useEffect } from 'react';
 import { Card } from "react-native-elements";
 import { ScrollView, StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { dateFormatter } from "../helpers/RegistroMedicamentos.helper";
-import { obtenerCitas } from '../helpers/RegistroCitas.helper';
-import CancelarCita from './CancelarCita.component';
 
 
 
-const CitaCardComponent = ({ dni_paciente, setSearchStatus, navigation }) => {
+
+const ExamenCardComponent = ({ dni_paciente, setSearchStatus, navigation }) => {
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -23,7 +22,7 @@ const CitaCardComponent = ({ dni_paciente, setSearchStatus, navigation }) => {
     console.log(isHovered)
   }
 
-  const [citas, setCitas] = useState([]);
+  const [examenes, setExamenes] = useState([]);
 
   useEffect(() => {
     const obtenerDatos = async () => {
@@ -166,4 +165,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default CitaCardComponent;
+export default ExamenCardComponent;

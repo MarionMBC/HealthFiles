@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import CardPacienteList from "../components/CardPacienteList.component";
+import PacienteCardComponent from '../components/CardPaciente.component';
 
 export default function PantallaPacientes({navigation}) {
   const [searchText, setSearchText] = useState('');
@@ -26,7 +26,8 @@ export default function PantallaPacientes({navigation}) {
       </View>
 
       <View style={{ marginBottom: 15 }}>
-     
+      
+      <PacienteCardComponent dni_medico={"56789012345"} navigation={navigation}></PacienteCardComponent>
       </View>
       <View style={styles.addButtonContainer}>
         <TouchableOpacity style={styles.addButton}>
