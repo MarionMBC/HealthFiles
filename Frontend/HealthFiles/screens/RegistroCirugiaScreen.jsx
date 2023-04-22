@@ -21,7 +21,7 @@ const RegistroCirugiaScreen = ({ navigation }) => {
       />
       <TableTipoCirugia />
       <View style={{ marginBottom: 15 }}>
-        <CardCirugia dni_medico={"12345678901"} dni_paciente={"56789012345"} navigation={navigation} ></CardCirugia>
+        <CardCirugia></CardCirugia>
       </View>
       <AgregarComponente nombre={"Cirugia"} navigation={navigation} />
     </ScrollView>
