@@ -30,28 +30,28 @@ export default function SignInScreen({ navigation }) {
     formState: { errors },
   } = useForm();
 
-  const [correo, setCorreo] = useState (); 
+  const [correo, setCorreo] = useState();
   const [contrasena, setContrasena] = useState();
   const [resultado, setResultado] = useState();
 
   useEffect(() => {
     fetch("https:/healthfiles-production.up.railway.app/paciente/get/${correo_electronico}/${contrasena}")
-      .then((res)=>res.json())
-      .then((json)=>{
+      .then((res) => res.json())
+      .then((json) => {
         setResultado(json)
       })
-      .catch((e)=>console.log(e))
+      .catch((e) => console.log(e))
   }, [resultado])
 
-  const onInicioSesionPressed = (correo_electronico='juan.perez@gmail.com', contrasena='password123') => {
-      
+  const onInicioSesionPressed = (correo_electronico = 'juan.perez@gmail.com', contrasena = 'password123') => {
 
-      console.log("d", resultado);
+
+    console.log("d", resultado);
     var keys = Object.keys(
       resultado.then
         ? resultado.then((result) => {
-            return result;
-          })
+          return result;
+        })
         : resultado
     );
 
@@ -78,7 +78,7 @@ export default function SignInScreen({ navigation }) {
         console.log(res.msj);
       } else {
         console.log(res);
-        navigation.navigate('Pantalla de Inicio');
+        navigation.navigate('Inicio', { res });
       }
     } catch (e) {
       console.error(e);

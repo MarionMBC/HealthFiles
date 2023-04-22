@@ -15,18 +15,15 @@ export default function NavigationStackLogin() {
     <StackSignScreen.Navigator
       headerStyle={{ backgroundColor: "red" }}
       cardStyle={{ backgroundColor: "red" }}
-      initialRouteName="Login"
-    >
+      initialRouteName="Login">
       <StackSignScreen.Screen name="Login" component={SignInScreen} />
       <StackSignScreen.Screen name="Inicio de Sesion Gmail" component={LogininGmailScreen} />
       <StackSignScreen.Screen name="Registro" component={SignUpScreen} />
-      <StackSignScreen.Screen
-        name="Pantalla de Inicio"
-        component={NavigationTabs}
-      />
+      <StackSignScreen.Screen name="Inicio" component={NavigationTabs}  
+    />
 
-     
-      
+
+
     </StackSignScreen.Navigator>
   );
 }
