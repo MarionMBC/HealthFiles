@@ -13,6 +13,7 @@ const StackSignScreen = createNativeStackNavigator();
 export default function NavigationStackLogin() {
   return (
     <StackSignScreen.Navigator
+      screenOptions={{ headerShown: false }}
       headerStyle={{ backgroundColor: "red" }}
       cardStyle={{ backgroundColor: "red" }}
       initialRouteName="Login">
@@ -26,8 +27,8 @@ export default function NavigationStackLogin() {
         options={{ headerShown: false }}
       />
 
-      <StackSignScreen.Screen name="Inicio" component={NavigationTabs}  
-    />
+      <StackSignScreen.Screen name="Inicio" component={NavigationTabs}
+      />
 
 
 
