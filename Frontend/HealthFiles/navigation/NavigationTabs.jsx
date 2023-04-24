@@ -26,7 +26,7 @@ export default function NavigationTabs({ navigation, route }) {
         component={NavigationStackHome}
         options={{
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
+            <MaterialCommunityIcons name="account-group" color={color} size={26} />
           ),
         }}
       ></Tab.Screen>
@@ -80,15 +80,6 @@ export default function NavigationTabs({ navigation, route }) {
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="file-chart" color={color} size={26} />
-          ),
-        }}
-      ></Tab.Screen>
-      <Tab.Screen
-        name="Recordatorios"
-        component={NavigationStackRecordatorio}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
           ),
         }}
       ></Tab.Screen>

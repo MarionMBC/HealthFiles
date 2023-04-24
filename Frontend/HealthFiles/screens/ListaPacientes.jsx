@@ -19,11 +19,7 @@ export default function PantallaPacientes({navigation}) {
       <View style={{ marginBottom: 15 }}>
      
       </View>
-      <View style={styles.addButtonContainer}>
-        <TouchableOpacity style={styles.addButton}>
-          <MaterialIcons name="add" size={24} color="white" />
-        </TouchableOpacity>
-      </View>
+    
     </View>
   );
 }
