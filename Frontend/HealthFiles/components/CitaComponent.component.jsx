@@ -9,6 +9,8 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { dateFormatter } from "../helpers/RegistroMedicamentos.helper";
 import { obtenerCitas } from '../helpers/RegistroCitas.helper';
 import CancelarCita from './CancelarCita.component';
+import { useContext } from 'react';
+import CitasContext from '../hooks/CitasContext';
 
 
 
@@ -23,15 +25,9 @@ const CitaCardComponent = ({ dni_paciente, setSearchStatus, navigation }) => {
     console.log(isHovered)
   }
 
-  const [citas, setCitas] = useState([]);
+  const {citas} = useContext(CitasContext);
 
-  useEffect(() => {
-    const obtenerDatos = async () => {
-      const datos = await obtenerCitas(dni_paciente);
-      setCitas(datos);
-    };
-    obtenerDatos();
-  }, [dni_paciente]);
+ 
 
 
   return (

@@ -3,7 +3,10 @@
  * Date: 29/03/2023
  * Description: Pantalla para el registro de una cita para el usuario doctor
  */
-import React, { useState, useEffect } from 'react';
+
+
+
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, TextInput, ScrollView } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Calendar } from 'react-native-calendars';
@@ -12,12 +15,12 @@ import PickerHorario from '../components/PickerHorario.component.jsx';
 import { Button } from '@rneui/themed';
 import styles from '../styles/styles.js';
 import CodigoAleatorio from '../helpers/CodigoAleatorio.js';
-import { GuardarCita } from '../helpers/RegistroCitas.helper.jsx';
+import { GuardarCita, obtenerCitas } from '../helpers/RegistroCitas.helper.jsx';
 import TittleComponent from '../components/Tittle.component.jsx';
+import CitasContext from '../hooks/CitasContext.jsx';
 
 
 export default function RegistroCitaScreen({navigation}) {
-  
 
   //Declaración de variables de estado
   const [motivo, setMotivo] = useState(null);
@@ -80,6 +83,7 @@ export default function RegistroCitaScreen({navigation}) {
         valoracion:0
     };
     GuardarCita(data);
+    
     navigation.goBack();
     
   };
