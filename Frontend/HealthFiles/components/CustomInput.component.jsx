@@ -9,7 +9,7 @@ import React, { useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
 
 const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, keyboardType, setState }) => {
-    
+
     return (
         <Controller
             control={control}
@@ -17,7 +17,7 @@ const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, 
             rules={rules}
             render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
                 <>
-                    <View style={[styles.container, { borderColor: error ? 'red' : 'gray' }]}>
+                    <View style={[{ borderColor: error ? 'red' : 'gray' }, styles.container]}>
                         <TextInput
                             placeholder={placeholder}
                             value={value}
@@ -25,10 +25,10 @@ const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, 
                                 setState(value);
                             }}
                             onBlur={onBlur}
-                            style={[styles.textInput, {}]}
+                            style={{}}
                             secureTextEntry={secureTextEntry}
                             keyboardType={keyboardType}
-                            
+
                             rules={{
                                 required: 'El Campo Fecha de Nacimiento esta vacio',
                             }}
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         borderRadius: 10,
         backgroundColor: 'white',
-        paddingVertical: 20,
+
     },
     textInput: {
     },

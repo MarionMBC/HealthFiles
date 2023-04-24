@@ -23,6 +23,7 @@ import styles from "../../HealthFiles/styles/styles";
 import { obtenerCorreoContrasena } from "../helpers/Login.helper";
 
 export default function SignInScreen({ navigation }) {
+
   const { height } = useWindowDimensions();
   const {
     control,
@@ -43,14 +44,14 @@ export default function SignInScreen({ navigation }) {
 
 
 
-  useEffect(() => {
-    fetch("https://healthfiles.azurewebsites.net/paciente/get/${correo_electronico}/${contrasena}")
-      .then((res) => res.json())
-      .then((json) => {
-        setResultado(json)
-      })
-      .catch((e) => console.log(e))
-  }, [resultado])
+  /*   useEffect(() => {
+      fetch("https://healthfiles.azurewebsites.net/paciente/get/${correo_electronico}/${contrasena}")
+        .then((res) => res.json())
+        .then((json) => {
+          setResultado(json)
+        })
+        .catch((e) => console.log(e))
+    }, []) */
 
   /*   const onInicioSesionPressed = (correo_electronico = 'juan.perez@gmail.com', contrasena = 'password123') => {
       console.log("d", resultado);
@@ -82,10 +83,11 @@ export default function SignInScreen({ navigation }) {
   const handleIgreso = async () => {
     try {
       const res = await obtenerCorreoContrasena(correo, contrasena);
-      if (res.msg === "Paciente no encontrado") {
-        setAuth(!setAuth);
+      if (res.msg === "Paciente no encontrado" || contrasena == "" || correo == "") {
+        setAuth(!isAuth);
       } else {
         console.log(res);
+        navigation.navigate("Inicio")
       };
     } catch (e) {
       console.error(e);
@@ -103,8 +105,10 @@ export default function SignInScreen({ navigation }) {
           resizeMode="contain"
         />
 
+        {isAuth ? <Text style={{ color: "red", fontSize: 14, fontWeight: 500 }}>Usuario o contraseña incorrecto</Text> : <></>}
+
+
         <Text style={styles.subtitulos_1}> Correo electrónico </Text>
-        {isAuth ? <Text>Usuario Incorrecto</Text> : <></>}
         <CustomInput
           name="Correo Electronico"
           placeholder="example123@example.com"
