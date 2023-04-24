@@ -6,12 +6,14 @@ import { backgroundColor } from "react-native-calendars/src/style";
 import LogininGmailScreen from "../screens/LoginGmailScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 import NavigationTabs from "./NavigationTabs";
+import { CitasProvider } from "../hooks/CitasContext";
 
 
 const StackSignScreen = createNativeStackNavigator();
 
 export default function NavigationStackLogin() {
   return (
+    <CitasProvider  dni_paciente={"34567890123"}>
     <StackSignScreen.Navigator
       headerStyle={{ backgroundColor: "red" }}
       cardStyle={{ backgroundColor: "red" }}
@@ -34,5 +36,6 @@ export default function NavigationStackLogin() {
 
 
     </StackSignScreen.Navigator>
+    </CitasProvider>
   );
 }

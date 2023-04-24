@@ -12,8 +12,8 @@ export function CitasProvider({ children, dni_paciente }) {
       }; 
   
     useEffect(() => {
-      actualizarCitas();
-    }, [dni_paciente]);
+      actualizarCitas(dni_paciente);
+    }, [dni_paciente, citas]);
   
     return (
       <CitasContext.Provider value={{ citas, setCitas, actualizarCitas, dni_paciente }}>

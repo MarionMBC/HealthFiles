@@ -22,6 +22,8 @@ import CitasContext from '../hooks/CitasContext.jsx';
 
 export default function RegistroCitaScreen({navigation}) {
 
+  const {actualizarCitas, dni_paciente} = useContext(CitasContext);
+
   //Declaración de variables de estado
   const [motivo, setMotivo] = useState(null);
   const [datePickerVisible, setDatePickerVisible] = useState(false);
@@ -83,9 +85,9 @@ export default function RegistroCitaScreen({navigation}) {
         valoracion:0
     };
     GuardarCita(data);
-    
+    console.log(`Este es el dni paciente: ${dni_paciente}`);
+    actualizarCitas(dni_paciente);
     navigation.goBack();
-    
   };
 
 

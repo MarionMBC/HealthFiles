@@ -70,7 +70,7 @@ export const cancelarCita = async (codigoCita) => {
   try {
     const response = await fetch(`${URL}cita/update/${codigoCita}`,
       {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
         },

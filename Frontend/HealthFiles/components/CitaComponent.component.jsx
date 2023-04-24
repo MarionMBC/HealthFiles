@@ -25,10 +25,13 @@ const CitaCardComponent = ({ dni_paciente, setSearchStatus, navigation }) => {
     console.log(isHovered)
   }
 
-  const {citas} = useContext(CitasContext);
-
- 
-
+  const { citas } = useContext(CitasContext);
+  const [codigoCita, setcodigoCita] = useState();
+  
+  const handleCancelarCita = (codigo_cita) => {
+    setModalVisible(true);
+    setcodigoCita(codigo_cita);
+  }
 
   return (
 
@@ -53,21 +56,18 @@ const CitaCardComponent = ({ dni_paciente, setSearchStatus, navigation }) => {
             </View>
             <View style={styles.crudButton}>
               <TouchableHighlight underlayColor="transparent">
-                <Icon name={'eye'} size={25} color={'#2b7bb7'} onPress={()=>navigation.navigate('Detalle Cita',{cod:cita.codigo_cita, date:cita.fecha, dni:cita.dni_paciente, hour:cita.hora, state: cita.estado, reason: cita.razon, treat: cita.tratamiento, valueDate: cita.valoracion})} />
+                <Icon name={'eye'} size={25} color={'#2b7bb7'} onPress={() => navigation.navigate('Detalle Cita', { cod: cita.codigo_cita, date: cita.fecha, dni: cita.dni_paciente, hour: cita.hora, state: cita.estado, reason: cita.razon, treat: cita.tratamiento, valueDate: cita.valoracion })} />
               </TouchableHighlight>
               {cita.estado !== 'Cancelada' && (
                 <TouchableHighlight
-                  underlayColor="transparent"
-                  onPress={() => {
-                    setModalVisible(true);
-                  }}
+                  underlayColor="transparent" 
                 >
                   <Icon
                     name={'ban'}
                     size={25}
                     color={'#2b7bb7'}
                     onPress={() => {
-                      setModalVisible(true);
+                      handleCancelarCita(cita.codigo_cita)
                     }}
                   /></TouchableHighlight>
               )}
@@ -77,7 +77,11 @@ const CitaCardComponent = ({ dni_paciente, setSearchStatus, navigation }) => {
           <View style={styles.centeredView}>
 
           </View>
-          <CancelarCita modalVisible={modalVisible} setModalVisible={setModalVisible} codigo_cita={cita.codigo_cita} setSearchStatus={setSearchStatus} />
+          <CancelarCita
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+            codigo_cita={codigoCita}
+          />
         </Card>
 
       ))}

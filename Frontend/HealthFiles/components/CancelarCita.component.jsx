@@ -2,20 +2,23 @@
  * @author Jennebier Esther Alvarado López
  * @description Componente modal para confirmar la cancelación de una cita
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Modal, Pressable, Text, StyleSheet, View, Alert } from "react-native";
 import { cancelarCita } from '../helpers/RegistroCitas.helper';
+import CitasContext from '../hooks/CitasContext.jsx';
+
 
 
 const CancelarCita = ({ modalVisible, setModalVisible, codigo_cita }) => {
 
+    const {actualizarCitas, dni_paciente} = useContext(CitasContext);
+    
     const [respuesta, setRespuesta] = useState();
     const handleDelete = () => {
         setModalVisible(!modalVisible);
-        cancelarCita(codigo_cita).then(r => {
-            setRespuesta(r)
-
-        })
+        console.log(`Este es el código de la cita a cancelar: ${codigo_cita}`)
+        cancelarCita(codigo_cita);
+        actualizarCitas(dni_paciente);
     }
 
 
@@ -26,7 +29,7 @@ const CancelarCita = ({ modalVisible, setModalVisible, codigo_cita }) => {
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
-                    Alert.alert('No se pudo cancelar la cita.');
+                    Alert.alert('No se eliminó la cita.');
                     setModalVisible(!modalVisible);
                 }}>
                 <View style={styles.centeredView}>
@@ -37,16 +40,16 @@ const CancelarCita = ({ modalVisible, setModalVisible, codigo_cita }) => {
                         shadowRadius: 3.84,
                         elevation: 8
                     }]}>
-                        <Text style={styles.modalText}>¿Seguro desea cancelar la cita?</Text>
+                        <Text style={styles.modalText}>¿Desea cancelar cita?</Text>
                         <View style={{ display: 'flex', flexDirection: 'row' }}>
                             <Pressable
                                 style={[styles.button, styles.buttonClose]}
                                 onPress={() => handleDelete()}>
-                                <Text style={styles.textStyle}>Sí, quiero</Text>
+                                <Text style={styles.textStyle}>Sí</Text>
                             </Pressable><Pressable
                                 style={[styles.button, styles.buttonCancel]}
                                 onPress={() => setModalVisible(!modalVisible)}>
-                                <Text style={styles.textStyle}>No, quiero</Text>
+                                <Text style={styles.textStyle}>No</Text>
                             </Pressable>
                         </View>
                     </View>
@@ -106,6 +109,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 });
+
 
 
 export default CancelarCita;
