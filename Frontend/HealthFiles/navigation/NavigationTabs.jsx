@@ -12,7 +12,7 @@ import NavigationStackCirugia from "./NavigationStackCirugia";
 
 const Tab = createMaterialBottomTabNavigator();
 export default function NavigationTabs({ navigation, route }) {
-
+  
   console.log(route);
   return (
     <Tab.Navigator

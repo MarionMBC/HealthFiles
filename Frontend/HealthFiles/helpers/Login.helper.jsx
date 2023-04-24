@@ -2,7 +2,7 @@ import React from 'react';
 
 export const obtenerCorreoContrasena = async (correo_electronico, contrasena) => {
   try {
-    const response = await fetch(`https://healthfiles.azurewebsites.net/paciente/get/${correo_electronico}/${contrasena}`)
+    const response = await fetch(`https://healthfiles.azurewebsites.net/medico/get/${correo_electronico}/${contrasena}`)
     const data = await response.json()
     return data
   } catch (e) {

@@ -57,6 +57,25 @@ export const getMedico = async (req, res) => {
 };
 
 
+export const getUserMedico = async (req, res) => {
+    try {
+    const correo_electronico = req.params.correo_electronico;
+    const contraseña = req.params.contraseña;
+    const [medico] = await pool.query(
+        "SELECT * FROM medico WHERE correo_electronico=? and contraseña=?",
+        [correo_electronico, contraseña]
+    );
+    medico.length <= 0
+        ? res.status(404).json({ msg: "No se encontró el médico" })
+        : res.send(medico[0]);
+    } catch (error) {
+        return res.status(500).json({
+            msg: "Algo ha salido mal al obtener el médico."
+        })
+    }
+};
+
+
 /**
  * Crea un nuevo registro de médico en la base de datos.
  * @author Marion Bustamante

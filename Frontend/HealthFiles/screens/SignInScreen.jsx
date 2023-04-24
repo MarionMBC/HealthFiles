@@ -86,8 +86,9 @@ export default function SignInScreen({ navigation }) {
       if (res.msg === "Paciente no encontrado" || contrasena == "" || correo == "") {
         setAuth(!isAuth);
       } else {
-        console.log(res);
-        navigation.navigate("Inicio")
+        setResultado(res);
+        console.log("Resultado: ", resultado);
+        navigation.navigate("Inicio", resultado)
       };
     } catch (e) {
       console.error(e);
