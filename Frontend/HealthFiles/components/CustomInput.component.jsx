@@ -10,6 +10,7 @@ import { Controller } from 'react-hook-form'
 
 const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, keyboardType }) => {
     const [data, setData] = useState();
+    
     return (
 
         <Controller
@@ -22,8 +23,8 @@ const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, 
                         <TextInput
                             placeholder={placeholder}
                             value={value}
-                            onChangeText={(e) => {
-                                console.log(e);
+                            onChangeText={(value) => {
+                                console.log(value);
                             }}
                             onBlur={onBlur}
                             style={[styles.textInput, {}]}

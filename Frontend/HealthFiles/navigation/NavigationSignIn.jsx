@@ -12,26 +12,15 @@ const StackSignScreen = createNativeStackNavigator();
 
 export default function NavigationStackLogin() {
   return (
-    <StackSignScreen.Navigator
-      screenOptions={{ headerShown: false }}
-      headerStyle={{ backgroundColor: "red" }}
-      cardStyle={{ backgroundColor: "red" }}
+    <StackSignScreen.Navigator screenOptions={{ headerShown: false }} headerStyle={{ backgroundColor: "red" }} cardStyle={{ backgroundColor: "red" }}
       initialRouteName="Login">
+
       <StackSignScreen.Screen name="Login" component={SignInScreen} />
       <StackSignScreen.Screen name="Inicio de Sesion Gmail" component={LogininGmailScreen} />
       <StackSignScreen.Screen name="Registro" component={SignUpScreen} />
-
-      <StackSignScreen.Screen
-        name="Pantalla de Inicio"
-        component={NavigationTabs}
-      />
-
-      <StackSignScreen.Screen name="Inicio" component={NavigationTabs}
-      />
-
-
-
-
+      <StackSignScreen.Screen name="Pantalla de Inicio"component={NavigationTabs}/>
+      <StackSignScreen.Screen name="Inicio" component={NavigationTabs}/>
+      
     </StackSignScreen.Navigator>
   );
 }
