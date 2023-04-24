@@ -5,14 +5,12 @@
  */
 
 import { View, Text, TextInput, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
 
-const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, keyboardType }) => {
-    const [data, setData] = useState();
+const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, keyboardType, setState }) => {
     
     return (
-
         <Controller
             control={control}
             name={name}
@@ -24,13 +22,13 @@ const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, 
                             placeholder={placeholder}
                             value={value}
                             onChangeText={(value) => {
-                                console.log(value);
+                                setState(value);
                             }}
                             onBlur={onBlur}
                             style={[styles.textInput, {}]}
                             secureTextEntry={secureTextEntry}
                             keyboardType={keyboardType}
-
+                            
                             rules={{
                                 required: 'El Campo Fecha de Nacimiento esta vacio',
                             }}

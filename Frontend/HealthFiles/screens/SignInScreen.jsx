@@ -33,9 +33,18 @@ export default function SignInScreen({ navigation }) {
   const [correo, setCorreo] = useState();
   const [contrasena, setContrasena] = useState();
   const [resultado, setResultado] = useState();
+  const [isAuth, setAuth] = useState(false);
+
+  /* 
+    useEffect(() => {
+      console.log("Correo: ", correo);
+      console.log("Contraseña: ", contrasena);
+    }, [correo, contrasena]); */
+
+
 
   useEffect(() => {
-    fetch("https:/healthfiles-production.up.railway.app/paciente/get/${correo_electronico}/${contrasena}")
+    fetch("https://healthfiles.azurewebsites.net/paciente/get/${correo_electronico}/${contrasena}")
       .then((res) => res.json())
       .then((json) => {
         setResultado(json)
@@ -43,22 +52,23 @@ export default function SignInScreen({ navigation }) {
       .catch((e) => console.log(e))
   }, [resultado])
 
-  const onInicioSesionPressed = (correo_electronico = 'juan.perez@gmail.com', contrasena = 'password123') => {
-    console.log("d", resultado);
-    var keys = Object.keys(
-      resultado.then
-        ? resultado.then((result) => {
-          return result;
-        })
-        : resultado
-    );
-
-    if (keys.length > 1) {
-      navigation.navigate("Pantalla de Inicio");
-    } else {
-      message = "Correo o Contrasena son invalidos";
-    }
-  };
+  /*   const onInicioSesionPressed = (correo_electronico = 'juan.perez@gmail.com', contrasena = 'password123') => {
+      console.log("d", resultado);
+      var keys = Object.keys(
+        resultado.then
+          ? resultado.then((result) => {
+            return result;
+          })
+          : resultado
+      );
+  
+      if (keys.length > 1) {
+        navigation.navigate("Pantalla de Inicio");
+      } else {
+        message = "Correo o Contrasena son invalidos";
+      }
+    };
+   */
   const onContrasenaOlvidadaPressed = () => {
     navigation.navigate("Contrasena Olvidada");
   };
@@ -72,12 +82,11 @@ export default function SignInScreen({ navigation }) {
   const handleIgreso = async () => {
     try {
       const res = await obtenerCorreoContrasena(correo, contrasena);
-      if (res.msg === 'Paciente no encontrado') {
-        console.log(res.msj);
+      if (res.msg === "Paciente no encontrado") {
+        setAuth(!setAuth);
       } else {
         console.log(res);
-        navigation.navigate('Inicio');
-      }
+      };
     } catch (e) {
       console.error(e);
       setError('Ha ocurrido un error. Por favor, intenta nuevamente.');
@@ -95,13 +104,14 @@ export default function SignInScreen({ navigation }) {
         />
 
         <Text style={styles.subtitulos_1}> Correo electrónico </Text>
-
+        {isAuth ? <Text>Usuario Incorrecto</Text> : <></>}
         <CustomInput
           name="Correo Electronico"
           placeholder="example123@example.com"
           control={control}
           rules={{ required: "Ingresar un correo electronico valido" }}
           keyboardType="email-address"
+          setState={setCorreo}
         />
 
         <Text style={styles.subtitulo_2}> Contraseña </Text>
@@ -118,6 +128,7 @@ export default function SignInScreen({ navigation }) {
             },
           }}
           secureTextEntry={true}
+          setState={setContrasena}
         />
 
         <ButtonsSignIn
