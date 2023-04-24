@@ -11,21 +11,16 @@ import NavigationStackHome from "./NavigationHome";
 import NavigationStackCirugia from "./NavigationStackCirugia";
 
 const Tab = createMaterialBottomTabNavigator();
-<<<<<<< HEAD
 export default function NavigationTabs({ navigation, route }) {
-  route = route.params.res
-  console.log(route);
-=======
-export default function NavigationTabs({ /* navigation */ }) {
 
->>>>>>> 0f8c531c078b318d4fa1674bbc4347cd3c7dad4c
+  console.log(route);
   return (
     <Tab.Navigator
       initialRouteName="Home"
       activeColor="#125ba5"
       inactiveColor="#848385"
       barStyle={{ backgroundColor: "#F9F7E9" }}
-    > 
+    >
       <Tab.Screen
         name="Home"
         component={NavigationStackHome}
