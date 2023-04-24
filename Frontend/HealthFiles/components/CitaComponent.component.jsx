@@ -12,7 +12,7 @@ import CancelarCita from './CancelarCita.component';
 
 
 
-const CitaCardComponent = ({ dni_paciente, setSearchStatus }) => {
+const CitaCardComponent = ({ dni_paciente, setSearchStatus, navigation }) => {
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -57,7 +57,7 @@ const CitaCardComponent = ({ dni_paciente, setSearchStatus }) => {
             </View>
             <View style={styles.crudButton}>
               <TouchableHighlight underlayColor="transparent">
-                <Icon name={'eye'} size={25} color={'#2b7bb7'} />
+                <Icon name={'eye'} size={25} color={'#2b7bb7'} onPress={()=>navigation.navigate('Detalle Cita',{cod:cita.codigo_cita, date:cita.fecha, dni:cita.dni_paciente, hour:cita.hora, state: cita.estado, reason: cita.razon, treat: cita.tratamiento, valueDate: cita.valoracion})} />
               </TouchableHighlight>
               {cita.estado !== 'Cancelada' && (
                 <TouchableHighlight

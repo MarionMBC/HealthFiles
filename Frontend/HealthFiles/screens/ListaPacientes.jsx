@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import CardPacienteList from "../components/CardPacienteList.component";
+import PacienteCardComponent from '../components/CardPacienteList.component';
 
 export default function PantallaPacientes({navigation}) {
   console.log("Pacientes", navigation);
@@ -14,17 +14,7 @@ export default function PantallaPacientes({navigation}) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <AntDesign name="menufold" size={24} color="black" />
-        </TouchableOpacity>
-        <TextInput
-          style={styles.searchBar}
-          placeholder="Buscar paciente"
-          onChangeText={handleSearch}
-          value={searchText}
-        />
-      </View>
+     <PacienteCardComponent dni_medico={"56789012345"} navigation={navigation}></PacienteCardComponent>
 
       <View style={{ marginBottom: 15 }}>
      
