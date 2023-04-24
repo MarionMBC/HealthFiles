@@ -11,22 +11,27 @@ import NavigationStackHome from "./NavigationHome";
 import NavigationStackCirugia from "./NavigationStackCirugia";
 
 const Tab = createMaterialBottomTabNavigator();
+<<<<<<< HEAD
 export default function NavigationTabs({ navigation, route }) {
   route = route.params.res
   console.log(route);
+=======
+export default function NavigationTabs({ /* navigation */ }) {
+
+>>>>>>> 0f8c531c078b318d4fa1674bbc4347cd3c7dad4c
   return (
     <Tab.Navigator
-      initialRouteName="Pacientes"
+      initialRouteName="Home"
       activeColor="#125ba5"
       inactiveColor="#848385"
       barStyle={{ backgroundColor: "#F9F7E9" }}
     > 
       <Tab.Screen
-        name="Pacientes"
+        name="Home"
         component={NavigationStackHome}
         options={{
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account-group" color={color} size={26} />
+            <MaterialCommunityIcons name="account" color={color} size={26} />
           ),
         }}
       ></Tab.Screen>
@@ -57,7 +62,7 @@ export default function NavigationTabs({ navigation, route }) {
             <MaterialCommunityIcons name="pill" color={color} size={26} />
           ),
 
-          route: { route }
+
 
         }}
       ></Tab.Screen>
@@ -83,7 +88,15 @@ export default function NavigationTabs({ navigation, route }) {
           ),
         }}
       ></Tab.Screen>
-     
+      <Tab.Screen
+        name="Recordatorios"
+        component={NavigationStackRecordatorio}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account" color={color} size={26} />
+          ),
+        }}
+      ></Tab.Screen>
     </Tab.Navigator>
   );
 }

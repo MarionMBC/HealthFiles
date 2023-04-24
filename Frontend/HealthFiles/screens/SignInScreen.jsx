@@ -44,8 +44,6 @@ export default function SignInScreen({ navigation }) {
   }, [resultado])
 
   const onInicioSesionPressed = (correo_electronico = 'juan.perez@gmail.com', contrasena = 'password123') => {
-
-
     console.log("d", resultado);
     var keys = Object.keys(
       resultado.then
@@ -78,7 +76,7 @@ export default function SignInScreen({ navigation }) {
         console.log(res.msj);
       } else {
         console.log(res);
-        navigation.navigate('Inicio', { res });
+        navigation.navigate('Inicio');
       }
     } catch (e) {
       console.error(e);

@@ -15,7 +15,6 @@ export default function NavigationStackMedicamentos() {
       <StackMedicamentos.Screen
         name="Registro de Medicamentos"
         component={RegistroMedicamentoScreen}
-      
       />
       <StackMedicamentos.Screen
         name="Agregar Medicamento"

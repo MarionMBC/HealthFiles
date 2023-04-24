@@ -1,4 +1,4 @@
-const URL = "https://healthfiles-production.up.railway.app/";
+const URL = "https://healthfiles.azurewebsites.net/";
 
 /**
  * @author Jennebier Esther Alvarado López
@@ -68,18 +68,18 @@ export const obtenerCitas = async (dni_paciente = "34567890123") => {
  */
 export const cancelarCita = async (codigoCita) => {
   try {
-          const response = await fetch(`${URL}cita/update/${codigoCita}`, 
-          {
-            method: 'PUT',
-          headers:{
-            'Content-Type': 'application/json'
-          },
+    const response = await fetch(`${URL}cita/update/${codigoCita}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
           estado: 'Cancelada'
         })
-       });
-       const res = await response.json();
-       return res;   
+      });
+    const res = await response.json();
+    return res;
   } catch (e) {
     return e;
   }
@@ -87,24 +87,4 @@ export const cancelarCita = async (codigoCita) => {
 
 export const handleViewCita = (navigation, cita) => {
   navigation.navigate("Detalle Cita", cita);
-};
-
-
-
-/**
- * @author Jennebier Esther Alvarado López
- * @date 15 de abril del 2023
- * @description Obtiene los detalles de una cita dado su código
- * @param {String} dni_medico
- * @returns respuesta en Json
- */
-export const obtenerCita = async (codigo_cita) => {
-  try {
-    const urlCita = `${URL}cita/get/${codigo_cita}`;
-    const response = await fetch(urlCita);
-    const data = await response.json();
-    return data;
-  } catch (e) {
-    return e;
-  }
 };

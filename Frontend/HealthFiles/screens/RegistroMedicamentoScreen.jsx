@@ -11,7 +11,7 @@ const RegistroMedicamentoScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     fetch(
-      "https://healthfiles-production.up.railway.app/medicamento_paciente/get/78901234567"
+      "https://healthfiles.azurewebsites.net/medicamento_paciente/get/78901234567"
     )
       .then((response) => response.json())
       .then((json) => setMedicamentos(json))
