@@ -9,14 +9,19 @@ import DetalleMedicamentoScreen from "../screens/DetalleMedicamentoScreen";
 
 const StackMedicamentos = createNativeStackNavigator();
 
-export default function NavigationStackMedicamentos() {
+export default function NavigationStackMedicamentos({ resultado }) {
+
   return (
     <StackMedicamentos.Navigator>
       <StackMedicamentos.Screen
         name="Registro de Medicamentos"
-        component={RegistroMedicamentoScreen}
         options={{ headerShown: false }}
-      />
+        resultado = {resultado}
+      >
+        {
+          props => <RegistroMedicamentoScreen {... props} resultado={resultado} ></RegistroMedicamentoScreen>
+        }
+      </StackMedicamentos.Screen>
       <StackMedicamentos.Screen
         name="Agregar Medicamento"
         component={AgregarMedicamentoScreen}

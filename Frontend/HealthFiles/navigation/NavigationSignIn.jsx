@@ -13,13 +13,13 @@ import { AuthProvider } from "../context/AuthContext";
 const StackSignScreen = createNativeStackNavigator();
 
 export default function NavigationStackLogin() {
+
   return (
-    <AuthProvider navigation={StackSignScreen.Navigator}>
+    <AuthProvider>
       <StackSignScreen.Navigator
         headerStyle={{ backgroundColor: "red" }}
         cardStyle={{ backgroundColor: "red" }}
         initialRouteName="Login">
-
         <StackSignScreen.Screen name="Login" component={SignInScreen} />
         <StackSignScreen.Screen name="Inicio de Sesion Gmail" component={LogininGmailScreen} />
         <StackSignScreen.Screen name="Registro" component={SignUpScreen} />
@@ -32,8 +32,8 @@ export default function NavigationStackLogin() {
 
         <StackSignScreen.Screen name="Inicio" component={NavigationTabs}
         />
-
       </StackSignScreen.Navigator>
+
     </AuthProvider>
   );
 }

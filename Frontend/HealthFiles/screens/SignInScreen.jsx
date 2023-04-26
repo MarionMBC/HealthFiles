@@ -21,11 +21,11 @@ import { useForm } from "react-hook-form";
 import CustomInput from "../../../Frontend/HealthFiles/components/CustomInput.component";
 import styles from "../../HealthFiles/styles/styles";
 import AuthContext from "../context/AuthContext";
-
+import { obtenerCorreoContrasena } from "../helpers/Login.helper";
 
 export default function SignInScreen({ navigation }) {
-
-  const { isAuth, setCorreo, setContrasena, onContrasenaOlvidadaPressed, onGmailPressed, handleIgreso, onRegistroPressed } = useContext(AuthContext);
+  console.log(navigation);
+  const { resultado, setResultado, correo, contrasena, setContrasena, setCorreo, isAuth, setAuth } = useContext(AuthContext);
 
 
 
@@ -37,46 +37,42 @@ export default function SignInScreen({ navigation }) {
   } = useForm();
 
 
+  useEffect(() => {
+    console.log("Correo: ", correo);
+    console.log("Contraseña: ", contrasena);
+  }, [correo, contrasena]);
 
-  /* 
-    const [correo, setCorreo] = useState();
-    const [contrasena, setContrasena] = useState();
-    const [resultado, setResultado] = useState();
-    const [isAuth, setAuth] = useState(false); */
 
-  /* 
-    useEffect(() => {
-      console.log("Correo: ", correo);
-      console.log("Contraseña: ", contrasena);
-    }, [correo, contrasena]); */
-  /*   useEffect(() => {
-      fetch("https://healthfiles.azurewebsites.net/paciente/get/${correo_electronico}/${contrasena}")
-        .then((res) => res.json())
-        .then((json) => {
-          setResultado(json)
-        })
-        .catch((e) => console.log(e))
-    }, []) */
-  /*   const onInicioSesionPressed = (correo_electronico = 'juan.perez@gmail.com', contrasena = 'password123') => {
-      console.log("d", resultado);
-      var keys = Object.keys(
-        resultado.then
-          ? resultado.then((result) => {
-            return result;
+  /*      useEffect(() => {
+        fetch("https://healthfiles.azurewebsites.net/paciente/get/${correo_electronico}/${contrasena}")
+          .then((res) => res.json())
+          .then((json) => {
+            setResultado(json)
           })
-          : resultado
-      );
-  
-      if (keys.length > 1) {
-        navigation.navigate("Pantalla de Inicio");
-      } else {
-        message = "Correo o Contrasena son invalidos";
-      }
-    };
+          .catch((e) => console.log(e))
+      }, []) 
    */
 
-  /* 
-    const onContrasenaOlvidadaPressed = () => {
+  const onInicioSesionPressed = (correo_electronico = 'juan.perez@gmail.com', contrasena = 'password123') => {
+    console.log("d", resultado);
+    var keys = Object.keys(
+      resultado.then
+        ? resultado.then((result) => {
+          return result;
+        })
+        : resultado
+    );
+
+    if (keys.length > 1) {
+      navigation.navigate("Pantalla de Inicio");
+    } else {
+      message = "Correo o Contrasena son invalidos";
+    }
+  };
+
+
+
+  const onContrasenaOlvidadaPressed = () => {
     navigation.navigate("Contrasena Olvidada");
   };
   const onGmailPressed = () => {
@@ -84,26 +80,27 @@ export default function SignInScreen({ navigation }) {
   };
   const onRegistroPressed = () => {
     navigation.navigate("Registro");
-  }; */
+  };
 
-  /*   const handleIgreso = async () => {
-      try {
-        const res = await obtenerCorreoContrasena(correo, contrasena);
-        if (res.msg === "Paciente no encontrado" || contrasena == "" || correo == "") {
-          setAuth(!isAuth);
-        } else {
-          setResultado(res);
-          console.log("Resultado: ", resultado);
-          navigation.navigate("Inicio", resultado)
-        };
-      } catch (e) {
-        console.error(e);
-        setError('Ha ocurrido un error. Por favor, intenta nuevamente.');
-      }
-    }; */
+  const handleIgreso = async () => {
+    try {
+      const res = await obtenerCorreoContrasena(correo, contrasena);
+      if (res.msg === "Paciente no encontrado" || contrasena == "" || correo == "") {
+        setAuth(!isAuth);
+      } else {
+        setResultado(res);
+        console.log("Resultado: ", resultado);
+        navigation.navigate("Inicio", resultado)
+      };
+    } catch (e) {
+      console.error(e);
+      setError('Ha ocurrido un error. Por favor, intenta nuevamente.');
+    }
+  };
 
 
   return (
+
     <ScrollView>
       <View style={styles.container1}>
         <Image
@@ -111,8 +108,8 @@ export default function SignInScreen({ navigation }) {
           source={require("../assets/ImagenLogoOff.jpg")}
           resizeMode="contain"
         />
-        {isAuth ? <Text style={{ color: "red", fontSize: 14, fontWeight: 500 }}>Usuario o contraseña incorrecto</Text> : <></>}
 
+        {isAuth ? <Text style={{ color: "red", fontSize: 14, fontWeight: 500 }}>Usuario o contraseña incorrecto</Text> : <></>}
 
         <Text style={styles.subtitulos_1}> Correo electrónico </Text>
         <CustomInput
@@ -163,5 +160,6 @@ export default function SignInScreen({ navigation }) {
         <StatusBar style="auto" />
       </View>
     </ScrollView>
+
   );
 }

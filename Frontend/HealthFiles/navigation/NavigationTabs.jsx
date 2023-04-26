@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import NavigationStackExamenes from "./NavigationStackExamenes";
 import ReportesScreen from "../screens/ReportesScreen";
@@ -9,11 +9,11 @@ import NavigationStackRecordatorio from "./NavigationStackRecordatorio";
 import ListaPacientes from "../screens/ListaPacientes.jsx";
 import NavigationStackHome from "./NavigationHome";
 import NavigationStackCirugia from "./NavigationStackCirugia";
+import AuthContext from "../context/AuthContext";
 
 const Tab = createMaterialBottomTabNavigator();
 export default function NavigationTabs({ navigation, route }) {
-  
-  console.log(route);
+  const { resultado } = useContext(AuthContext)
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -50,7 +50,8 @@ export default function NavigationTabs({ navigation, route }) {
       ></Tab.Screen>
       <Tab.Screen
         name="Medicinas"
-        component={NavigationStackMedicamentos}
+
+
         options={{
 
           tabBarIcon: ({ color }) => (
@@ -60,7 +61,9 @@ export default function NavigationTabs({ navigation, route }) {
 
 
         }}
-      ></Tab.Screen>
+      >
+        {props => <NavigationStackMedicamentos {...props} resultado={resultado}></NavigationStackMedicamentos>}
+      </Tab.Screen>
       <Tab.Screen
         name="Citas"
         component={NavigationStackCitas}

@@ -5,13 +5,13 @@ import PacienteInfoComponent from "../components/PacienteInfo.component";
 import TittleComponent from "../components/Tittle.component";
 import AgregarComponente from "../components/AgregarComponent.component";
 
-const RegistroMedicamentoScreen = ({ navigation, route }) => {
-  console.log(route);
+const RegistroMedicamentoScreen = ({ navigation, resultado }) => {
+  console.log("Desde reg ", resultado);
   const [medicamentos, setMedicamentos] = useState([]);
-
-  useEffect(() => {
+  const {primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, dni_medico} = resultado
+  useEffect(() => { 
     fetch(
-      "https://healthfiles.azurewebsites.net/medicamento_paciente/get/78901234567"
+      `https://healthfiles.azurewebsites.net/medicamento_paciente/get/78901234567`
     )
       .then((response) => response.json())
       .then((json) => setMedicamentos(json))
@@ -34,8 +34,8 @@ const RegistroMedicamentoScreen = ({ navigation, route }) => {
   return (
     <ScrollView>
       <PacienteInfoComponent
-        nombrePaciente={"Marion Melchisedec Bustamante Castro"}
-        dniPaciente={"0806-2001-00506"}
+        nombrePaciente={primer_nombre+ " "+ primer_apellido}
+        dniPaciente={dni_medico}
       />
       <View style={{ marginBottom: 15 }}>
         {medicamentos.length > 0 ? (
