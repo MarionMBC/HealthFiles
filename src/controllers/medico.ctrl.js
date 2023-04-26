@@ -59,11 +59,11 @@ export const getMedico = async (req, res) => {
 
 export const getUserMedico = async (req, res) => {
     try {
-    const correo_electronico = req.params.correo_electronico;
-    const contraseña = req.params.contraseña;
+    const email = req.params.correo_electronico;
+    const password = req.params.contrasena;
     const [medico] = await pool.query(
         "SELECT * FROM medico WHERE correo_electronico=? and contraseña=?",
-        [correo_electronico, contraseña]
+        [email, password]
     );
     medico.length <= 0
         ? res.status(404).json({ msg: "No se encontró el médico" })
