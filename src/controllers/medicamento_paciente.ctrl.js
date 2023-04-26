@@ -145,7 +145,7 @@ export const deleteMedicamentoPaciente = async (req, res) => {
 export const getMedicamentosMed = async (req, res) => {
     try {
         const dni_medico = req.params.dni_medico;
-        const [resultado] = await pool.query("select * from medicamento_paciente where dni_medico = ?", [dni_medico])
+        const [resultado] = await pool.query("select * from medicamento_paciente inner join medicamento on medicamento_paciente.codigo_medicamento = medicamento.codigo_medicamento where dni_medico = ? ", [dni_medico])
         resultado.length <= 0
             ? res.status(404).json({ msg: "No se encontró la información" })
             : res.send(resultado);

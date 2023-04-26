@@ -6,12 +6,11 @@ import TittleComponent from "../components/Tittle.component";
 import AgregarComponente from "../components/AgregarComponent.component";
 
 const RegistroMedicamentoScreen = ({ navigation, resultado }) => {
-  console.log("Desde reg ", resultado);
   const [medicamentos, setMedicamentos] = useState([]);
   const {primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, dni_medico} = resultado
   useEffect(() => { 
     fetch(
-      `https://healthfiles.azurewebsites.net/medicamento_paciente/get/78901234567`
+      `https://healthfiles.azurewebsites.net/medicamento_paciente/get/medicamentos/${dni_medico}`
     )
       .then((response) => response.json())
       .then((json) => setMedicamentos(json))
@@ -44,7 +43,7 @@ const RegistroMedicamentoScreen = ({ navigation, resultado }) => {
               key={med.codigo_medicamento}
               navigation={navigation}
               medicamento={med}
-              dni_medico={"34567890123"}
+              dni_medico={dni_medico}
               dni_paciente={"78901234567"}
             />
           ))

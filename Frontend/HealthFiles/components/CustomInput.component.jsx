@@ -8,7 +8,7 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
 
-const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, keyboardType, setState }) => {
+const CustomInput = ({ control, name, placeholder, rules, secureTextEntry, keyboardType, setState }) => {
 
     return (
         <Controller
@@ -29,9 +29,7 @@ const CustomInput = ({ control, name, placeholder, rules = {}, secureTextEntry, 
                             secureTextEntry={secureTextEntry}
                             keyboardType={keyboardType}
 
-                            rules={{
-                                required: 'El Campo Fecha de Nacimiento esta vacio',
-                            }}
+                            rules={rules}
                         />
                     </View>
                     {error && (

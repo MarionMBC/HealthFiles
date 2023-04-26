@@ -85,7 +85,7 @@ export default function SignInScreen({ navigation }) {
   const handleIgreso = async () => {
     try {
       const res = await obtenerCorreoContrasena(correo, contrasena);
-      if (res.msg === "Paciente no encontrado" || contrasena == "" || correo == "") {
+      if (res.msg === "No se encontró el médico" || contrasena == "" || correo == "") {
         setAuth(!isAuth);
       } else {
         setResultado(res);
@@ -116,7 +116,7 @@ export default function SignInScreen({ navigation }) {
           name="Correo Electronico"
           placeholder="example123@example.com"
           control={control}
-          rules={{ required: "Ingresar un correo electronico valido" }}
+          rules={{ required:true }}
           keyboardType="email-address"
           setState={setCorreo}
         />
@@ -128,12 +128,14 @@ export default function SignInScreen({ navigation }) {
           placeholder="Contraseña"
           control={control}
           rules={{
-            required: "Ingresar su contraseña",
+            required: true,
             minLength: {
               value: 8,
               message: "La contraseña debe tener 8 caracteres minimo",
             },
+              pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
           }}
+  
           secureTextEntry={true}
           setState={setContrasena}
         />
