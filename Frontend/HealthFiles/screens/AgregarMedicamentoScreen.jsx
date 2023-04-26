@@ -12,10 +12,11 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Checkbox, RadioButton } from "react-native-paper";
 import { Input } from "@rneui/base";
 import { SelectList } from "react-native-dropdown-select-list";
-import { Icon } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import CustomButtom from "../components/CustomButtom.component";
 
 const AgregarMedicamentoScreen = ({ navigation, route }) => {
+  const addIcon = <Icon name="plus" size={50} color="#2b7bb7" />;
   const [datePickerVisible, setDatePickerVisible] = useState(false);
   const [selectedTimeReminder, setSelectedTimeReminder] = useState("12:00");
   const [selectedDate, setSelectedDate] = useState(
@@ -132,11 +133,13 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
           style={{
             marginTop: 10,
             display: "flex",
-            flexDirection: "row",
-            backgroundColor: "red",
+            flexDirection: "column",
+            margin: 0
           }}
         >
+
           <SelectList
+
             setSelected={setSelected}
             onSelect={() => {
               setSelectedKey(selected);
@@ -148,6 +151,8 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
               borderColor: "#484848",
               borderWidth: 0.4,
               marginTop: 10,
+
+
             }}
             notFoundText="No se encontraron resultados"
             placeholder="Buscar medicamento"
@@ -160,6 +165,11 @@ const AgregarMedicamentoScreen = ({ navigation, route }) => {
               borderWidth: 0.4,
             }}
           />
+          <TouchableHighlight
+            style={{ backgroundColor: "red", margin: 10, borderRadius: 10, width: "50%" }}>
+            {addIcon}
+          </TouchableHighlight>
+
         </View>
 
         <View>

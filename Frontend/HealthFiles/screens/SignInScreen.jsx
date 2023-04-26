@@ -5,7 +5,7 @@
  */
 
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -14,15 +14,20 @@ import {
   ScrollView,
 } from "react-native";
 import ButtonsSignIn from "../../../Frontend/HealthFiles/components/ButtonsSignIn.component";
-import { useNavigation } from "@react-navigation/native";
-//Import useForm
+/* import { useNavigation } from "@react-navigation/native";
+ *///Import useForm
 import { useForm } from "react-hook-form";
 
 import CustomInput from "../../../Frontend/HealthFiles/components/CustomInput.component";
 import styles from "../../HealthFiles/styles/styles";
-import { obtenerCorreoContrasena } from "../helpers/Login.helper";
+import AuthContext from "../context/AuthContext";
+
 
 export default function SignInScreen({ navigation }) {
+
+  const { isAuth, setCorreo, setContrasena, onContrasenaOlvidadaPressed, onGmailPressed, handleIgreso, onRegistroPressed } = useContext(AuthContext);
+
+
 
   const { height } = useWindowDimensions();
   const {
@@ -31,19 +36,19 @@ export default function SignInScreen({ navigation }) {
     formState: { errors },
   } = useForm();
 
-  const [correo, setCorreo] = useState();
-  const [contrasena, setContrasena] = useState();
-  const [resultado, setResultado] = useState();
-  const [isAuth, setAuth] = useState(false);
+
+
+  /* 
+    const [correo, setCorreo] = useState();
+    const [contrasena, setContrasena] = useState();
+    const [resultado, setResultado] = useState();
+    const [isAuth, setAuth] = useState(false); */
 
   /* 
     useEffect(() => {
       console.log("Correo: ", correo);
       console.log("Contraseña: ", contrasena);
     }, [correo, contrasena]); */
-
-
-
   /*   useEffect(() => {
       fetch("https://healthfiles.azurewebsites.net/paciente/get/${correo_electronico}/${contrasena}")
         .then((res) => res.json())
@@ -52,7 +57,6 @@ export default function SignInScreen({ navigation }) {
         })
         .catch((e) => console.log(e))
     }, []) */
-
   /*   const onInicioSesionPressed = (correo_electronico = 'juan.perez@gmail.com', contrasena = 'password123') => {
       console.log("d", resultado);
       var keys = Object.keys(
@@ -70,7 +74,9 @@ export default function SignInScreen({ navigation }) {
       }
     };
    */
-  const onContrasenaOlvidadaPressed = () => {
+
+  /* 
+    const onContrasenaOlvidadaPressed = () => {
     navigation.navigate("Contrasena Olvidada");
   };
   const onGmailPressed = () => {
@@ -78,23 +84,23 @@ export default function SignInScreen({ navigation }) {
   };
   const onRegistroPressed = () => {
     navigation.navigate("Registro");
-  };
+  }; */
 
-  const handleIgreso = async () => {
-    try {
-      const res = await obtenerCorreoContrasena(correo, contrasena);
-      if (res.msg === "Paciente no encontrado" || contrasena == "" || correo == "") {
-        setAuth(!isAuth);
-      } else {
-        setResultado(res);
-        console.log("Resultado: ", resultado);
-        navigation.navigate("Inicio", resultado)
-      };
-    } catch (e) {
-      console.error(e);
-      setError('Ha ocurrido un error. Por favor, intenta nuevamente.');
-    }
-  };
+  /*   const handleIgreso = async () => {
+      try {
+        const res = await obtenerCorreoContrasena(correo, contrasena);
+        if (res.msg === "Paciente no encontrado" || contrasena == "" || correo == "") {
+          setAuth(!isAuth);
+        } else {
+          setResultado(res);
+          console.log("Resultado: ", resultado);
+          navigation.navigate("Inicio", resultado)
+        };
+      } catch (e) {
+        console.error(e);
+        setError('Ha ocurrido un error. Por favor, intenta nuevamente.');
+      }
+    }; */
 
 
   return (
@@ -105,7 +111,6 @@ export default function SignInScreen({ navigation }) {
           source={require("../assets/ImagenLogoOff.jpg")}
           resizeMode="contain"
         />
-
         {isAuth ? <Text style={{ color: "red", fontSize: 14, fontWeight: 500 }}>Usuario o contraseña incorrecto</Text> : <></>}
 
 
