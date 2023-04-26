@@ -6,6 +6,7 @@ const router = Router();
 
 router.get('/get', getMedicos);
 router.get('/get/:dni_medico', getMedico);
+router.get('/get/medicamentos_pacientes')
 router.get('/signIn/:correo_electronico/:contrasena', getUserMedico);
 router.post('/create', createMedico);
 router.patch('/update/:dni_medico', updateMedico);

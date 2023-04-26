@@ -220,16 +220,3 @@ export const deleteMedico = async (req, res) => {
 };
 
 
-export const getMedicamentosMed = async (req, res) => {
-   try {
-    const dni_medico = req.params.dni_medico;
-    const [resultado] = await pool.query ( "select * from medicamento_paciente where dni_medico = ?", [dni_medico])
-    resultado.length <= 0
-    ? res.status(404).json({ msg: "No se encontró la información" })
-    : res.send(resultado);
-   } catch (e) {
-    return res.status(200).json({
-        mgs: "Algo ha salido mal al obtener la información"
-    })
-   }
-}
