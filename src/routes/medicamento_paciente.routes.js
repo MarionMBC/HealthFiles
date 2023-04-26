@@ -10,7 +10,7 @@ import { createMedicamentoPaciente, deleteMedicamentoPaciente, getMedicamentoPac
 const router = Router();
 
 router.get('/get/:dni_paciente', getMedicamentoPaciente);
-router.get('/get/:dni_medico', getMedicamentosMed);
+router.get('/get/medicamentos/:dni_medico', getMedicamentosMed);
 router.post('/create', createMedicamentoPaciente);
 router.patch('/update/:dni_paciente/:codigo_medicamento', updateMedicamentoPaciente);
 router.delete('/delete/:dni_paciente/:codigo_medicamento', deleteMedicamentoPaciente);
